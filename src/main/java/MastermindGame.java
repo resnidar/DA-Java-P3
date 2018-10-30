@@ -1,2 +1,2 @@
-public class MastermindGame {
+public class MastermindGame extends Games {
 }

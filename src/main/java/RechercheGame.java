@@ -1,2 +1,3 @@
-public class RechercheGame {
+public class RechercheGame extends Games {
+
 }
