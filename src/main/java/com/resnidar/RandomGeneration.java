@@ -1,28 +1,16 @@
 package com.resnidar;
 
- class RandomGeneration {
+import java.util.Random;
+
+class RandomGeneration {
 
     int[] countNumber() {
-        int nbr = 1523;
-        double un;
-        int une;
-        int count = 0;
-        int nbrd = nbr;
-        while (nbrd > 0) {
-            nbrd /= 10;
-            count++;
-        }
-        System.out.println(count);
-        int[] randomNumberTab = new int[count];
-        count--;
-        nbrd = nbr;
-        while(count >= 0){
-            un = nbrd % 10;
-            une = (int) Math.floor(un);
-            nbrd /= 10;
-            System.out.println("donne" + une);
-            randomNumberTab[count] = une;
-            count--;
+        int[] randomNumberTab = new int[6];
+
+        for(int i = 0; i < randomNumberTab.length ; i++){
+            Random random = new Random();
+            int number = random.nextInt(10);
+            randomNumberTab[i] = number;
         }
         return randomNumberTab;
     }
