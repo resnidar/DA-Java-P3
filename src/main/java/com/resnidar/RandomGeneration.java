@@ -3,9 +3,9 @@ package com.resnidar;
 import java.util.Random;
 
 class RandomGeneration {
-
+    int size = 5;
     int[] countNumber() {
-        int[] randomNumberTab = new int[6];
+        int[] randomNumberTab = new int[size];
 
         for(int i = 0; i < randomNumberTab.length ; i++){
             Random random = new Random();
@@ -13,5 +13,9 @@ class RandomGeneration {
             randomNumberTab[i] = number;
         }
         return randomNumberTab;
+    }
+
+    public int getSize() {
+        return size;
     }
 }
