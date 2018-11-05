@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Games {
     int life;
+    int[] randomNumber = new int[3];
 
 
     void logic(){
@@ -15,7 +16,11 @@ public class Games {
         RandomGeneration randomGeneration = new RandomGeneration();
         if (result == 1) {
             System.out.println("vous avez choisi le jeu du nombre secret");
-            randomGeneration.countnumber();
+            System.out.println(randomGeneration.countnumber());
+            randomNumber = randomGeneration.countnumber();
+            for(int i = 0;i <= 3 ;i++){
+                System.out.println(randomNumber[i]);
+            }
         }
         else if (result == 2){
             System.out.println("vous avez choisi le jeu : mastermind");
