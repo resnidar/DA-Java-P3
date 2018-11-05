@@ -1,8 +1,8 @@
 package com.resnidar;
 
 public class SearchGame extends Games {
-    int[] choice;
-    int[] experctedResult;
+    //int[] choice;
+    //int[] experctedResult;
 
     void logic(){
 
@@ -10,10 +10,10 @@ public class SearchGame extends Games {
         this.random();
     }
 
-    void random(){
+    private void random(){
         RandomGeneration randomGeneration = new RandomGeneration();
-        randomGeneration.countnumber();
-        System.out.println("voila le nombre aleatoire choisi class : SearchGame" + randomGeneration.countnumber());
+        randomGeneration.countNumber();
+        System.out.println("voila le nombre aleatoire choisi class : SearchGame" + randomGeneration.countNumber());
     }
 
     void temporaire(){

@@ -16,8 +16,7 @@ public class Games {
         RandomGeneration randomGeneration = new RandomGeneration();
         if (result == 1) {
             System.out.println("vous avez choisi le jeu du nombre secret");
-            System.out.println(randomGeneration.countnumber());
-            randomNumber = randomGeneration.countnumber();
+            randomNumber = randomGeneration.countNumber();
             for(int i = 0;i <= 3 ;i++){
                 System.out.println(randomNumber[i]);
             }

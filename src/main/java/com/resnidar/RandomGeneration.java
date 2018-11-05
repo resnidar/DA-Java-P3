@@ -1,13 +1,11 @@
 package com.resnidar;
 
-import static java.lang.Math.*;
+ class RandomGeneration {
 
-public class RandomGeneration {
-    int nbr = 1523;
-
-    int[] countnumber() {
-        double un = 0;
-        int une = 0;
+    int[] countNumber() {
+        int nbr = 1523;
+        double un;
+        int une;
         int count = 0;
         int nbrd = nbr;
         while (nbrd > 0) {
