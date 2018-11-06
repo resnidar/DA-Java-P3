@@ -3,7 +3,7 @@ package com.resnidar;
 public class Main {
 
     public static void main(String[] args) {
-        Games game = new Games();
-        game.logic();
+        Games games = new Games();
+        games.logic();
     }
 }

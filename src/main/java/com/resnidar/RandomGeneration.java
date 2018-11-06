@@ -3,7 +3,7 @@ package com.resnidar;
 import java.util.Random;
 
 class RandomGeneration {
-    int size = 5;
+    private int size = 5;
     int[] countNumber() {
         int[] randomNumberTab = new int[size];
 
