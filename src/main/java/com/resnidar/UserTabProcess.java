@@ -27,6 +27,6 @@ public class UserTabProcess {
     }
 
     public void setNbr(int nbr) {
-        this.nbr = nbr;
+            this.nbr = nbr;
     }
 }

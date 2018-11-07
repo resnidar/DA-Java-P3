@@ -10,29 +10,35 @@ public class SearchGame extends Games {
         UserTabProcess userTabProcess = new UserTabProcess();
         int proposition;
         int life = 5;
-        int[] userTab = new int[randomGeneration.getSize()];
+        int[] userTab;
         System.out.println("lancement du jeu : nombre secret ");
         int[] randomNumberTab = randomGeneration.getRandomNumber();
-        //todo: faire saisir nombre a l'utilisateur stocker dans tab
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
-        for(int i = 0; i < life ;i++) {
+        interactUser(randomGeneration, sc, userTabProcess, life, randomNumberTab);
+    }
+
+    private void interactUser(RandomGeneration randomGeneration, Scanner sc, UserTabProcess userTabProcess, int life, int[] randomNumberTab) {
+        int proposition;
+        int[] userTab;
+        for(int i = 0; i < life ; i++) {
             System.out.println("trouve les bon numero :");
             proposition = sc.nextInt();
             userTabProcess.setNbr(proposition);
             userTab = userTabProcess.userTabProcess();
-            //todo: comparer les tableau ----------------------------
-            for (int j = 0; j < randomGeneration.getSize() ; j++) {
-                if (randomNumberTab[j] > userTab[j])
-                    System.out.print("+");
-                else if(randomNumberTab[j] == userTab[j])
-                    System.out.print("=");
-                else if(randomNumberTab[j] < userTab[j])
-                    System.out.print("-");
-                else
-                    System.out.println("erreur");
-            }
-            //todo: fin de comparaison ------------------------------
+            comparUser(randomGeneration, randomNumberTab, userTab);
         }
-        //todo: afficher case par case le resultat
+    }
+
+    private void comparUser(RandomGeneration randomGeneration, int[] randomNumberTab, int[] userTab) {
+        for (int j = 0; j < randomGeneration.getSize() ; j++) {
+            if (randomNumberTab[j] > userTab[j])
+                System.out.print("+");
+            else if(randomNumberTab[j] == userTab[j])
+                System.out.print("=");
+            else if(randomNumberTab[j] < userTab[j])
+                System.out.print("-");
+            else
+                System.out.println("erreur");
+        }
     }
 }
