@@ -8,9 +8,7 @@ public class SearchGame extends Games {
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);
         UserTabProcess userTabProcess = new UserTabProcess();
-        int proposition;
         int life = 5;
-        int[] userTab;
         System.out.println("lancement du jeu : nombre secret ");
         int[] randomNumberTab = randomGeneration.getRandomNumber();
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
