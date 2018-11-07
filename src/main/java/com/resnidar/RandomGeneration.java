@@ -4,9 +4,8 @@ import java.util.Random;
 
 class RandomGeneration {
     private int size = 5;
-    int[] countNumber() {
+    int[] getRandomNumber() {
         int[] randomNumberTab = new int[size];
-
         for(int i = 0; i < randomNumberTab.length ; i++){
             Random random = new Random();
             int number = random.nextInt(10);
