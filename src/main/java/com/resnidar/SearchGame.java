@@ -12,7 +12,7 @@ public class SearchGame extends Games {
         int life = 5;
         int[] userTab = new int[randomGeneration.getSize()];
         System.out.println("lancement du jeu : nombre secret ");
-        int[] randomNumber = randomGeneration.getRandomNumber();
+        int[] randomNumberTab = randomGeneration.getRandomNumber();
         //todo: faire saisir nombre a l'utilisateur stocker dans tab
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
         for(int i = 0; i < life ;i++) {
@@ -21,8 +21,15 @@ public class SearchGame extends Games {
             userTabProcess.setNbr(proposition);
             userTab = userTabProcess.userTabProcess();
             //todo: comparer les tableau ----------------------------
-            for (int j = 0; ; j++) {
-
+            for (int j = 0; j < randomGeneration.getSize() ; j++) {
+                if (randomNumberTab[j] > userTab[j])
+                    System.out.print("+");
+                else if(randomNumberTab[j] == userTab[j])
+                    System.out.print("=");
+                else if(randomNumberTab[j] < userTab[j])
+                    System.out.print("-");
+                else
+                    System.out.println("erreur");
             }
             //todo: fin de comparaison ------------------------------
         }

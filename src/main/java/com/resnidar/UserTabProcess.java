@@ -20,7 +20,6 @@ public class UserTabProcess {
             un = nbrd % 10;
             une = (int) Math.floor(un);
             nbrd /= 10;
-            System.out.println("donne" + une);
             userTab[count] = une;
             count--;
         }
