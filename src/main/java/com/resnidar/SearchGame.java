@@ -10,12 +10,12 @@ public class SearchGame extends Games {
         UserTabProcess userTabProcess = new UserTabProcess();
         int life = 5;
         System.out.println("lancement du jeu : nombre secret ");
-        int[] randomNumberTab = randomGeneration.getRandomNumber();
+        char[] randomNumberTab = randomGeneration.getRandomNumber();
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
         interactUser(randomGeneration, sc, userTabProcess, life, randomNumberTab);
     }
 
-    private void interactUser(RandomGeneration randomGeneration, Scanner sc, UserTabProcess userTabProcess, int life, int[] randomNumberTab) {
+    private void interactUser(RandomGeneration randomGeneration, Scanner sc, UserTabProcess userTabProcess, int life, char[] randomNumberTab) {
         int proposition;
         int[] userTab;
         for(int i = 0; i < life ; i++) {
@@ -27,7 +27,7 @@ public class SearchGame extends Games {
         }
     }
 
-    private void comparUser(RandomGeneration randomGeneration, int[] randomNumberTab, int[] userTab) {
+    private void comparUser(RandomGeneration randomGeneration, char[] randomNumberTab, int[] userTab) {
         for (int j = 0; j < randomGeneration.getSize() ; j++) {
             if (randomNumberTab[j] > userTab[j])
                 System.out.print("+");

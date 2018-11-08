@@ -12,7 +12,6 @@ public class Menu {
         int result = sc.nextInt();
         if (result == 1) {
             System.out.println("vous avez choisi le jeu du nombre secret");
-
             searchGame.logic();
         }
         else if (result == 2){
