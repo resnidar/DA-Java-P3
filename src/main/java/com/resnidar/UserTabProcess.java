@@ -1,9 +1,22 @@
 package com.resnidar;
 
 public class UserTabProcess {
-    int nbr;
+    String userNbr;
 
-    int[] userTabProcess() {
+    char[] userTabProcess() {
+        RandomGeneration randomGeneration = new RandomGeneration();
+        char[] nbrTab = new char[randomGeneration.getSize()];
+        for (int i = 0; i < nbrTab.length; i++) {
+            nbrTab[i] = userNbr.charAt(i);
+        }
+        return nbrTab;
+    }
+
+    public void setUserNbr(String userNbr) {
+        this.userNbr = userNbr;
+    }
+
+    /** int[] userTabProcess() {
         double un;
         int une;
         int count = 0;
@@ -29,4 +42,5 @@ public class UserTabProcess {
     public void setNbr(int nbr) {
             this.nbr = nbr;
     }
+    **/
 }

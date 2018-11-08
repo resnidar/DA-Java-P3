@@ -16,21 +16,22 @@ public class SearchGame extends Games {
     }
 
     private void interactUser(RandomGeneration randomGeneration, Scanner sc, UserTabProcess userTabProcess, int life, char[] randomNumberTab) {
-        int proposition;
-        int[] userTab;
+        String proposition;
+        char[] userTab;
         for(int i = 0; i < life ; i++) {
             System.out.println("trouve les bon numero :");
-            proposition = sc.nextInt();
-            userTabProcess.setNbr(proposition);
+            proposition = sc.next();
+            userTabProcess.setUserNbr(proposition);
             userTab = userTabProcess.userTabProcess();
             comparUser(randomGeneration, randomNumberTab, userTab);
         }
     }
 
-    private void comparUser(RandomGeneration randomGeneration, char[] randomNumberTab, int[] userTab) {
-        for (int j = 0; j < randomGeneration.getSize() ; j++) {
-            if (randomNumberTab[j] > userTab[j])
+    private void comparUser(RandomGeneration randomGeneration, char[] randomNumberTab, char[] userTab) {
+        for (int j = 0; j < randomNumberTab.length ; j++) {
+            if (randomNumberTab[j] > userTab[j]) {
                 System.out.print("+");
+            }
             else if(randomNumberTab[j] == userTab[j])
                 System.out.print("=");
             else if(randomNumberTab[j] < userTab[j])
