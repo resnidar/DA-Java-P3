@@ -4,15 +4,19 @@ import java.util.Scanner;
 
 public class SearchGame extends Games {
 
-    void logic(){
+    char logic(){
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);
+        char restart;
         UserTabProcess userTabProcess = new UserTabProcess();
         int life = 5;
         System.out.println("lancement du jeu : nombre secret ");
         char[] randomNumberTab = randomGeneration.getRandomNumber();
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
         interactUser(sc, userTabProcess, life, randomNumberTab);
+        System.out.println("voulez vous rejouer ? ");
+        restart = sc.next().charAt(0);
+        return restart;
     }
 
     private void interactUser(Scanner sc, UserTabProcess userTabProcess, int life, char[] randomNumberTab) {
