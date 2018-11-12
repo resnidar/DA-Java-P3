@@ -12,32 +12,68 @@ public class SearchGame extends Games {
         System.out.println("lancement du jeu : nombre secret ");
         char[] randomNumberTab = randomGeneration.getRandomNumber();
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
-        interactUser(randomGeneration, sc, userTabProcess, life, randomNumberTab);
+        interactUser(sc, userTabProcess, life, randomNumberTab);
     }
 
-    private void interactUser(RandomGeneration randomGeneration, Scanner sc, UserTabProcess userTabProcess, int life, char[] randomNumberTab) {
+    private void interactUser(Scanner sc, UserTabProcess userTabProcess, int life, char[] randomNumberTab) {
         String proposition;
+        boolean endGame = false;
         char[] userTab;
-        for(int i = 0; i < life ; i++) {
+        int totalFail = 0;
+        int fail = 0;
+        for(int i = 0; i < life && endGame == false; i++) {
             System.out.println("trouve les bon numero :");
             proposition = sc.next();
             userTabProcess.setUserNbr(proposition);
             userTab = userTabProcess.userTabProcess();
-            comparUser(randomGeneration, randomNumberTab, userTab);
+            /**endGame = comparUser(randomNumberTab, userTab, life);**/
+
+            //boolean endGame = false;
+            for (int j = 0; j < randomNumberTab.length; j++) {
+                if (randomNumberTab[j] > userTab[j]) {
+                    System.out.print("+");
+                    fail++;
+                } else if (randomNumberTab[j] == userTab[j])
+                    System.out.print("=");
+                else if (randomNumberTab[j] < userTab[j]) {
+                    System.out.print("-");
+                    fail++;
+                } else
+                    System.out.println("erreur");
+            }
         }
+        if (fail > 0)
+            totalFail++;
+        if (totalFail < life){
+            System.out.println("\n\rbien joué ,tu a gagné");
+            endGame = true;
+        }
+        else
+            System.out.println("tu a perdu desole");
     }
 
-    private void comparUser(RandomGeneration randomGeneration, char[] randomNumberTab, char[] userTab) {
-        for (int j = 0; j < randomNumberTab.length ; j++) {
-            if (randomNumberTab[j] > userTab[j]) {
-                System.out.print("+");
+   /** private boolean comparUser(char[] randomNumberTab, char[] userTab, int life) {
+        int totalFail = 0;
+        int fail = 0;
+        boolean endGame = false;
+            for (int j = 0; j < randomNumberTab.length; j++) {
+                if (randomNumberTab[j] > userTab[j]) {
+                    System.out.print("+");
+                    fail++;
+                } else if (randomNumberTab[j] == userTab[j])
+                    System.out.print("=");
+                else if (randomNumberTab[j] < userTab[j]) {
+                    System.out.print("-");
+                    fail++;
+                } else
+                    System.out.println("erreur");
             }
-            else if(randomNumberTab[j] == userTab[j])
-                System.out.print("=");
-            else if(randomNumberTab[j] < userTab[j])
-                System.out.print("-");
-            else
-                System.out.println("erreur");
+            if (fail > 0)
+                totalFail++;
+        if (totalFail < life){
+            System.out.println("\n\rbien joué ,tu a gagné");
+            endGame = true;
         }
-    }
+        return endGame;
+    }**/
 }
