@@ -26,24 +26,13 @@ public class SearchGame extends Games {
             proposition = sc.next();
             userTabProcess.setUserNbr(proposition);
             userTab = userTabProcess.userTabProcess();
-            /**endGame = comparUser(randomNumberTab, userTab, life);**/
-
-            //boolean endGame = false;
-            for (int j = 0; j < randomNumberTab.length; j++) {
-                if (randomNumberTab[j] > userTab[j]) {
-                    System.out.print("+");
-                    fail++;
-                } else if (randomNumberTab[j] == userTab[j])
-                    System.out.print("=");
-                else if (randomNumberTab[j] < userTab[j]) {
-                    System.out.print("-");
-                    fail++;
-                } else
-                    System.out.println("erreur");
-            }
+            fail = propositionCompar(randomNumberTab, userTab, fail, endGame);
+            if (fail == 0)
+                endGame = true;
+            if (fail > 0)
+                totalFail++;
+            fail = 0;
         }
-        if (fail > 0)
-            totalFail++;
         if (totalFail < life){
             System.out.println("\n\rbien joué ,tu a gagné");
             endGame = true;
@@ -52,28 +41,19 @@ public class SearchGame extends Games {
             System.out.println("tu a perdu desole");
     }
 
-   /** private boolean comparUser(char[] randomNumberTab, char[] userTab, int life) {
-        int totalFail = 0;
-        int fail = 0;
-        boolean endGame = false;
-            for (int j = 0; j < randomNumberTab.length; j++) {
-                if (randomNumberTab[j] > userTab[j]) {
-                    System.out.print("+");
-                    fail++;
-                } else if (randomNumberTab[j] == userTab[j])
-                    System.out.print("=");
-                else if (randomNumberTab[j] < userTab[j]) {
-                    System.out.print("-");
-                    fail++;
-                } else
-                    System.out.println("erreur");
-            }
-            if (fail > 0)
-                totalFail++;
-        if (totalFail < life){
-            System.out.println("\n\rbien joué ,tu a gagné");
-            endGame = true;
+    private int propositionCompar(char[] randomNumberTab, char[] userTab, int fail, boolean endGame) {
+        for (int j = 0; j < randomNumberTab.length; j++) {
+            if (randomNumberTab[j] > userTab[j]) {
+                System.out.print("+");
+                fail++;
+            } else if (randomNumberTab[j] == userTab[j])
+                System.out.print("=");
+            else if (randomNumberTab[j] < userTab[j]) {
+                System.out.print("-");
+                fail++;
+            } else
+                System.out.println("erreur");
         }
-        return endGame;
-    }**/
+        return fail;
+    }
 }
