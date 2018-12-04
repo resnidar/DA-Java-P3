@@ -3,9 +3,9 @@ package com.resnidar;
 public class Main {
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.logic();
-        //Config config = new Config();
-        //config.readConfig();
+        //Menu menu = new Menu();
+        //menu.logic();
+        Log4j log4j = new Log4j();
+
     }
 }

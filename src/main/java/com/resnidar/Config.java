@@ -6,11 +6,13 @@ import java.util.Properties;
 
 public class Config {
     private int numberSize = 0;
+    public Config() {
+        readConfig();
+    }
     public void readConfig(){
          Properties prop = new Properties();
-         InputStream input = null;
          try {
-             input = new FileInputStream("src/main/resources/config.properties");
+             InputStream input = new FileInputStream("src/main/resources/config.properties");
              prop.load(input);
              numberSize = Integer.parseInt(prop.getProperty("numberSize"));
          } catch (java.io.IOException e) {
@@ -19,7 +21,6 @@ public class Config {
      }
 
     public int getNumberSize() {
-        readConfig();
         return numberSize;
     }
 }
