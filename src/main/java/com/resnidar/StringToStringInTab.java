@@ -1,9 +1,14 @@
 package com.resnidar;
 
 
-public class UserTabProcess {
+public class StringToStringInTab {
 
-    static char[] userTabProcess(String userNbr) {
+    /**
+     *transforme le int
+     * @param userNbr
+     * @return
+     */
+    static char[] StringToStringInTab (String userNbr) {
         RandomGeneration randomGeneration = new RandomGeneration();
         char[] nbrTab = new char[randomGeneration.getSize()];
         for (int i = 0; i < nbrTab.length; i++) {
@@ -12,4 +17,4 @@ public class UserTabProcess {
         return nbrTab;
     }
 }
-// TODO: 27/11/2018 nom a changé !
+// TODO: 07/12/2018 log
