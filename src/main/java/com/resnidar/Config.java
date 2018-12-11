@@ -21,7 +21,7 @@ public class Config {
     public void readConfig(){
          Properties prop = new Properties();
          try {
-                 logger.debug("lecture du fichier");
+                 logger.debug("lecture du fichier log4j.xml");
                  InputStream input = new FileInputStream("src/main/resources/config.properties");
                  prop.load(input);
              numberSize = Integer.parseInt(prop.getProperty("numberSize"));
@@ -35,5 +35,5 @@ public class Config {
         return numberSize;
     }
 }
-
+// TODO: 08/12/2018  log warning
 // TODO: 07/12/2018 log 

@@ -28,6 +28,7 @@ class RandomGeneration {
             randomNumberChar[i] = (char) randomNumberTab[i];
             randomNumberChar[i] += '0';
         }
+        logger.debug("return randomNumberChar");
         return randomNumberChar;
     }
 
@@ -36,3 +37,4 @@ class RandomGeneration {
     }
 }
 // TODO: 07/12/2018 log
+// TODO: 08/12/2018  log warning
