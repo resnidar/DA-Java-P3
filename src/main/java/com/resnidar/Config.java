@@ -35,5 +35,3 @@ public class Config {
         return numberSize;
     }
 }
-// TODO: 08/12/2018  log warning
-// TODO: 07/12/2018 log 

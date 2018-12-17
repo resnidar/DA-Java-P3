@@ -9,8 +9,8 @@ public class Menu {
     void logic() {
         SearchGameChallenger searchGameChallender = new SearchGameChallenger();
         SearchGameDefence searchGameDefence = new SearchGameDefence();
-        char restart = 'y';
-        while (restart == 'y') {
+        Boolean restart = true;
+        while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
             System.out.println("taper : 1 pour joué au nombre secret");
             System.out.println("taper : 2 pour joué au Mastermind");
@@ -44,5 +44,3 @@ public class Menu {
         }
     }
 }
-// TODO: 11/12/2018 logger error 
-// TODO: 11/12/2018 restart en bool 

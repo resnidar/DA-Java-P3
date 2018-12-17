@@ -26,11 +26,7 @@ class Games {
                 System.out.println("erreur");
                 SearchGame.logger.error("erreur");
             }
-            // TODO: 11/12/2018 mettre dans un try ?
         }
         return fail;
     }
 }
-// TODO: 07/12/2018 doc
-// TODO: 07/12/2018 log
-// TODO: 08/12/2018  log warning

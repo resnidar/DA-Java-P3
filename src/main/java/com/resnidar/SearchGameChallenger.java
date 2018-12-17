@@ -10,11 +10,12 @@ public class SearchGameChallenger extends SearchGame{
      *cette methode gère la logique du programme
      * @return permet au programme de redemarré ou non
      */
-    char logic(){
+    boolean logic(){
         logger.debug("début du searchGame");
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);
-        char restart;
+        char restartChar;
+        boolean restart = false;
         int life = 5;
         System.out.println("lancement du jeu : nombre secret ");
         logger.debug("appel de la class RandomGeneration");
@@ -22,9 +23,13 @@ public class SearchGameChallenger extends SearchGame{
         char[] randomNumberTab = randomGeneration.getRandomNumber();
         System.out.println("le nombre est composé de " + randomGeneration.getSize() + " caractères");
         interactUser(sc, life, randomNumberTab);
-        System.out.println("voulez vous rejouer ? ");
+        System.out.println("voulez vous rejouer ? y/n ");
         logger.debug("Scanner en attente de l user");
-        restart = sc.next().charAt(0);
+        restartChar = sc.next().charAt(0);
+        if (restartChar == 'y')
+            restart = true;
+        if (restartChar == 'n')
+            restart = false;
         logger.debug("le Scanner a receptionner les donnees ");
         return restart;
     }
