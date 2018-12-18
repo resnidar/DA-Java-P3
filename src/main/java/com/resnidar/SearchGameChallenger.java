@@ -74,5 +74,3 @@ public class SearchGameChallenger extends SearchGame{
             System.out.println("tu a perdu désolé");
     }
 }
-
-// TODO: 11/12

@@ -36,5 +36,4 @@ class RandomGeneration {
         return size;
     }
 }
-// TODO: 07/12/2018 log
 // TODO: 08/12/2018  log warning
