@@ -1,7 +1,13 @@
 package com.resnidar;
 
 class Games {
-    protected boolean devMode = true;
+    protected final int size;
+    protected boolean devMode;
+
+    public Games(Config config) {
+        devMode = config.getDevMode();
+        size = config.getNumberSize();
+    }
 
     /**
      * cette fonction permet de comparé les tableaux entres eux
@@ -29,4 +35,6 @@ class Games {
         }
         return fail;
     }
+    // TODO: 18/12/2018 faire verif endtest
+    // TODO: 18/12/2018 control erreur
 }

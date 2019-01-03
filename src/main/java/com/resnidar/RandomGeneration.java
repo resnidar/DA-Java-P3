@@ -6,14 +6,12 @@ import java.util.Random;
 
 class RandomGeneration {
     private static Logger logger = Logger.getLogger(SearchGame.class);
-    Config config = new Config();
-    int size = config.getNumberSize();
 
     /**
      * permet de crée ,pour chaque case d un tableau ,un numero aléatoire
      * @return retourne le tableau rempli
      */
-    char[] getRandomNumber() {
+    char[] getRandomNumber(int size) {
         int[] randomNumberTab = new int[size];
         logger.debug("tableau de int crée");
         char[] randomNumberChar = new char[size];
@@ -30,10 +28,6 @@ class RandomGeneration {
         }
         logger.debug("return randomNumberChar");
         return randomNumberChar;
-    }
-
-    public int getSize() {
-        return size;
     }
 }
 // TODO: 08/12/2018  log warning

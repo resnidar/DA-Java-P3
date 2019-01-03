@@ -8,6 +8,9 @@ public class SearchGame extends Games {
 
     static Logger logger = Logger.getLogger(SearchGame.class);
 
+    public SearchGame(Config config) {
+        super(config);
+    }
 }
 // TODO: 07/12/2018 log debbug
 // TODO: 08/12/2018  log warning

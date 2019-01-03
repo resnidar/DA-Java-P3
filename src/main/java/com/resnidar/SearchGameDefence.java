@@ -4,7 +4,11 @@ import org.apache.log4j.Logger;
 
 public class SearchGameDefence extends SearchGame {
     static Logger logger = Logger.getLogger(SearchGameDefence.class);
-    
+
+    public SearchGameDefence(Config config) {
+        super(config);
+    }
+
     boolean logic(){
         boolean restart = false;
         logger.debug("searchGame en mode defensif actif");
