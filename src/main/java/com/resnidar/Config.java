@@ -11,7 +11,7 @@ public class Config {
     private static Logger logger = Logger.getLogger(Config.class);
 
     private int numberSize = 0;
-    private boolean devMode = false;
+    private boolean devMode;
     public Config() {
         readConfig();
     }
@@ -26,7 +26,8 @@ public class Config {
                  InputStream input = new FileInputStream("src/main/resources/config.properties");
                  prop.load(input);
              numberSize = Integer.parseInt(prop.getProperty("numberSize"));
-             devMode = Boolean.getBoolean(prop.getProperty("devMode"));
+             devMode = Boolean.parseBoolean(prop.getProperty("devMode"));
+             logger.debug("devMode : " + devMode);
          } catch (java.io.IOException e) {
              e.printStackTrace();
              logger.error("erreur a la lecture du fichier", e);
@@ -36,5 +37,8 @@ public class Config {
     public int getNumberSize() {
         return numberSize;
     }
-    public boolean getDevMode(){return devMode;}
+
+    public boolean getDevMode() {
+        return devMode;
+    }
 }

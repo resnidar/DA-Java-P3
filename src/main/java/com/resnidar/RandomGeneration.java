@@ -6,12 +6,14 @@ import java.util.Random;
 
 class RandomGeneration {
     private static Logger logger = Logger.getLogger(SearchGame.class);
+    Config config = new Config();
 
     /**
      * permet de crée ,pour chaque case d un tableau ,un numero aléatoire
      * @return retourne le tableau rempli
      */
     char[] getRandomNumber(int size) {
+        boolean devMod;
         int[] randomNumberTab = new int[size];
         logger.debug("tableau de int crée");
         char[] randomNumberChar = new char[size];
@@ -27,6 +29,14 @@ class RandomGeneration {
             randomNumberChar[i] += '0';
         }
         logger.debug("return randomNumberChar");
+        devMod = config.getDevMode();
+        if (devMod == true){
+            System.out.println("devMode : le nombre a trouver est ");
+            for (int i = 0; i < randomNumberChar.length; i++) {
+                System.out.print(randomNumberChar[i]);
+            }
+            System.out.println();
+        }
         return randomNumberChar;
     }
 }
