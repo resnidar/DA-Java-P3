@@ -14,6 +14,9 @@ public class Menu {
 
     static Logger logger = Logger.getLogger(Menu.class);
     void logic() {
+        SearchGameDefence se = new SearchGameDefence(config);
+        se.logic();
+        /**
         SearchGameChallenger searchGameChallender = new SearchGameChallenger(config);
         SearchGameDefence searchGameDefence = new SearchGameDefence(config);
         Boolean restart = true;
@@ -48,6 +51,6 @@ public class Menu {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");
                 logger.error("erreur ,vous avez rentrer " + result + " veuillez entrer 1 ou 2");
             }
-        }
+        }**/
     }
 }
