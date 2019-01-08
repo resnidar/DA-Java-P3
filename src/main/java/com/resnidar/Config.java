@@ -10,7 +10,8 @@ public class Config {
 
     private static Logger logger = Logger.getLogger(Config.class);
 
-    private int numberSize = 0;
+    private int numberSize;
+    private int life;
     private boolean devMode;
     public Config() {
         readConfig();
@@ -26,6 +27,7 @@ public class Config {
                  InputStream input = new FileInputStream("src/main/resources/config.properties");
                  prop.load(input);
              numberSize = Integer.parseInt(prop.getProperty("numberSize"));
+             life = Integer.parseInt(prop.getProperty("life"));
              devMode = Boolean.parseBoolean(prop.getProperty("devMode"));
              logger.debug("devMode : " + devMode);
          } catch (java.io.IOException e) {
@@ -41,4 +43,6 @@ public class Config {
     public boolean getDevMode() {
         return devMode;
     }
+
+    public int getLife() { return life; }
 }

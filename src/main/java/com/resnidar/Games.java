@@ -27,8 +27,7 @@ class Games {
             else if (randomNumberTab[j] < userTab[j]) {
                 System.out.print("-");
                 fail++;
-            } else
-            {
+            } else {
                 System.out.println("erreur");
                 SearchGame.logger.error("erreur");
             }
