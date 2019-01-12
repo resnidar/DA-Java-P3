@@ -14,9 +14,7 @@ public class Menu {
 
     static Logger logger = Logger.getLogger(Menu.class);
     void logic() {
-        SearchGameDefence se = new SearchGameDefence(config);
-        se.logic();
-        /**
+
         SearchGameChallenger searchGameChallender = new SearchGameChallenger(config);
         SearchGameDefence searchGameDefence = new SearchGameDefence(config);
         Boolean restart = true;
@@ -43,7 +41,7 @@ public class Menu {
                 {
                     System.out.println("lancement de serachGame en mode defenseur");
                     logger.debug("lancement de SearchGame en mode defenseur");
-                    restart = searchGameDefence.logic();
+                        restart = searchGameDefence.logic();
                 }
             } else if (result == 2) {
                 System.out.println("vous avez choisi le jeu : mastermind");
@@ -51,6 +49,6 @@ public class Menu {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");
                 logger.error("erreur ,vous avez rentrer " + result + " veuillez entrer 1 ou 2");
             }
-        }**/
+        }
     }
 }

@@ -35,6 +35,7 @@ public class SearchGameDefence extends SearchGame {
 
         char[] iaTab = new char[userNumberChar.length];
         char[] userPropTab = new char[userNumberChar.length];
+        char restartChar;
         boolean fail = false;
         int win = 0;
         for (int i = 0; i < userNumberChar.length; i++) {
@@ -58,6 +59,8 @@ public class SearchGameDefence extends SearchGame {
                 }
                 else if (userPropTab[j] == '=')
                     win += 1;
+                else
+                    System.out.println(" il doit y avoir une erreur");
             }
             if (fail == true)
                 life -= 1;
@@ -68,6 +71,15 @@ public class SearchGameDefence extends SearchGame {
             else
                 System.out.println("AiA : il me restait " + life + " vies ... j'ai gagner ;) ");
         }
+        System.out.println("AIA : veut tu recommancer une partie avec moi ? y for yes or n for no ");
+        restartChar = sc.next().charAt(0);
+        if ( restartChar == 'y')
+            restart = true;
+        else if (restartChar == 'n')
+            restart = false;
+        else
+            System.out.println("erreur");
+
 // TODO: 2019-01-08 l ia regarde si c est 1/4
 // TODO: 2019-01-08 l ia regarde si c est 3/4
 // TODO: 2019-01-08 l ia affine
