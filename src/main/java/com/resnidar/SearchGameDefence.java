@@ -23,7 +23,8 @@ public class SearchGameDefence extends SearchGame {
         boolean restart = false;
         logger.debug("searchGame en mode defensif actif");
         System.out.println("mode logique actif");
-        System.out.println("veuillez entree le nombre");
+        System.out.println("Salut ! je m'appel AiA et je serais ton adversaire pour cette partie ");
+        System.out.println("AiA : Donne moi un nombre a trouver :)");
         userNumberChar = userRequest();
 
 
@@ -34,22 +35,38 @@ public class SearchGameDefence extends SearchGame {
 
         char[] iaTab = new char[userNumberChar.length];
         char[] userPropTab = new char[userNumberChar.length];
+        boolean fail = false;
+        int win = 0;
         for (int i = 0; i < userNumberChar.length; i++) {
             iaTab[i] = '5';
         }
-        for (int i = 0; i <= life; i++) { // cette boucle est limité par la vie
-            System.out.print("IA : je te propose ");
+        while (life > 0 && win != userNumberChar.length) { // cette boucle est limité par la vie
+            System.out.print("AiA : je te propose ");
             for (int j = 0; j < iaTab.length; j++)
                 System.out.print(iaTab[j]);
-            System.out.println(" veuillez saisir + , - ou =");
+            System.out.println(" saisie  + , - ou =");
             userProp = sc.next();
             userPropTab = userProp.toCharArray();
+            fail = false;
             for (int j = 0; userNumberChar.length > j; j++) { // cette boucle permet de faire toute les cases du tab
                 if (userPropTab[j] == '+') {
                     iaTab[j] += 1;
-                } else if (userPropTab[j] == '-')
+                    fail = true;
+                } else if (userPropTab[j] == '-') {
                     iaTab[j] -= 1;
+                    fail = true;
+                }
+                else if (userPropTab[j] == '=')
+                    win += 1;
             }
+            if (fail == true)
+                life -= 1;
+            if (win == userNumberChar.length)
+                System.out.println("AiA : j'ai gagné !");
+            if (win != userNumberChar.length)
+                System.out.println("il reste " + life + " vies " );
+            else
+                System.out.println("AiA : il me restait " + life + " vies ... j'ai gagner ;) ");
         }
 // TODO: 2019-01-08 l ia regarde si c est 1/4
 // TODO: 2019-01-08 l ia regarde si c est 3/4
