@@ -33,52 +33,7 @@ public class SearchGameDefence extends SearchGame {
 // TODO: 2019-01-08  l'ia receptionne le numero
 // TODO: 2019-01-08 l ia regarde si c est au milieu
 
-        char[] iaTab = new char[userNumberChar.length];
-        char[] userPropTab = new char[userNumberChar.length];
-        char restartChar;
-        boolean fail = false;
-        int win = 0;
-        for (int i = 0; i < userNumberChar.length; i++) {
-            iaTab[i] = '5';
-        }
-        while (life > 0 && win != userNumberChar.length) { // cette boucle est limité par la vie
-            System.out.print("AiA : je te propose ");
-            for (int j = 0; j < iaTab.length; j++)
-                System.out.print(iaTab[j]);
-            System.out.println(" saisie  + , - ou =");
-            userProp = sc.next();
-            userPropTab = userProp.toCharArray();
-            fail = false;
-            for (int j = 0; userNumberChar.length > j; j++) { // cette boucle permet de faire toute les cases du tab
-                if (userPropTab[j] == '+') {
-                    iaTab[j] += 1;
-                    fail = true;
-                } else if (userPropTab[j] == '-') {
-                    iaTab[j] -= 1;
-                    fail = true;
-                }
-                else if (userPropTab[j] == '=')
-                    win += 1;
-                else
-                    System.out.println(" il doit y avoir une erreur");
-            }
-            if (fail == true)
-                life -= 1;
-            if (win == userNumberChar.length)
-                System.out.println("AiA : j'ai gagné !");
-            if (win != userNumberChar.length)
-                System.out.println("il reste " + life + " vies " );
-            else
-                System.out.println("AiA : il me restait " + life + " vies ... j'ai gagner ;) ");
-        }
-        System.out.println("AIA : veut tu recommancer une partie avec moi ? y for yes or n for no ");
-        restartChar = sc.next().charAt(0);
-        if ( restartChar == 'y')
-            restart = true;
-        else if (restartChar == 'n')
-            restart = false;
-        else
-            System.out.println("erreur");
+        restart = iaTurn(userNumberChar, restart);
 
 // TODO: 2019-01-08 l ia regarde si c est 1/4
 // TODO: 2019-01-08 l ia regarde si c est 3/4
@@ -89,6 +44,79 @@ public class SearchGameDefence extends SearchGame {
 // TODO: 2019-01-08 organisé mere / fille
 // TODO: 2019-01-08 doc !!
         return restart;
+    }
+
+    private boolean iaTurn(char[] userNumberChar, boolean restart) {
+        char[] iaTab = new char[userNumberChar.length];
+        char[] userPropTab = new char[userNumberChar.length];
+        char restartChar;
+        boolean fail = false;
+        int win = 0;
+        for (int i = 0; i < userNumberChar.length; i++) {
+            iaTab[i] = '5';
+        }
+        iaMind(userNumberChar, iaTab, win);
+        System.out.println("AIA : veut tu recommencer une partie avec moi ? y pour oui ou n pour non ");
+        restartChar = sc.next().charAt(0);
+        if ( restartChar == 'y')
+            restart = true;
+        else if (restartChar == 'n')
+            restart = false;
+        else
+            System.out.println("erreur");
+        return restart;
+    }
+
+    private void iaMind(char[] userNumberChar, char[] iaTab, int win) {
+        Config config = new Config();
+        String userProp;
+        char[] userPropTab;
+        boolean fail;
+        while (life > 0 && win != userNumberChar.length) { // cette boucle est limité par la vie
+            System.out.print("AiA : je te propose ");
+            for (int j = 0; j < iaTab.length; j++)
+                System.out.print(iaTab[j]);
+            System.out.println(" saisie  + , - ou =");
+            userProp = sc.next();
+            userPropTab = userProp.toCharArray();
+            fail = false;
+            for (int j = 0; userNumberChar.length > j; j++) { // cette boucle permet de faire toute les cases du tab
+                if (config.getLife() == life) {
+                    if (userPropTab[j] == '+') {
+                        iaTab[j] += 2;
+                        fail = true;
+                    } else if (userPropTab[j] == '-') {
+                        iaTab[j] -= 2;
+                        fail = true;
+                    } else if (userPropTab[j] == '=')
+                        win += 1;
+                    else
+                        System.out.println(" il doit y avoir une erreur");
+                }
+                else if (config.getLife() != life){
+                    if (userPropTab[j] == '+') {
+                        iaTab[j] += 1;
+                        fail = true;
+                    } else if (userPropTab[j] == '-') {
+                        iaTab[j] -= 1;
+                        fail = true;
+                    } else if (userPropTab[j] == '=')
+                        win += 1;
+                    else
+                        System.out.println(" il doit y avoir une erreur");
+                }
+                else
+                    System.out.println("erreur");
+            }
+            if (fail == true)
+                life -= 1;
+            if (win == userNumberChar.length)
+                System.out.println("AiA : j'ai gagné !");
+            if (win != userNumberChar.length)
+                System.out.println("il reste " + life + " vies " );
+            else
+                System.out.println("AiA : il me restait " + life + " vies ... j'ai gagner ;) ");
+        }
     }
 
     private char[] userRequest() {
