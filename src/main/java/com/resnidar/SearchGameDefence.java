@@ -16,6 +16,10 @@ public class SearchGameDefence extends SearchGame {
 
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * is the base of class ,if you want use this class ,it's the method to call
+     * @return restart ,it's for restart or not the program at the end of the game
+     */
     boolean logic() {
         char[] userNumberChar;
         boolean restart = false;
@@ -25,14 +29,11 @@ public class SearchGameDefence extends SearchGame {
         System.out.println("AiA : Donne moi un nombre a trouver :)");
         userNumberChar = userRequest();
         restart = iaTurn(userNumberChar, restart);
-// TODO: 2019-01-08 decomposé en method
-// TODO: 2019-01-08 organisé mere / fille
-// TODO: 2019-01-08 doc !!
-        return restart;
+    return restart;
     }
 
     /**
-     *it's the base of Ia,
+     *it's the base of Ia
      * @param userNumberChar it's the proposition of user in a board of char
      * @param restart is a boolean that manages if users want restart or not at the end of game
      * @return return the restart
@@ -56,6 +57,12 @@ public class SearchGameDefence extends SearchGame {
         return restart;
     }
 
+    /**
+     *is the combinaison of if / else and for while for make ia smart
+     * @param userNumberChar an Board of char, is the number that the ia must find
+     * @param iaTab is the proposition of Ia
+     * @param win if user give an = ,is équals of 1 win.4 numbers and 4 wins said all user entry is '='
+     */
     private void iaMind(char[] userNumberChar, char[] iaTab, int win) {
         Config config = new Config();
         String userProp;
@@ -109,6 +116,10 @@ public class SearchGameDefence extends SearchGame {
         }
     }
 
+    /**
+     * this method request an entry at user in a String and pass String in Char Board
+     * @return
+     */
     private char[] userRequest() {
         String userNumber;
         char[] userNumberChar;
@@ -121,4 +132,6 @@ public class SearchGameDefence extends SearchGame {
     }
 }
 
+// TODO: 15/01/2019 décomposé en méthode 
+// TODO: 15/01/2019 organisation mere fille 
 //dichotomie
