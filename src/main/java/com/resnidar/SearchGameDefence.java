@@ -18,39 +18,28 @@ public class SearchGameDefence extends SearchGame {
 
     boolean logic() {
         char[] userNumberChar;
-        String userNumber;
-        String userProp;
         boolean restart = false;
         logger.debug("searchGame en mode defensif actif");
         System.out.println("mode logique actif");
         System.out.println("Salut ! je m'appel AiA et je serais ton adversaire pour cette partie ");
         System.out.println("AiA : Donne moi un nombre a trouver :)");
         userNumberChar = userRequest();
-
-
-        //futur method iaTurn
-        // TODO: 17/12/2018 demander a l ia de trouver le nombre secret
-// TODO: 2019-01-08  l'ia receptionne le numero
-// TODO: 2019-01-08 l ia regarde si c est au milieu
-
         restart = iaTurn(userNumberChar, restart);
-
-// TODO: 2019-01-08 l ia regarde si c est 1/4
-// TODO: 2019-01-08 l ia regarde si c est 3/4
-// TODO: 2019-01-08 l ia affine
-// TODO: 2019-01-08 l'ia dit qu il a trouver le nombre en X tour
-// TODO: 2019-01-08 le logiciel considère la partie fini et lance le process
 // TODO: 2019-01-08 decomposé en method
 // TODO: 2019-01-08 organisé mere / fille
 // TODO: 2019-01-08 doc !!
         return restart;
     }
 
+    /**
+     *it's the base of Ia,
+     * @param userNumberChar it's the proposition of user in a board of char
+     * @param restart is a boolean that manages if users want restart or not at the end of game
+     * @return return the restart
+     */
     private boolean iaTurn(char[] userNumberChar, boolean restart) {
         char[] iaTab = new char[userNumberChar.length];
-        char[] userPropTab = new char[userNumberChar.length];
         char restartChar;
-        boolean fail = false;
         int win = 0;
         for (int i = 0; i < userNumberChar.length; i++) {
             iaTab[i] = '5';
@@ -80,6 +69,7 @@ public class SearchGameDefence extends SearchGame {
             userProp = sc.next();
             userPropTab = userProp.toCharArray();
             fail = false;
+            win = 0;
             for (int j = 0; userNumberChar.length > j; j++) { // cette boucle permet de faire toute les cases du tab
                 if (config.getLife() == life) {
                     if (userPropTab[j] == '+') {
