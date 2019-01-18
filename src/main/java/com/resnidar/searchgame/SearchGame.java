@@ -10,6 +10,7 @@ public class SearchGame extends Games {
 
     static Logger logger = Logger.getLogger(SearchGame.class);
     int life;
+    static int win;
     Scanner sc = new Scanner(System.in);
 
     public SearchGame(Config config) {
@@ -79,11 +80,11 @@ public class SearchGame extends Games {
                 }
             // fin
             }
-            iaWinOrLose(userNumberChar, win, fail);
+            iaWinOrLose(userNumberChar, fail);
         }
     }
 
-    public void iaWinOrLose(char[] userNumberChar, int win, boolean fail) {
+    public void iaWinOrLose(char[] userNumberChar, boolean fail) {
         if (fail == true)
             life -= 1;
         if (win == userNumberChar.length)
