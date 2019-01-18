@@ -32,8 +32,7 @@ public class SearchGameDefence extends SearchGame {
      */
     protected boolean iaTurn(boolean restart) {
         char restartChar;
-        int win = 0;
-        iaLogic(/*userNumberChar,*/ win);
+        iaLogic();
         System.out.println("AIA : veut tu recommencer une partie avec moi ? y pour oui ou n pour non ");
         restartChar = sc.next().charAt(0);
         if ( restartChar == 'y')

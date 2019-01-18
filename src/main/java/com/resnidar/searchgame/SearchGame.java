@@ -19,22 +19,22 @@ public class SearchGame extends Games {
 
     /**
      *is the combinaison of if / else and for while for make ia smart
-     * @param win if user give an = ,is équals of 1 win.4 numbers and 4 wins said all user entry is '='
      */
-    void iaLogic(int win) {
+    void iaLogic() {
         //preparation ,ont appel
         Config config = new Config();
         String userProp;
         char[] userPropTab;
         boolean fail;
         //boucle vie
-        iaMind(/*userNumberChar,*/ win, config);
+        iaMind(config);
     }
 
-    public void iaMind(int win, Config config) {
+    public void iaMind(Config config) {
         String userProp;
         char[] userPropTab;
         boolean fail;
+        int win = 0;
         char[] userNumberChar = userRequest();
         char[] iaTab = new char[userNumberChar.length];
         for (int i = 0; i < userNumberChar.length; i++)
