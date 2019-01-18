@@ -15,23 +15,12 @@ public class SearchGame extends Games {
 
     public SearchGame(Config config) {
         super(config);
-        life = config.getLife();
+        this.life = config.getLife();
     }
 
-    /**
-     *is the combinaison of if / else and for while for make ia smart
-     */
-    void iaLogic() {
-        //preparation ,ont appel
+
+    public void iaLogic() {
         Config config = new Config();
-        String userProp;
-        char[] userPropTab;
-        boolean fail;
-        //boucle vie
-        iaMind(config);
-    }
-
-    public void iaMind(Config config) {
         String userProp;
         char[] userPropTab;
         boolean fail;
@@ -40,7 +29,7 @@ public class SearchGame extends Games {
         char[] iaTab = new char[userNumberChar.length];
         for (int i = 0; i < userNumberChar.length; i++)
             iaTab[i] = '5';
-        while (life > 0 && win != userNumberChar.length) { // cette boucle est limité par la vie
+        while (this.life > 0 && this.win != userNumberChar.length) { // cette boucle est limité par la vie
             System.out.print("AiA : je te propose ");
             for (int j = 0; j < iaTab.length; j++)
                 System.out.print(iaTab[j]);
@@ -50,49 +39,54 @@ public class SearchGame extends Games {
             fail = false;
             win = 0;
             // ia
-            for (int j = 0; userNumberChar.length > j; j++) { // cette boucle permet de faire toute les cases du tab
-                if (config.getLife() == life) {
-                    if (userPropTab[j] == '+') {
-                        iaTab[j] += 2;
-                        fail = true;
-                    } else if (userPropTab[j] == '-') {
-                        iaTab[j] -= 2;
-                        fail = true;
-                    } else if (userPropTab[j] == '=')
-                        win += 1;
-                    else
-                        System.out.println(" il doit y avoir une erreur");
-                }
-                else if (config.getLife() != life){
-                if (userPropTab[j] == '+') {
-                    iaTab[j] += 1;
-                    fail = true;
-                } else if (userPropTab[j] == '-') {
-                    iaTab[j] -= 1;
-                    fail = true;
-                } else if (userPropTab[j] == '=')
-                    win += 1;
-                else
-                    System.out.println(" il doit y avoir une erreur");
-            }
-            else {
-                    System.out.println("erreur");
-                }
-            // fin
-            }
+            fail = iaMind(config, userPropTab, fail, userNumberChar, iaTab);
             iaWinOrLose(userNumberChar, fail);
         }
     }
 
+    private boolean iaMind(Config config, char[] userPropTab, boolean fail, char[] userNumberChar, char[] iaTab) {
+        for (int j = 0; userNumberChar.length > j; j++) { // cette boucle permet de faire toute les cases du tab
+            if (config.getLife() == this.life) {
+                if (userPropTab[j] == '+') {
+                    iaTab[j] += 2;
+                    fail = true;
+                } else if (userPropTab[j] == '-') {
+                    iaTab[j] -= 2;
+                    fail = true;
+                } else if (userPropTab[j] == '=')
+                    this.win += 1;
+                else
+                    System.out.println(" il doit y avoir une erreur");
+            }
+            else if (config.getLife() != this.life){
+            if (userPropTab[j] == '+') {
+                iaTab[j] += 1;
+                fail = true;
+            } else if (userPropTab[j] == '-') {
+                iaTab[j] -= 1;
+                fail = true;
+            } else if (userPropTab[j] == '=')
+                this.win += 1;
+            else
+                System.out.println(" il doit y avoir une erreur");
+        }
+        else {
+                System.out.println("erreur");
+            }
+        // fin
+        }
+        return fail;
+    }
+
     public void iaWinOrLose(char[] userNumberChar, boolean fail) {
         if (fail == true)
-            life -= 1;
-        if (win == userNumberChar.length)
+            this.life -= 1;
+        if (this.win == userNumberChar.length)
             System.out.println("AiA : j'ai gagné !");
-        if (win != userNumberChar.length)
-            System.out.println("il reste " + life + " vies " );
+        if (this.win != userNumberChar.length)
+            System.out.println("il reste " + this.life + " vies " );
         else
-            System.out.println("AiA : il me restait " + life + " vies ... j'ai gagner ;) ");
+            System.out.println("AiA : il me restait " + this.life + " vies ... j'ai gagner ;) ");
     }
 
     /**
@@ -117,4 +111,4 @@ public class SearchGame extends Games {
 // TODO: 15/01/2019 faire une interface 
 // TODO: 15/01/2019 faire un enum 
 // TODO: 15/01/2019 mastermind : les collections ARRAYLIST 
-// TODO: 15/01/2019 bibli 
+// TODO: 15/01/2019 utiliser une bibliothèque
