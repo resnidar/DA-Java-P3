@@ -1,4 +1,7 @@
-package com.resnidar;
+package com.resnidar.searchgame;
+
+import com.resnidar.Config;
+import com.resnidar.RandomGeneration;
 
 public class SearchGameDuel extends SearchGame{
 
@@ -22,6 +25,8 @@ public class SearchGameDuel extends SearchGame{
         // TODO: 15/01/2019 l ia genere le numero contre l user
         userNumberChar = rg.getRandomNumber(numberSize);
         // TODO: 15/01/2019 l user propose
+        System.out.println("AiA : je commence !");
+
 
     }
 

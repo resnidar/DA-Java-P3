@@ -1,5 +1,7 @@
 package com.resnidar;
 
+import com.resnidar.searchgame.SearchGameChallenger;
+import com.resnidar.searchgame.SearchGameDefence;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;

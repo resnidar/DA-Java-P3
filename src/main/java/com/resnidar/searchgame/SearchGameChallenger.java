@@ -1,5 +1,7 @@
-package com.resnidar;
+package com.resnidar.searchgame;
 
+import com.resnidar.Config;
+import com.resnidar.RandomGeneration;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
@@ -15,7 +17,7 @@ public class SearchGameChallenger extends SearchGame{
      *cette methode gère la logique du programme
      * @return permet au programme de redemarré ou non
      */
-    boolean logic(){
+    public boolean logic(){
         logger.debug("début du searchGame");
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);

@@ -1,5 +1,7 @@
 package com.resnidar;
 
+import com.resnidar.searchgame.SearchGame;
+
 public class MastermindGame extends SearchGame {
     public MastermindGame(Config config) {
         super(config);

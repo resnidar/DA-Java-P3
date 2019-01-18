@@ -1,10 +1,11 @@
 package com.resnidar;
 
+import com.resnidar.searchgame.SearchGame;
 import org.apache.log4j.Logger;
 
 import java.util.Random;
 
-class RandomGeneration {
+public class RandomGeneration {
     private static Logger logger = Logger.getLogger(SearchGame.class);
     Config config = new Config();
 
@@ -12,7 +13,7 @@ class RandomGeneration {
      * permet de crée ,pour chaque case d un tableau ,un numero aléatoire
      * @return retourne le tableau rempli
      */
-    char[] getRandomNumber(int size) {
+    public char[] getRandomNumber(int size) {
         boolean devMod;
         int[] randomNumberTab = new int[size];
         logger.debug("tableau de int crée");

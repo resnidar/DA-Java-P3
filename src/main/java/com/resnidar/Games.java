@@ -1,6 +1,11 @@
 package com.resnidar;
 
-class Games {
+import com.resnidar.searchgame.SearchGame;
+import org.apache.log4j.Logger;
+
+public class Games {
+    static Logger logger = Logger.getLogger(SearchGame.class);
+
     protected final int size;
     protected boolean devMode;
 
@@ -11,13 +16,14 @@ class Games {
 
     /**
      * cette fonction permet de comparé les tableaux entres eux
+     *
      * @param randomNumberTab tableau de nombre aléatoire
-     * @param userTab tableu remplie par l'utilisateur
-     * @param fail le nombre de faute
-     * @param endGame bool permettant de stoppé le jeu
+     * @param userTab         tableu remplie par l'utilisateur
+     * @param fail            le nombre de faute
+     * @param endGame         bool permettant de stoppé le jeu
      * @return
      */
-    protected int propositionCompar(char[] randomNumberTab, char[] userTab, int fail, boolean endGame) {
+    public int propositionCompar(char[] randomNumberTab, char[] userTab, int fail, boolean endGame) {
         for (int j = 0; j < randomNumberTab.length; j++) {
             if (randomNumberTab[j] > userTab[j]) {
                 System.out.print("+");
@@ -29,7 +35,7 @@ class Games {
                 fail++;
             } else {
                 System.out.println("erreur");
-                SearchGame.logger.error("erreur");
+                logger.error("erreur");
             }
         }
         return fail;
