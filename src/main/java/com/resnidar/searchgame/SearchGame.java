@@ -24,7 +24,8 @@ public class SearchGame extends Games {
         String userProp;
         char[] userPropTab;
         boolean fail;
-        int win = 0;
+        this.win = 0;
+        this.life = config.getLife();
         char[] userNumberChar = userRequest();
         char[] iaTab = new char[userNumberChar.length];
         for (int i = 0; i < userNumberChar.length; i++)
@@ -81,12 +82,12 @@ public class SearchGame extends Games {
     public void iaWinOrLose(char[] userNumberChar, boolean fail) {
         if (fail == true)
             this.life -= 1;
-        if (this.win == userNumberChar.length)
-            System.out.println("AiA : j'ai gagné !");
-        if (this.win != userNumberChar.length)
+        if (this.win == userNumberChar.length && this.life != 0)
+            System.out.println("AiA : j'ai gagné ! il me restait " + this.life + " vie :D !");
+        if (this.win != userNumberChar.length && this.life != 0)
             System.out.println("il reste " + this.life + " vies " );
-        else
-            System.out.println("AiA : il me restait " + this.life + " vies ... j'ai gagner ;) ");
+        if (this.life == 0)
+            System.out.println("AiA : bien jouer ,j' ai perdu ! il ne me reste plus de vie");
     }
 
     /**

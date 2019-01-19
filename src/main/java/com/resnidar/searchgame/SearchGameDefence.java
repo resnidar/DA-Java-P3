@@ -15,7 +15,6 @@ public class SearchGameDefence extends SearchGame {
      * @return restart ,it's for restart or not the program at the end of the game
      */
     public boolean logic() {
-        char[] userNumberChar;
         boolean restart = false;
         logger.debug("searchGame en mode defensif actif");
         System.out.println("mode logique actif");
@@ -35,8 +34,10 @@ public class SearchGameDefence extends SearchGame {
         iaLogic();
         System.out.println("AIA : veut tu recommencer une partie avec moi ? y pour oui ou n pour non ");
         restartChar = sc.next().charAt(0);
-        if ( restartChar == 'y')
+        if ( restartChar == 'y') {
             restart = true;
+
+        }
         else if (restartChar == 'n')
             restart = false;
         else
