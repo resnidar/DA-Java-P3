@@ -26,13 +26,12 @@ public class SearchGameDuel extends SearchGame{
         userNumberChar = rg.getRandomNumber(numberSize);
         // TODO: 15/01/2019 l user propose
         System.out.println("AiA : je commence !");
-
-
+        // TODO: 15/01/2019 l ia donne des signes a luser
     }
 
 
 
-    // TODO: 15/01/2019 l ia donne des signes a luser
+
     // TODO: 15/01/2019 l ia propose
     // TODO: 15/01/2019 l user donne des signes a l ia
     // TODO: 15/01/2019 a chaque tour ,ils voyent la vie restante ,les proposition precedente et les signes proposé

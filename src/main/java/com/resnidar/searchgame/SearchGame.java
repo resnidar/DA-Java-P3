@@ -84,9 +84,9 @@ public class SearchGame extends Games {
             this.life -= 1;
         if (this.win == userNumberChar.length && this.life != 0)
             System.out.println("AiA : j'ai gagné ! il me restait " + this.life + " vie :D !");
-        if (this.win != userNumberChar.length && this.life != 0)
+        if (this.win != userNumberChar.length && this.life > 0)
             System.out.println("il reste " + this.life + " vies " );
-        if (this.life == 0)
+        if (this.life < 0)
             System.out.println("AiA : bien jouer ,j' ai perdu ! il ne me reste plus de vie");
     }
 
@@ -104,6 +104,45 @@ public class SearchGame extends Games {
             System.out.println("chiffre " + i + " : " + userNumberChar[i]);
         }
         return userNumberChar;
+    }
+
+    /**
+     * cette fonction permet d'interargir avec l'utilisateur
+     * @param life nombre de vie de l'user
+     * @param randomNumberTab tableau de nombre aléatoire
+     */
+    void userInteract(int life, char[] randomNumberTab) {
+        String proposition;
+        boolean endGame = false;
+        char[] userTab;
+        int totalFail = 0;
+        int fail = 0;
+        for(int i = 0; i < life && endGame == false; i++) {
+            System.out.println("trouve les bon numero :");
+            SearchGameChallenger.logger.debug("attente de l'user");
+            proposition = sc.next();
+            SearchGameChallenger.logger.debug("proposition recu");
+            userTab = proposition.toCharArray();
+            SearchGameChallenger.logger.debug("String > tableau de char");
+            try {
+                SearchGameChallenger.logger.debug("propositionCompar : comparaison entrée utilisateur et entrée");
+                fail = propositionCompar(randomNumberTab, userTab, fail, endGame);
+                if (fail == 0)
+                    endGame = true;
+                if (fail > 0)
+                    totalFail++;
+                fail = 0;
+            }catch (ArrayIndexOutOfBoundsException e){
+                SearchGameChallenger.logger.error("method propositionCompar don't work");
+                System.out.println("une erreur est survenu ,veuillez rentrer " + randomNumberTab.length + " caracteres");
+            }
+        }
+        if (totalFail < life){
+            System.out.println("\n\rbien joué ,tu a gagné");
+            endGame = true;
+        }
+        else
+            System.out.println("tu a perdu désolé");
     }
 }
 
