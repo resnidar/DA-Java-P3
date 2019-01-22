@@ -6,12 +6,14 @@ import org.apache.log4j.Logger;
 public class Games {
     static Logger logger = Logger.getLogger(SearchGame.class);
 
-    protected final int size;
+    protected int size;
     protected boolean devMode;
+    protected int life;
 
     public Games(Config config) {
         devMode = config.getDevMode();
         size = config.getNumberSize();
+        life = config.getLife();
     }
 
     /**
@@ -20,10 +22,9 @@ public class Games {
      * @param randomNumberTab tableau de nombre aléatoire
      * @param userTab         tableu remplie par l'utilisateur
      * @param fail            le nombre de faute
-     * @param endGame         bool permettant de stoppé le jeu
      * @return
      */
-    public int propositionCompar(char[] randomNumberTab, char[] userTab, int fail, boolean endGame) {
+    public int propositionCompar(char[] randomNumberTab, char[] userTab, int fail) {
         for (int j = 0; j < randomNumberTab.length; j++) {
             if (randomNumberTab[j] > userTab[j]) {
                 System.out.print("+");

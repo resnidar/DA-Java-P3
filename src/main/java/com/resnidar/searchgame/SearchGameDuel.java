@@ -3,40 +3,100 @@ package com.resnidar.searchgame;
 import com.resnidar.Config;
 import com.resnidar.RandomGeneration;
 
+import java.util.Scanner;
+
 public class SearchGameDuel extends SearchGame{
 
+    RandomGeneration rg = new RandomGeneration();
+    Scanner sc = new Scanner(System.in);
     int numberSize;
+    /*int life;*/
+    static int staticLife;
 
     public SearchGameDuel(Config config) {
         super(config);
         numberSize = config.getNumberSize();
+        /*life = config.getLife();*/
+        staticLife = life;
     }
-    RandomGeneration rg = new RandomGeneration();
 
 
 
-    void logic (){
-        char[] userNumberChar;
+
+    public boolean logic (){
+        char[] iaTab = new char[numberSize];
+        char[] iaNumberChar;
+        char[] userTab;
+        int fail = 0;
+        boolean lose = false;
+        boolean winGame = false;
+        boolean restart = false;
+        char restartChar;
+        String proposition;
         logger.debug("Mode duel du SearchGme lancé");
-        System.out.println("AiA : d'accord c'est partie pour le mode duel !");
+        System.out.println("AiA : d'accord" +
+                " c'est partie pour le mode duel !");
         System.out.println("entre le numero que je doit trouver : ");
-        // TODO: 15/01/2019 demander a l utilisateur le numero contre l ia
-        userNumberChar = userRequest();
-        // TODO: 15/01/2019 l ia genere le numero contre l user
-        userNumberChar = rg.getRandomNumber(numberSize);
-        // TODO: 15/01/2019 l user propose
-        System.out.println("AiA : je commence !");
-        // TODO: 15/01/2019 l ia donne des signes a luser
+        System.out.println("AiA : Attention ,il faut mettre un nombre de : " + numberSize + " exactement" );
+        System.out.println("tu peut changer sa dans le .properties");
+        iaNumberChar = rg.getRandomNumber(numberSize);
+        while (winGame == false) {
+            fail = 0;
+            if (this.life == staticLife){
+                System.out.println("AiA : allez ! c'est a moi de deviné ton nombre ,est ce que c'est : ");
+                for (int j = 0;  j < iaTab.length ; j++) {
+                    iaTab[j] = '5';
+                    System.out.print(iaTab[j]);
+                }
+            }
+            else
+            {
+                System.out.println("AiA : moi je te propose : ");
+                for (int j = 0; j < iaTab.length ; j++)
+                    System.out.print(iaTab[j]);
+            }
+            System.out.println("\nAiA : répond moi avec +, - ou =");
+            String userIndic = sc.next();
+            char[] userIndicTab = userIndic.toCharArray();
+            lose = iaMind(userIndicTab, iaTab);
+            if (lose == false)
+            {
+                System.out.println("AiA : haha ! j'ai gagner !");
+                winGame = true;
+            }
+            if (winGame == false) {
+                System.out.println("très bien c'est noté ,a toi !");
+                System.out.println("fait moi une proposition : ");
+                proposition = sc.next();
+                userTab = proposition.toCharArray();
+                fail = propositionCompar(iaNumberChar, userTab, fail);
+                if (fail == 0) {
+                    System.out.println("\nAiA : bien jouer ,tu m'a battue ... ");
+                    winGame = true;
+                }
+                if (fail != 0 && fail != proposition.length() - 1 && fail != 1)
+                    System.out.println("\nAiA : ce n'est pas ca");
+                if (fail == proposition.length() - 1)
+                    System.out.println("\nAiA : bien jouer sa progresse ! ");
+                if (fail == 1)
+                    System.out.println("\nAiA : tu y est presque ! plus qu'un a trouver");
+                if (fail != 0) {
+                    System.out.println("AiA : et non tu t'es tromper");
+                    this.life--;
+                }
+            }
+        }
+        System.out.println("voulez vous recommencer ?");
+        System.out.println("oui : y \n non : n");
+        restartChar = sc.next().charAt(0);
+        if (restartChar == 'y')
+            restart = true;
+        else if (restartChar == 'n')
+            restart = false;
+        else
+            System.out.println("il y a une erreur ,il fallait rentré y ou n");
+        return restart;
     }
-
-
-
-
-    // TODO: 15/01/2019 l ia propose
-    // TODO: 15/01/2019 l user donne des signes a l ia
-    // TODO: 15/01/2019 a chaque tour ,ils voyent la vie restante ,les proposition precedente et les signes proposé
-    // TODO: 15/01/2019 le premier a trouver le nombre est déclaré vainqueurs
-    // TODO: 15/01/2019 proposition : voulez vous recommencer
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
     // TODO: 15/01/2019 faire la documentation
 }

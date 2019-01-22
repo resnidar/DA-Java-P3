@@ -34,10 +34,8 @@ public class SearchGameDefence extends SearchGame {
         iaLogic();
         System.out.println("AIA : veut tu recommencer une partie avec moi ? y pour oui ou n pour non ");
         restartChar = sc.next().charAt(0);
-        if ( restartChar == 'y') {
+        if ( restartChar == 'y')
             restart = true;
-
-        }
         else if (restartChar == 'n')
             restart = false;
         else

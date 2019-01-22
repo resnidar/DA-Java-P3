@@ -2,6 +2,7 @@ package com.resnidar;
 
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
+import com.resnidar.searchgame.SearchGameDuel;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public class Menu {
 
         SearchGameChallenger searchGameChallender = new SearchGameChallenger(config);
         SearchGameDefence searchGameDefence = new SearchGameDefence(config);
+        SearchGameDuel searchGameDuel = new SearchGameDuel(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -32,6 +34,7 @@ public class Menu {
                 System.out.println("quel mode de jeu voulez vous ?");
                 System.out.println("taper : 1 pour le mode challenger");
                 System.out.println("taper : 2 pour le mode defenseur");
+                System.out.println("taper : 3 pour le mode duel");
                 result = sc.nextInt();
                 if (result == 1)
                 {
@@ -44,6 +47,10 @@ public class Menu {
                     System.out.println("lancement de serachGame en mode defenseur");
                     logger.debug("lancement de SearchGame en mode defenseur");
                         restart = searchGameDefence.logic();
+                }
+                else if (result == 3){
+                    System.out.println("lancement de SearchGame en mode duel");
+                    restart = searchGameDuel.logic();
                 }
             } else if (result == 2) {
                 System.out.println("vous avez choisi le jeu : mastermind");

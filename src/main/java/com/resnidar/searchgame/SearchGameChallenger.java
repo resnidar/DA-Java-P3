@@ -41,5 +41,4 @@ public class SearchGameChallenger extends SearchGame{
         logger.debug("le Scanner a receptionner les donnees ");
         return restart;
     }
-
 }
