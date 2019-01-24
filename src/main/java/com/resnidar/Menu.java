@@ -1,5 +1,6 @@
 package com.resnidar;
 
+import com.resnidar.searchgame.SearchGame;
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
 import com.resnidar.searchgame.SearchGameDuel;
@@ -18,9 +19,9 @@ public class Menu {
     static Logger logger = Logger.getLogger(Menu.class);
     void logic() {
 
-        SearchGameChallenger searchGameChallender = new SearchGameChallenger(config);
-        SearchGameDefence searchGameDefence = new SearchGameDefence(config);
-        SearchGameDuel searchGameDuel = new SearchGameDuel(config);
+        SearchGame searchGameChallenger = new SearchGameChallenger(config);
+        SearchGame searchGameDefence = new SearchGameDefence(config);
+        SearchGame searchGameDuel = new SearchGameDuel(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -40,7 +41,7 @@ public class Menu {
                 {
                     System.out.println("lancement de searchGame en mode challenger");
                     logger.debug("lancement de Searchgame en mode challenger");
-                    restart = searchGameChallender.logic();
+                    restart = searchGameChallenger.logic();
                 }
                 else if (result == 2)
                 {

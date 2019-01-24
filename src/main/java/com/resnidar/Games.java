@@ -3,7 +3,7 @@ package com.resnidar;
 import com.resnidar.searchgame.SearchGame;
 import org.apache.log4j.Logger;
 
-public class Games {
+public abstract class Games {
     static Logger logger = Logger.getLogger(SearchGame.class);
 
     protected int size;
@@ -15,6 +15,8 @@ public class Games {
         size = config.getNumberSize();
         life = config.getLife();
     }
+
+    public abstract boolean logic();
 
     /**
      * cette fonction permet de comparé les tableaux entres eux
@@ -43,4 +45,6 @@ public class Games {
     }
     // TODO: 18/12/2018 faire verif endtest
     // TODO: 18/12/2018 control erreur
+    // TODO: 22/01/2019 approfondir abstract
+    // TODO: 22/01/2019 method abstraite
 }

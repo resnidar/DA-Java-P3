@@ -6,12 +6,14 @@ import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
-public class SearchGame extends Games {
+public abstract class SearchGame extends Games {
 
+    Config config = new Config();
     static Logger logger = Logger.getLogger(SearchGame.class);
     int life;
     static int staticLife;
     static int win;
+    int[] a = new int [config.getNumberSize()];
     Scanner sc = new Scanner(System.in);
 
     public SearchGame(Config config) {
@@ -19,6 +21,7 @@ public class SearchGame extends Games {
         this.life = config.getLife();
         staticLife = life;
     }
+
 
 
     public void iaLogic() {
@@ -53,37 +56,28 @@ public class SearchGame extends Games {
      * @return
      */
     boolean iaMind(char[] userIndicTab ,char[] iaTab) {
-        System.out.println("userNumberChar : ");
         boolean lose = false;
-        for (int j = 0; iaTab.length > j; j++) { // cette boucle permet de faire toute les cases du tab
-            if (this.staticLife == this.life) {
-                if (userIndicTab[j] == '+') {
-                    iaTab[j] += 2;
-                    lose = true;
-                } else if (userIndicTab[j] == '-') {
-                    iaTab[j] -= 2;
-                    lose = true;
-                } else if (userIndicTab[j] == '=')
-                    this.win += 1;
-                else
-                    System.out.println(" il doit y avoir une erreur");
-            }
-            else if (this.staticLife != this.life){
-            if (userIndicTab[j] == '+') {
-                iaTab[j] += 1;
-                lose = true;
-            } else if (userIndicTab[j] == '-') {
-                iaTab[j] -= 1;
-                lose = true;
-            } else if (userIndicTab[j] == '=')
-                this.win += 1;
-            else
-                System.out.println(" il doit y avoir une erreur");
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0)
+            a[i] = 5;
         }
-        else {
-                System.out.println("erreur");
-            }
-        // fin
+        for (int j = 0; iaTab.length > j; j++) { // cette boucle permet de faire toute les cases du tab
+            if(this.a[j] != 1)
+            this.a[j] = this.a[j] / 2;
+           if (userIndicTab[j] == '+')
+           {
+               iaTab[j] += (char) Math.ceil(this.a[j]);
+               lose = true;
+           }
+           else if (userIndicTab[j] == '-') {
+               iaTab[j] -= (char) Math.floor(this.a[j]);
+               lose = true;
+           }
+           else if (userIndicTab[j] == '='){
+               this.win += 1;
+           }
+           else
+               System.out.println("erreur !");
         }
         return lose;
     }
@@ -151,10 +145,11 @@ public class SearchGame extends Games {
             System.out.println("tu a perdu désolé");
     }
 }
-
 // TODO: 15/01/2019 faire une class abstraite 
 // TODO: 15/01/2019 faire une method abstraite
 // TODO: 15/01/2019 faire une interface 
 // TODO: 15/01/2019 faire un enum 
 // TODO: 15/01/2019 mastermind : les collections ARRAYLIST 
 // TODO: 15/01/2019 utiliser une bibliothèque
+// TODO: 22/01/2019 mettre en place mode dev via menu
+// TODO: 22/01/2019 arraylist hmap etc. collection java

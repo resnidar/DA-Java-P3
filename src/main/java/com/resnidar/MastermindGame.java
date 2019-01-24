@@ -7,7 +7,9 @@ public class MastermindGame extends SearchGame {
         super(config);
     }
 
-    void logic(){
+    public boolean logic(){
+        System.out.println("temporaire");
+        return false;
     }
 
     /**

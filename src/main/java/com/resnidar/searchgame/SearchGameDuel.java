@@ -5,25 +5,20 @@ import com.resnidar.RandomGeneration;
 
 import java.util.Scanner;
 
-public class SearchGameDuel extends SearchGame{
+public class SearchGameDuel extends SearchGame {
 
     RandomGeneration rg = new RandomGeneration();
     Scanner sc = new Scanner(System.in);
     int numberSize;
-    /*int life;*/
     static int staticLife;
 
     public SearchGameDuel(Config config) {
         super(config);
         numberSize = config.getNumberSize();
-        /*life = config.getLife();*/
         staticLife = life;
     }
 
-
-
-
-    public boolean logic (){
+    public boolean logic() {
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
         char[] userTab;
@@ -37,30 +32,27 @@ public class SearchGameDuel extends SearchGame{
         System.out.println("AiA : d'accord" +
                 " c'est partie pour le mode duel !");
         System.out.println("entre le numero que je doit trouver : ");
-        System.out.println("AiA : Attention ,il faut mettre un nombre de : " + numberSize + " exactement" );
+        System.out.println("AiA : Attention ,il faut mettre un nombre de : " + numberSize + " exactement");
         System.out.println("tu peut changer sa dans le .properties");
-        iaNumberChar = rg.getRandomNumber(numberSize);
+        iaNumberChar = rg.getRandomNumber(numberSize); // method
         while (winGame == false) {
             fail = 0;
-            if (this.life == staticLife){
+            if (this.life == staticLife) {
                 System.out.println("AiA : allez ! c'est a moi de deviné ton nombre ,est ce que c'est : ");
-                for (int j = 0;  j < iaTab.length ; j++) {
+                for (int j = 0; j < iaTab.length; j++) {
                     iaTab[j] = '5';
                     System.out.print(iaTab[j]);
                 }
-            }
-            else
-            {
+            } else {
                 System.out.println("AiA : moi je te propose : ");
-                for (int j = 0; j < iaTab.length ; j++)
+                for (int j = 0; j < iaTab.length; j++)
                     System.out.print(iaTab[j]);
             }
             System.out.println("\nAiA : répond moi avec +, - ou =");
             String userIndic = sc.next();
             char[] userIndicTab = userIndic.toCharArray();
             lose = iaMind(userIndicTab, iaTab);
-            if (lose == false)
-            {
+            if (lose == false) {
                 System.out.println("AiA : haha ! j'ai gagner !");
                 winGame = true;
             }
@@ -69,7 +61,7 @@ public class SearchGameDuel extends SearchGame{
                 System.out.println("fait moi une proposition : ");
                 proposition = sc.next();
                 userTab = proposition.toCharArray();
-                fail = propositionCompar(iaNumberChar, userTab, fail);
+                fail = propositionCompar(iaNumberChar, userTab, fail); // method
                 if (fail == 0) {
                     System.out.println("\nAiA : bien jouer ,tu m'a battue ... ");
                     winGame = true;
@@ -99,4 +91,6 @@ public class SearchGameDuel extends SearchGame{
     }
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
     // TODO: 15/01/2019 faire la documentation
+    // TODO: 22/01/2019 sonar > a telecharger (ou utiliser)
+    // TODO: 22/01/2019 trevis (se renseigner)
 }
