@@ -50,27 +50,35 @@ public abstract class SearchGame extends Games {
     }
 
     /**
-     *it's a parti of defence mods
+     *it's a part of defence mods
+     * this method is the dechotomie of defence game.
      * @param userIndicTab indication of user for ia (+ ,- or =)
      * @param iaTab le nombre que propose l'ia
      * @return
      */
     boolean iaMind(char[] userIndicTab ,char[] iaTab) {
         boolean lose = false;
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == 0)
-            a[i] = 5;
-        }
+        double temporary; //temporary permet de stocké les chars du tableau iaTab en int
         for (int j = 0; iaTab.length > j; j++) { // cette boucle permet de faire toute les cases du tab
-            if(this.a[j] != 1)
-            this.a[j] = this.a[j] / 2;
            if (userIndicTab[j] == '+')
            {
-               iaTab[j] += (char) Math.ceil(this.a[j]);
+               temporary = (double) iaTab[j] - '0';
+               if (temporary >= 5)
+                   temporary += (9);
+               else
+                   temporary += 5;
+               temporary /= Math.ceil(2);
+               iaTab[j] = (char) Math.ceil(temporary);
+               iaTab[j] += '0';
                lose = true;
            }
            else if (userIndicTab[j] == '-') {
-               iaTab[j] -= (char) Math.floor(this.a[j]);
+               temporary = (double) iaTab[j] - '0';
+               if (temporary > 5)
+                   temporary += 5;
+               temporary /= 2;
+               iaTab[j] = (char) Math.floor(temporary);
+               iaTab[j] += '0';
                lose = true;
            }
            else if (userIndicTab[j] == '='){
@@ -79,6 +87,7 @@ public abstract class SearchGame extends Games {
            else
                System.out.println("erreur !");
         }
+
         return lose;
     }
 
