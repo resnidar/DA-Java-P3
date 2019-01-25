@@ -62,14 +62,16 @@ public abstract class SearchGame extends Games {
         for (int j = 0; iaTab.length > j; j++) { // cette boucle permet de faire toute les cases du tab
            if (userIndicTab[j] == '+')
            {
+               // ici je met mon char dans temporary ,c'est plus simple de travaillé avec des nombre quant ont fait des math
+               // le : - '0' me permet d'enlever 48 au nombre qui est actuellement 53 (table ascii)
                temporary = (double) iaTab[j] - '0';
-               if (temporary >= 5)
+               if (temporary >= 5)// j'avait un probleme ,c'est qu'il était impossible d'atteindre les 6 ou 4 ,grace a cette ligne ,c'est tout bon
                    temporary += (9);
-               else
-                   temporary += 5;
+               if (temporary < 5)
+                   temporary += 5;// si iaTab est de 3 ,sa me permet de faire 3+5/2 ,et d'avoir donc 4
                temporary /= Math.ceil(2);
                iaTab[j] = (char) Math.ceil(temporary);
-               iaTab[j] += '0';
+               iaTab[j] += '0'; // comme tout a l'heure ,iaTab a x dans la table ascii ,pour avoir un char avec le bon nombre ,il faut ajouter 48
                lose = true;
            }
            else if (userIndicTab[j] == '-') {
