@@ -3,8 +3,11 @@ package com.resnidar;
 import com.resnidar.searchgame.SearchGame;
 import org.apache.log4j.Logger;
 
+import java.util.Scanner;
+
 public abstract class Games {
-    static Logger logger = Logger.getLogger(SearchGame.class);
+    static public Logger logger = Logger.getLogger(SearchGame.class);
+    Scanner sc = new Scanner(System.in);
 
     protected int size;
     protected boolean devMode;
@@ -42,6 +45,19 @@ public abstract class Games {
             }
         }
         return fail;
+    }
+
+    /**
+     * this method request an entry at user in a String and pass String in Char Board
+     * @return
+     */
+    public char[] userRequest() {
+        String userNumber;
+        char[] userNumberChar;
+        userNumber = sc.next();
+        userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
+        Games.logger.debug("l user a entrée : " + userNumber);
+        return userNumberChar;
     }
     // TODO: 18/12/2018 faire verif endtest
     // TODO: 18/12/2018 control erreur

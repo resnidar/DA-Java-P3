@@ -1,5 +1,7 @@
 package com.resnidar;
 
+import com.resnidar.mastermind.MastermindChallenger;
+import com.resnidar.mastermind.MastermindGame;
 import com.resnidar.searchgame.SearchGame;
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
@@ -22,6 +24,7 @@ public class Menu {
         SearchGame searchGameChallenger = new SearchGameChallenger(config);
         SearchGame searchGameDefence = new SearchGameDefence(config);
         SearchGame searchGameDuel = new SearchGameDuel(config);
+        MastermindGame masterMindChallenger = new MastermindChallenger(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -55,6 +58,15 @@ public class Menu {
                 }
             } else if (result == 2) {
                 System.out.println("vous avez choisi le jeu : mastermind");
+                result = sc.nextInt();
+                if (result == 1) {
+                    System.out.println("vous avez choisi le mode de jeu challenger");
+                    masterMindChallenger.logic();
+                }
+                else if (result == 2){
+                    System.out.println("vous avez choisi le mode de jeu defenser \n " +
+                            "mais le mode n est pas encore disponible ,attendre une prochaine mise a jour");
+                }
             } else {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");
                 logger.error("erreur ,vous avez rentrer " + result + " veuillez entrer 1 ou 2");

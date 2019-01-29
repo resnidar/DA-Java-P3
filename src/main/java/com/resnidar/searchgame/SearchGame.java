@@ -105,19 +105,6 @@ public abstract class SearchGame extends Games {
     }
 
     /**
-     * this method request an entry at user in a String and pass String in Char Board
-     * @return
-     */
-    char[] userRequest() {
-        String userNumber;
-        char[] userNumberChar;
-        userNumber = sc.next();
-        userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
-        logger.debug("l user a entrée : " + userNumber);
-        return userNumberChar;
-    }
-
-    /**
      * cette fonction permet d'interargir avec l'utilisateur
      * @param life nombre de vie de l'user
      * @param randomNumberTab tableau de nombre aléatoire
