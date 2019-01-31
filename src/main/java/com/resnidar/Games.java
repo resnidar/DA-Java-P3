@@ -19,7 +19,7 @@ public abstract class Games {
         life = config.getLife();
     }
 
-    public abstract boolean logic();
+    //public abstract boolean logic();
 
     /**
      * cette fonction permet de comparé les tableaux entres eux

@@ -12,9 +12,11 @@ public class Config {
 
     private int numberSize;
     private int life;
-    private boolean devMode;
-    public Config() {
+    public static boolean devMode;
+    public Config(boolean forcedDevMode) {
         readConfig();
+        if (forcedDevMode == true)
+            devMode = true;
     }
 
     /**
@@ -45,4 +47,6 @@ public class Config {
     }
 
     public int getLife() { return life; }
+
+
 }

@@ -1,11 +1,12 @@
 package com.resnidar.mastermind;
 
 import com.resnidar.Config;
+import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
 import java.util.Scanner;
 
-public class MastermindChallenger extends MastermindGame {
+public class MastermindChallenger extends MastermindGame implements GameLogic {
     public MastermindChallenger(Config config) {
         super(config);
     }
@@ -19,7 +20,7 @@ public class MastermindChallenger extends MastermindGame {
 
     void iaMindMastermind(){
         RandomGeneration randomGeneration = new RandomGeneration();
-        char[][] answer = new char[2][3]; // sera connecter au properties
+        char[][] answer = new char[1][3]; // sera connecter au properties
         char[] expected;
         char[] userRequest;
         int goodPlace = 0;
@@ -46,7 +47,7 @@ public class MastermindChallenger extends MastermindGame {
     }
 }
 
-    /*Set i = 1
+/*Set i = 1
     Play fixed initial guess G1
         Get the response X1 and Y1
         Repeat while Xi ≠ P:
@@ -61,3 +62,7 @@ public class MastermindChallenger extends MastermindGame {
         Play guess Gi which belongs to Ei
         Get response Xi and Yi
 */
+
+    //tester jusqu a 10
+
+//knuth

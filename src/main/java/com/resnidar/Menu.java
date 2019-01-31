@@ -14,17 +14,18 @@ public class Menu {
 
     private final Config config;
 
-    public Menu() {
-        config = new Config();
+    public Menu(boolean forcedDevMode) {
+        config = new Config(forcedDevMode);
     }
+
 
     static Logger logger = Logger.getLogger(Menu.class);
     void logic() {
-
-        SearchGame searchGameChallenger = new SearchGameChallenger(config);
-        SearchGame searchGameDefence = new SearchGameDefence(config);
-        SearchGame searchGameDuel = new SearchGameDuel(config);
-        MastermindGame masterMindChallenger = new MastermindChallenger(config);
+        System.out.println("ceci est un test : " + Config.devMode);
+        GameLogic searchGameChallenger = new SearchGameChallenger(config);
+        GameLogic searchGameDefence = new SearchGameDefence(config);
+        GameLogic searchGameDuel = new SearchGameDuel(config);
+        GameLogic masterMindChallenger = new MastermindChallenger(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");

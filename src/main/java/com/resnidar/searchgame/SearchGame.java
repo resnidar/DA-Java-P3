@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 public abstract class SearchGame extends Games {
 
-    Config config = new Config();
+    Config config = new Config(true);
     static Logger logger = Logger.getLogger(SearchGame.class);
     int life;
-    static int staticLife;
-    static int win;
-    int[] a = new int [config.getNumberSize()];
+    int staticLife;
+    int win;
     Scanner sc = new Scanner(System.in);
 
     public SearchGame(Config config) {
@@ -25,7 +24,6 @@ public abstract class SearchGame extends Games {
 
 
     public void iaLogic() {
-        Config config = new Config();
         String userIndic;
         char[] userIndicTab;
         boolean loose;
@@ -135,9 +133,8 @@ public abstract class SearchGame extends Games {
                 System.out.println("une erreur est survenu ,veuillez rentrer " + randomNumberTab.length + " caracteres");
             }
         }
-        if (totalFail < life){
+        if (totalFail < life) {
             System.out.println("\n\rbien joué ,tu a gagné");
-            endGame = true;
         }
         else
             System.out.println("tu a perdu désolé");

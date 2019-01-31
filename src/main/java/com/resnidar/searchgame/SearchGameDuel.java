@@ -1,11 +1,12 @@
 package com.resnidar.searchgame;
 
 import com.resnidar.Config;
+import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
 import java.util.Scanner;
 
-public class SearchGameDuel extends SearchGame {
+public class SearchGameDuel extends SearchGame implements GameLogic {
 
     RandomGeneration rg = new RandomGeneration();
     Scanner sc = new Scanner(System.in);

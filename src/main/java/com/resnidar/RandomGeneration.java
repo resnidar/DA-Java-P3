@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class RandomGeneration {
     private static Logger logger = Logger.getLogger(SearchGame.class);
-    Config config = new Config();
+    Config config = new Config(true);
 
     /**
      * permet de crée ,pour chaque case d un tableau ,un numero aléatoire

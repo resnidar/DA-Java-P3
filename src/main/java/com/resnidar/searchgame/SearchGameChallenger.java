@@ -1,12 +1,13 @@
 package com.resnidar.searchgame;
 
 import com.resnidar.Config;
+import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
-public class SearchGameChallenger extends SearchGame{
+public class SearchGameChallenger extends SearchGame implements GameLogic{
     static Logger logger = Logger.getLogger(SearchGameChallenger.class);
 
     int life;
