@@ -8,19 +8,18 @@ import java.util.Scanner;
 
 public abstract class SearchGame extends Games {
 
-    Config config = new Config(true);
+    /*Config config = new Config(true);*/
     static Logger logger = Logger.getLogger(SearchGame.class);
-    int life;
+    /*int life;*/
     int staticLife;
     int win;
     Scanner sc = new Scanner(System.in);
 
     public SearchGame(Config config) {
         super(config);
-        this.life = config.getLife();
+        /*this.life = config.getLife();*/
         staticLife = life;
     }
-
 
 
     public void iaLogic() {
@@ -28,7 +27,7 @@ public abstract class SearchGame extends Games {
         char[] userIndicTab;
         boolean loose;
         this.win = 0;
-        this.life = config.getLife();
+        /*this.life = config.getLife();*/
         char[] userNumberChar = userRequest();
         char[] iaTab = new char[userNumberChar.length];
         for (int i = 0; i < userNumberChar.length; i++)
@@ -48,44 +47,41 @@ public abstract class SearchGame extends Games {
     }
 
     /**
-     *it's a part of defence mods
+     * it's a part of defence mods
      * this method is the dechotomie of defence game.
+     *
      * @param userIndicTab indication of user for ia (+ ,- or =)
-     * @param iaTab le nombre que propose l'ia
+     * @param iaTab        le nombre que propose l'ia
      * @return
      */
-    boolean iaMind(char[] userIndicTab ,char[] iaTab) {
+    boolean iaMind(char[] userIndicTab, char[] iaTab) {
         boolean lose = false;
         double temporary; //temporary permet de stocké les chars du tableau iaTab en int
         for (int j = 0; iaTab.length > j; j++) { // cette boucle permet de faire toute les cases du tab
-           if (userIndicTab[j] == '+')
-           {
-               // ici je met mon char dans temporary ,c'est plus simple de travaillé avec des nombre quant ont fait des math
-               // le : - '0' me permet d'enlever 48 au nombre qui est actuellement 53 (table ascii)
-               temporary = (double) iaTab[j] - '0';
-               if (temporary >= 5)// j'avait un probleme ,c'est qu'il était impossible d'atteindre les 6 ou 4 ,grace a cette ligne ,c'est tout bon
-                   temporary += (9);
-               if (temporary < 5)
-                   temporary += 5;// si iaTab est de 3 ,sa me permet de faire 3+5/2 ,et d'avoir donc 4
-               temporary /= Math.ceil(2);
-               iaTab[j] = (char) Math.ceil(temporary);
-               iaTab[j] += '0'; // comme tout a l'heure ,iaTab a x dans la table ascii ,pour avoir un char avec le bon nombre ,il faut ajouter 48
-               lose = true;
-           }
-           else if (userIndicTab[j] == '-') {
-               temporary = (double) iaTab[j] - '0';
-               if (temporary > 5)
-                   temporary += 5;
-               temporary /= 2;
-               iaTab[j] = (char) Math.floor(temporary);
-               iaTab[j] += '0';
-               lose = true;
-           }
-           else if (userIndicTab[j] == '='){
-               this.win += 1;
-           }
-           else
-               System.out.println("erreur !");
+            if (userIndicTab[j] == '+') {
+                // ici je met mon char dans temporary ,c'est plus simple de travaillé avec des nombre quant ont fait des math
+                // le : - '0' me permet d'enlever 48 au nombre qui est actuellement 53 (table ascii)
+                temporary = (double) iaTab[j] - '0';
+                if (temporary >= 5)// j'avait un probleme ,c'est qu'il était impossible d'atteindre les 6 ou 4 ,grace a cette ligne ,c'est tout bon
+                    temporary += (9);
+                if (temporary < 5)
+                    temporary += 5;// si iaTab est de 3 ,sa me permet de faire 3+5/2 ,et d'avoir donc 4
+                temporary /= Math.ceil(2);
+                iaTab[j] = (char) Math.ceil(temporary);
+                iaTab[j] += '0'; // comme tout a l'heure ,iaTab a x dans la table ascii ,pour avoir un char avec le bon nombre ,il faut ajouter 48
+                lose = true;
+            } else if (userIndicTab[j] == '-') {
+                temporary = (double) iaTab[j] - '0';
+                if (temporary > 5)
+                    temporary += 5;
+                temporary /= 2;
+                iaTab[j] = (char) Math.floor(temporary);
+                iaTab[j] += '0';
+                lose = true;
+            } else if (userIndicTab[j] == '=') {
+                this.win += 1;
+            } else
+                System.out.println("erreur !");
         }
 
         return lose;
@@ -97,14 +93,15 @@ public abstract class SearchGame extends Games {
         if (this.win == userNumberChar.length && this.life != 0)
             System.out.println("AiA : j'ai gagné ! il me restait " + this.life + " vie :D !");
         if (this.win != userNumberChar.length && this.life > 0)
-            System.out.println("il reste " + this.life + " vies " );
+            System.out.println("il reste " + this.life + " vies ");
         if (this.life < 0)
             System.out.println("AiA : bien jouer ,j' ai perdu ! il ne me reste plus de vie");
     }
 
     /**
      * cette fonction permet d'interargir avec l'utilisateur
-     * @param life nombre de vie de l'user
+     *
+     * @param life            nombre de vie de l'user
      * @param randomNumberTab tableau de nombre aléatoire
      */
     void userInteract(int life, char[] randomNumberTab) {
@@ -113,7 +110,7 @@ public abstract class SearchGame extends Games {
         char[] userTab;
         int totalFail = 0;
         int fail = 0;
-        for(int i = 0; i < life && endGame == false; i++) {
+        for (int i = 0; i < life && endGame == false; i++) {
             System.out.println("trouve les bon numero :");
             SearchGameChallenger.logger.debug("attente de l'user");
             proposition = sc.next();
@@ -128,15 +125,14 @@ public abstract class SearchGame extends Games {
                 if (fail > 0)
                     totalFail++;
                 fail = 0;
-            }catch (ArrayIndexOutOfBoundsException e){
+            } catch (ArrayIndexOutOfBoundsException e) {
                 SearchGameChallenger.logger.error("method propositionCompar don't work");
                 System.out.println("une erreur est survenu ,veuillez rentrer " + randomNumberTab.length + " caracteres");
             }
         }
         if (totalFail < life) {
             System.out.println("\n\rbien joué ,tu a gagné");
-        }
-        else
+        } else
             System.out.println("tu a perdu désolé");
     }
 }

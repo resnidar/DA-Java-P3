@@ -1,8 +1,6 @@
 package com.resnidar;
 
 import com.resnidar.mastermind.MastermindChallenger;
-import com.resnidar.mastermind.MastermindGame;
-import com.resnidar.searchgame.SearchGame;
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
 import com.resnidar.searchgame.SearchGameDuel;
@@ -21,7 +19,6 @@ public class Menu {
 
     static Logger logger = Logger.getLogger(Menu.class);
     void logic() {
-        System.out.println("ceci est un test : " + Config.devMode);
         GameLogic searchGameChallenger = new SearchGameChallenger(config);
         GameLogic searchGameDefence = new SearchGameDefence(config);
         GameLogic searchGameDuel = new SearchGameDuel(config);

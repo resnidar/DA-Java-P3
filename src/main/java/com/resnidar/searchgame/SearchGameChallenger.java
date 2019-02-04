@@ -10,10 +10,10 @@ import java.util.Scanner;
 public class SearchGameChallenger extends SearchGame implements GameLogic{
     static Logger logger = Logger.getLogger(SearchGameChallenger.class);
 
-    int life;
+    /*int life;*/
     public SearchGameChallenger(Config config) {
         super(config);
-        life = config.getLife();
+        /*life = config.getLife();*/
     }
 
     /**
@@ -29,8 +29,8 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
         System.out.println("lancement du jeu : nombre secret ");
         logger.debug("appel de la class RandomGeneration");
         logger.debug("appel de randomGeneration");
-        char[] randomNumberTab = randomGeneration.getRandomNumber(this.size);
-        System.out.println("le nombre est composé de " + this.size + " caractères");
+        char[] randomNumberTab = randomGeneration.getRandomNumber(size);
+        System.out.println("le nombre est composé de " + size + " caractères");
         userInteract(life, randomNumberTab);
         System.out.println("voulez vous rejouer ? y/n ");
         logger.debug("Scanner en attente de l user");

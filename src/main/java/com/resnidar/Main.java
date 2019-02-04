@@ -9,6 +9,7 @@ static Logger logger = Logger.getLogger(Main.class);
         boolean forcedDevMod = false;
         if (args[0].equalsIgnoreCase("-dev")){
             Config config = new Config(true);
+
         }
             // TODO: 29/01/2019 forcé le gameMode
             // TODO: 29/01/2019 bug si pas de argument !!!!
