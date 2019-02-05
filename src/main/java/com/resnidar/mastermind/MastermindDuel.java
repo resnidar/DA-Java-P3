@@ -5,7 +5,7 @@ import com.resnidar.GameLogic;
 
 public class MastermindDuel extends MastermindGame implements GameLogic {
     public MastermindDuel(Config config) {
-        super(config);
+        super(/*config*/);
     }
 
     @Override

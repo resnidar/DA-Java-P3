@@ -1,14 +1,13 @@
 package com.resnidar.searchgame;
 
-import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import org.apache.log4j.Logger;
 
 public class SearchGameDefence extends SearchGame implements GameLogic {
     static Logger logger = Logger.getLogger(SearchGameDefence.class);
 
-    public SearchGameDefence(Config config) {
-        super(config);
+    public SearchGameDefence() {
+        super();
     }
 
     /**
@@ -43,6 +42,7 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
             System.out.println("erreur");
         return restart;
     }
+    // TODO: 04/02/2019 BUG : ne trouve pas le 3 ,seulement 2 - 4 - 2 - 4
 }
 
 // TODO: 15/01/2019 décomposé en méthode 

@@ -1,6 +1,5 @@
 package com.resnidar.searchgame;
 
-import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
@@ -10,17 +9,15 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
 
     RandomGeneration rg = new RandomGeneration();
     Scanner sc = new Scanner(System.in);
-    /*int numberSize;*/
     static int staticLife;
 
-    public SearchGameDuel(Config config) {
-        super(config);
-        /*numberSize = config.getNumberSize();*/
+    public SearchGameDuel() {
+        super();
         staticLife = life;
     }
 
     public boolean logic() {
-        char[] iaTab = new char[size];
+        char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
         char[] userTab;
         int fail = 0;
@@ -33,9 +30,9 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         System.out.println("AiA : d'accord" +
                 " c'est partie pour le mode duel !");
         System.out.println("entre le numero que je doit trouver : ");
-        System.out.println("AiA : Attention ,il faut mettre un nombre de : " + size + " exactement");
+        System.out.println("AiA : Attention ,il faut mettre un nombre de : " + numberSize + " exactement");
         System.out.println("tu peut changer sa dans le .properties");
-        iaNumberChar = rg.getRandomNumber(size); // method
+        iaNumberChar = rg.getRandomNumber(numberSize); // method
         while (winGame == false) {
             fail = 0;
             if (this.life == staticLife) {

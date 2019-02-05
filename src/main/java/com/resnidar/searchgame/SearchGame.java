@@ -1,6 +1,5 @@
 package com.resnidar.searchgame;
 
-import com.resnidar.Config;
 import com.resnidar.Games;
 import org.apache.log4j.Logger;
 
@@ -8,16 +7,13 @@ import java.util.Scanner;
 
 public abstract class SearchGame extends Games {
 
-    /*Config config = new Config(true);*/
     static Logger logger = Logger.getLogger(SearchGame.class);
-    /*int life;*/
     int staticLife;
     int win;
     Scanner sc = new Scanner(System.in);
 
-    public SearchGame(Config config) {
-        super(config);
-        /*this.life = config.getLife();*/
+    public SearchGame() {
+        super();
         staticLife = life;
     }
 

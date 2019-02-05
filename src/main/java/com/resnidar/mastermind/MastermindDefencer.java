@@ -4,8 +4,8 @@ import com.resnidar.Config;
 import com.resnidar.GameLogic;
 
 public class MastermindDefencer extends MastermindGame implements GameLogic {
-    public MastermindDefencer(Config config) {
-        super(config);
+    public MastermindDefencer(/*Config config*/) {
+        super(/*config*/);
     }
 
     @Override

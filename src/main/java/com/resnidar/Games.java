@@ -5,21 +5,26 @@ import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
-public abstract class Games {
-    static public Logger logger = Logger.getLogger(SearchGame.class);
-    Scanner sc = new Scanner(System.in);
-
-    protected int size;
-    protected boolean devMode;
-    protected int life;
-
-    public Games(Config config) {
+public abstract class Games extends Menu {
+    /*public Games() {
         devMode = config.getDevMode();
         size = config.getNumberSize();
         life = config.getLife();
     }
 
-    //public abstract boolean logic();
+    public Games(boolean forcedDevMode){
+        devMode = config.getDevMode();
+        size = config.getNumberSize();
+        life = config.getLife();
+
+    }*/
+
+    static public Logger logger = Logger.getLogger(SearchGame.class);
+    Scanner sc = new Scanner(System.in);
+    /*Config config = new Config(true); // TODO: 04/02/2019 temporaire */
+
+    /*protected int size;
+    protected int life;*/
 
     /**
      * cette fonction permet de comparé les tableaux entres eux

@@ -11,12 +11,15 @@ public class Config {
     private static Logger logger = Logger.getLogger(Config.class);
     private int numberSize;
     private int life;
-    private boolean devMode;
+    static private boolean devMode;
 
     public Config(boolean forcedDevMode) {
         if (forcedDevMode == true) {
-            devMode = true;
+            this.devMode = true;
         }
+    }
+
+    public Config() {
         readConfig();
     }
 

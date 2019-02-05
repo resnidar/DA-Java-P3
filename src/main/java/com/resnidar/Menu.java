@@ -9,20 +9,31 @@ import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 public class Menu {
+    public static int numberSize;
+    public static int life;
+    public final boolean devMode;
+    static Logger logger = Logger.getLogger(Menu.class);
 
-    private final Config config;
-
-    public Menu(boolean forcedDevMode) {
-        config = new Config(forcedDevMode);
+    public Menu() {
+        Config config = new Config();
+        numberSize = config.getNumberSize();
+        life = config.getLife();
+        this.devMode = config.getDevMode();
     }
 
+    public Menu(boolean forcedDevMode) {
+        Config config = new Config(forcedDevMode);
+        numberSize = config.getNumberSize();
+        life = config.getLife();
+        this.devMode = config.getDevMode();
+    }
 
-    static Logger logger = Logger.getLogger(Menu.class);
     void logic() {
-        GameLogic searchGameChallenger = new SearchGameChallenger(config);
-        GameLogic searchGameDefence = new SearchGameDefence(config);
-        GameLogic searchGameDuel = new SearchGameDuel(config);
-        GameLogic masterMindChallenger = new MastermindChallenger(config);
+        System.out.println("devMode dans Menu = " + devMode);
+        GameLogic searchGameChallenger = new SearchGameChallenger();
+        GameLogic searchGameDefence = new SearchGameDefence();
+        GameLogic searchGameDuel = new SearchGameDuel();
+        GameLogic masterMindChallenger = new MastermindChallenger();
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -38,19 +49,15 @@ public class Menu {
                 System.out.println("taper : 2 pour le mode defenseur");
                 System.out.println("taper : 3 pour le mode duel");
                 result = sc.nextInt();
-                if (result == 1)
-                {
+                if (result == 1) {
                     System.out.println("lancement de searchGame en mode challenger");
                     logger.debug("lancement de Searchgame en mode challenger");
                     restart = searchGameChallenger.logic();
-                }
-                else if (result == 2)
-                {
+                } else if (result == 2) {
                     System.out.println("lancement de serachGame en mode defenseur");
                     logger.debug("lancement de SearchGame en mode defenseur");
-                        restart = searchGameDefence.logic();
-                }
-                else if (result == 3){
+                    restart = searchGameDefence.logic();
+                } else if (result == 3) {
                     System.out.println("lancement de SearchGame en mode duel");
                     restart = searchGameDuel.logic();
                 }
@@ -60,8 +67,7 @@ public class Menu {
                 if (result == 1) {
                     System.out.println("vous avez choisi le mode de jeu challenger");
                     masterMindChallenger.logic();
-                }
-                else if (result == 2){
+                } else if (result == 2) {
                     System.out.println("vous avez choisi le mode de jeu defenser \n " +
                             "mais le mode n est pas encore disponible ,attendre une prochaine mise a jour");
                 }
