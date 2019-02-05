@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
-public abstract class SearchGame extends Games {
+public class SearchGame extends Games {
 
     static Logger logger = Logger.getLogger(SearchGame.class);
     int staticLife;
@@ -23,7 +23,6 @@ public abstract class SearchGame extends Games {
         char[] userIndicTab;
         boolean loose;
         this.win = 0;
-        /*this.life = config.getLife();*/
         char[] userNumberChar = userRequest();
         char[] iaTab = new char[userNumberChar.length];
         for (int i = 0; i < userNumberChar.length; i++)

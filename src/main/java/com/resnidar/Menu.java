@@ -9,9 +9,9 @@ import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 public class Menu {
-    public static int numberSize;
-    public static int life;
-    public final boolean devMode;
+    protected static int numberSize;
+    protected static int life;
+    protected static boolean  devMode;
     static Logger logger = Logger.getLogger(Menu.class);
 
     public Menu() {
@@ -30,7 +30,7 @@ public class Menu {
 
     void logic() {
         System.out.println("devMode dans Menu = " + devMode);
-        GameLogic searchGameChallenger = new SearchGameChallenger();
+        GameLogic searchGameChallenger = new SearchGameChallenger(); // TODO: 05/02/2019 ici le true devient false 
         GameLogic searchGameDefence = new SearchGameDefence();
         GameLogic searchGameDuel = new SearchGameDuel();
         GameLogic masterMindChallenger = new MastermindChallenger();
