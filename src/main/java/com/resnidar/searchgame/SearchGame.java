@@ -62,7 +62,7 @@ public class SearchGame extends Games {
                 if (temporary >= 5)// j'avait un probleme ,c'est qu'il était impossible d'atteindre les 6 ou 4 ,grace a cette ligne ,c'est tout bon
                     temporary += (9);
                 if (temporary < 5)
-                    temporary += 5;// si iaTab est de 3 ,sa me permet de faire 3+5/2 ,et d'avoir donc 4
+                    temporary += 5;// si iaTab est de 3 ,sa me permet de faire 3+5/2 ,et d'avoir donc 4 }
                 temporary /= Math.ceil(2);
                 iaTab[j] = (char) Math.ceil(temporary);
                 iaTab[j] += '0'; // comme tout a l'heure ,iaTab a x dans la table ascii ,pour avoir un char avec le bon nombre ,il faut ajouter 48
@@ -71,6 +71,8 @@ public class SearchGame extends Games {
                 temporary = (double) iaTab[j] - '0';
                 if (temporary > 5)
                     temporary += 5;
+                if (temporary < 5)
+                    temporary += 2; // car 5 + 2 / 2 = 3.5 Donc floor 3
                 temporary /= 2;
                 iaTab[j] = (char) Math.floor(temporary);
                 iaTab[j] += '0';
