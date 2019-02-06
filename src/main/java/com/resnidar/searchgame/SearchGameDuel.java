@@ -11,12 +11,15 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
     Scanner sc = new Scanner(System.in);
     static int staticLife;
 
-    public SearchGameDuel() {
-        super();
+    boolean devMode;
+    public SearchGameDuel(boolean devMode) {
+        super(devMode);
+        this.devMode = devMode;
         staticLife = life;
     }
 
     public boolean logic() {
+        System.out.println("duel est sur : " + devMode);
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
         char[] userTab;

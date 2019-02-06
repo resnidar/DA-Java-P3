@@ -7,8 +7,10 @@ import com.resnidar.RandomGeneration;
 import java.util.Scanner;
 
 public class MastermindChallenger extends MastermindGame implements GameLogic {
-    public MastermindChallenger() {
+    boolean devMode;
+    public MastermindChallenger(boolean devMode) {
         super();
+        this.devMode = devMode;
     }
 
     public boolean logic(){

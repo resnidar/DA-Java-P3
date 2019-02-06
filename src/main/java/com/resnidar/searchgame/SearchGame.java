@@ -10,10 +10,12 @@ public class SearchGame extends Games {
     static Logger logger = Logger.getLogger(SearchGame.class);
     int staticLife;
     int win;
+    boolean devMode;
     Scanner sc = new Scanner(System.in);
 
-    public SearchGame() {
+    public SearchGame(boolean devMode) {
         super();
+        this.devMode = devMode;
         staticLife = life;
     }
 

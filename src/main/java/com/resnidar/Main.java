@@ -6,12 +6,16 @@ public class Main {
 static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
-        if (args[0].equalsIgnoreCase("-dev")){
-            System.out.println("c'est bien rentrer dans dev avec option -dev");
-            Menu menu = new Menu(true);
-            menu.logic();
+        if (args.length != 0) {
+            if (args[0].equalsIgnoreCase("-dev")) {
+                System.out.println("c'est bien rentrer dans dev avec option -dev");
+                Menu menu = new Menu(true);
+                menu.logic();
+            } else {
+                System.err.println("il y a une erreur ,argument accepté : -dev");
+            }
         }
-        else{
+        else {
             System.out.println("c'est bien rentré dans dev");
             Menu menu = new Menu();
             menu.logic();

@@ -3,15 +3,20 @@ package com.resnidar.searchgame;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 import org.apache.log4j.Logger;
-import com.resnidar.Games;
 
 import java.util.Scanner;
 
 public class SearchGameChallenger extends SearchGame implements GameLogic{
     static Logger logger = Logger.getLogger(SearchGameChallenger.class);
 
-    public SearchGameChallenger() {
-        super();
+    boolean devMode;
+    int life;
+    int numberSize;
+    public SearchGameChallenger(boolean devMode, int life, int numberSize){
+        super(devMode);
+        this.devMode = devMode;
+        this.life = life;
+        this.numberSize = numberSize;
     }
 
     /**
@@ -19,7 +24,8 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
      * @return permet au programme de redemarré ou non
      */
     public boolean logic(){
-        System.out.println("le gameMod est sur : " + devMode);
+        System.out.println("challenger est sur : " + devMode);
+        System.out.println("life = " + life + "numberSize " + numberSize);
         logger.debug("début du searchGame");
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);

@@ -9,31 +9,31 @@ import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 public class Menu {
-    protected static int numberSize;
-    protected static int life;
-    protected static boolean  devMode;
+    protected int numberSize;
+    protected int life;
+    protected boolean  devMode;
     static Logger logger = Logger.getLogger(Menu.class);
 
     public Menu() {
         Config config = new Config();
-        numberSize = config.getNumberSize();
-        life = config.getLife();
+        this.numberSize = config.getNumberSize();
+        this.life = config.getLife();
         this.devMode = config.getDevMode();
     }
 
     public Menu(boolean forcedDevMode) {
         Config config = new Config(forcedDevMode);
-        numberSize = config.getNumberSize();
-        life = config.getLife();
+        this.numberSize = config.getNumberSize();
+        this.life = config.getLife();
         this.devMode = config.getDevMode();
     }
 
     void logic() {
         System.out.println("devMode dans Menu = " + devMode);
-        GameLogic searchGameChallenger = new SearchGameChallenger(); // TODO: 05/02/2019 ici le true devient false 
-        GameLogic searchGameDefence = new SearchGameDefence();
-        GameLogic searchGameDuel = new SearchGameDuel();
-        GameLogic masterMindChallenger = new MastermindChallenger();
+        GameLogic searchGameChallenger = new SearchGameChallenger(devMode, life, numberSize); // TODO: 05/02/2019 ici le true devient false
+        GameLogic searchGameDefence = new SearchGameDefence(devMode);
+        GameLogic searchGameDuel = new SearchGameDuel(devMode);
+        GameLogic masterMindChallenger = new MastermindChallenger(devMode);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
