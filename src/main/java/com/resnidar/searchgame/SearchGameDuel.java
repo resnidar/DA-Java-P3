@@ -1,5 +1,6 @@
 package com.resnidar.searchgame;
 
+import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
@@ -12,10 +13,9 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
     static int staticLife;
 
     boolean devMode;
-    public SearchGameDuel(boolean devMode, int life, int numberSize) {
-        super(devMode, life, numberSize);
-        this.devMode = devMode;
-        staticLife = life;
+    public SearchGameDuel(Config config) {
+        super(config);
+        //staticLife = life;
     }
 
     public boolean logic() {

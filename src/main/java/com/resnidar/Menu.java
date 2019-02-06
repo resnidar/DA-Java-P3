@@ -9,31 +9,20 @@ import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 public class Menu {
-    protected int numberSize;
-    protected int life;
-    protected boolean devMode;
+    protected Config config;
+
     static Logger logger = Logger.getLogger(Menu.class);
 
-    public Menu() {
-        Config config = new Config();
-        this.numberSize = config.getNumberSize();
-        this.life = config.getLife();
-        this.devMode = config.getDevMode();
-    }
-
     public Menu(boolean forcedDevMode) {
-        Config config = new Config(forcedDevMode);
-        this.numberSize = config.getNumberSize();
-        this.life = config.getLife();
-        this.devMode = config.getDevMode();
+        config = new Config(forcedDevMode);
     }
 
     void logic() {
-        System.out.println("devMode dans Menu = " + devMode);
-        GameLogic searchGameChallenger = new SearchGameChallenger(devMode, life, numberSize);
-        GameLogic searchGameDefence = new SearchGameDefence(devMode, life, numberSize);
-        GameLogic searchGameDuel = new SearchGameDuel(devMode, life, numberSize);
-        GameLogic masterMindChallenger = new MastermindChallenger(devMode, life, numberSize);
+        System.out.println("devMode dans Menu = " + config.getDevMode());
+        GameLogic searchGameChallenger = new SearchGameChallenger(config);
+        GameLogic searchGameDefence = new SearchGameDefence(config);
+        GameLogic searchGameDuel = new SearchGameDuel(config);
+        GameLogic masterMindChallenger = new MastermindChallenger(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");

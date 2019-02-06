@@ -12,13 +12,11 @@ public class Config {
     private int numberSize;
     private int life;
     static private boolean devMode;
-    private boolean bypass = false;
 
     public Config(boolean forcedDevMode) {
+        readConfig();
         if (forcedDevMode == true) {
             this.devMode = true;
-            this.bypass = true;
-            readConfig();
         }
     }
 
@@ -37,7 +35,6 @@ public class Config {
             prop.load(input);
             numberSize = Integer.parseInt(prop.getProperty("numberSize"));
             life = Integer.parseInt(prop.getProperty("life"));
-            if (bypass == false)
             devMode = Boolean.parseBoolean(prop.getProperty("devMode"));
             logger.debug("devMode : " + devMode);
         } catch (java.io.IOException e) {

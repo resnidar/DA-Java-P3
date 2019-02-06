@@ -17,7 +17,7 @@ static Logger logger = Logger.getLogger(Main.class);
         }
         else {
             System.out.println("c'est bien rentré dans dev");
-            Menu menu = new Menu();
+            Menu menu = new Menu(false);
             menu.logic();
         }
             // TODO: 29/01/2019 forcé le gameMode

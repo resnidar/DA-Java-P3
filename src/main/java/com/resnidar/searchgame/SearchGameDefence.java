@@ -1,5 +1,6 @@
 package com.resnidar.searchgame;
 
+import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import org.apache.log4j.Logger;
 
@@ -7,9 +8,8 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
     static Logger logger = Logger.getLogger(SearchGameDefence.class);
 
     boolean devMode;
-    public SearchGameDefence(boolean devMode, int life, int numberSize) {
-        super(devMode, life, numberSize);
-        this.devMode = devMode;
+    public SearchGameDefence(Config config) {
+        super(config);
     }
 
     /**

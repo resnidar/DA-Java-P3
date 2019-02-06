@@ -1,11 +1,12 @@
 package com.resnidar.searchgame;
 
+import com.resnidar.Config;
 import com.resnidar.Games;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
-public class SearchGame extends Games {
+public abstract class SearchGame extends Games {
 
     static Logger logger = Logger.getLogger(SearchGame.class);
     protected int staticLife;
@@ -13,11 +14,15 @@ public class SearchGame extends Games {
     protected boolean devMode;
     Scanner sc = new Scanner(System.in);
 
-    public SearchGame(boolean devMode, int life, int numberSize) {
-        super(devMode, life, numberSize);
+    public SearchGame(Config config) {
+        super(config);
+    }
+
+    /*public SearchGame(Config config) {
+        super(config);
         this.devMode = devMode;
         this.staticLife = life;
-    }
+    }*/
 
 
     public void iaLogic() {

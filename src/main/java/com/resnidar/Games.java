@@ -5,10 +5,19 @@ import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
-public abstract class Games extends Menu {
+public abstract class Games {
 
-    public Games(boolean devMode, int life, int numberSize){
+    protected int numberSize;
+    protected int life;
+    protected boolean devMode;
+    private final Config config;
 
+    public Games(Config config){
+        super();
+        this.config = config;
+        this.numberSize = config.getNumberSize();
+        this.life = config.getLife();
+        this.devMode = config.getDevMode();
     }
 
     static public Logger logger = Logger.getLogger(SearchGame.class);

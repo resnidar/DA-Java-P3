@@ -4,13 +4,10 @@ import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
-import java.util.Scanner;
-
 public class MastermindChallenger extends MastermindGame implements GameLogic {
-    boolean devMode;
-    public MastermindChallenger(boolean devMode, int life, int numberSize) {
-        super(devMode, life, numberSize);
-        this.devMode = devMode;
+
+    public MastermindChallenger(Config config) {
+        super(config);
     }
 
     public boolean logic(){
