@@ -13,7 +13,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
     int life;
     int numberSize;
     public SearchGameChallenger(boolean devMode, int life, int numberSize){
-        super(devMode);
+        super(devMode, life, numberSize);
         this.devMode = devMode;
         this.life = life;
         this.numberSize = numberSize;
@@ -25,7 +25,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
      */
     public boolean logic(){
         System.out.println("challenger est sur : " + devMode);
-        System.out.println("life = " + life + "numberSize " + numberSize);
+        System.out.println("life = " + life + "\nnumberSize " + numberSize);
         logger.debug("début du searchGame");
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);

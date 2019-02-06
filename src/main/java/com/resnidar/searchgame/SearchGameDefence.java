@@ -7,8 +7,8 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
     static Logger logger = Logger.getLogger(SearchGameDefence.class);
 
     boolean devMode;
-    public SearchGameDefence(boolean devMode) {
-        super(devMode);
+    public SearchGameDefence(boolean devMode, int life, int numberSize) {
+        super(devMode, life, numberSize);
         this.devMode = devMode;
     }
 
@@ -17,6 +17,8 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      * @return restart ,it's for restart or not the program at the end of the game
      */
     public boolean logic() {
+        System.out.println("challenger est sur : " + devMode);
+        System.out.println("life = " + life + "\nnumberSize " + numberSize);
         System.out.println("defence est sur : " + devMode);
         boolean restart = false;
         logger.debug("searchGame en mode defensif actif");

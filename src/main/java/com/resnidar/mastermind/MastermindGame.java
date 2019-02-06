@@ -4,7 +4,7 @@ import com.resnidar.GameLogic;
 import com.resnidar.Games;
 
 public abstract class MastermindGame extends Games implements GameLogic {
-    public MastermindGame(/*Config config*/) {
-        super(/*config*/);
+    public MastermindGame(boolean devMode, int life, int numberSize) {
+        super(devMode, life, numberSize);
     }
 }

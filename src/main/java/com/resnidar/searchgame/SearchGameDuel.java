@@ -12,13 +12,15 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
     static int staticLife;
 
     boolean devMode;
-    public SearchGameDuel(boolean devMode) {
-        super(devMode);
+    public SearchGameDuel(boolean devMode, int life, int numberSize) {
+        super(devMode, life, numberSize);
         this.devMode = devMode;
         staticLife = life;
     }
 
     public boolean logic() {
+        System.out.println("challenger est sur : " + devMode);
+        System.out.println("life = " + life + "\nnumberSize " + numberSize);
         System.out.println("duel est sur : " + devMode);
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;

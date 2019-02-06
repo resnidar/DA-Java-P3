@@ -1,11 +1,10 @@
 package com.resnidar.mastermind;
 
-import com.resnidar.Config;
 import com.resnidar.GameLogic;
 
 public class MastermindDefencer extends MastermindGame implements GameLogic {
-    public MastermindDefencer(/*Config config*/) {
-        super(/*config*/);
+    public MastermindDefencer(boolean devMode, int life, int numberSize) {
+        super(devMode, life, numberSize);
     }
 
     @Override

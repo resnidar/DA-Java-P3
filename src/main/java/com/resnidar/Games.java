@@ -6,18 +6,10 @@ import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 public abstract class Games extends Menu {
-    /*public Games() {
-        devMode = config.getDevMode();
-        size = config.getNumberSize();
-        life = config.getLife();
+
+    public Games(boolean devMode, int life, int numberSize){
+
     }
-
-    public Games(boolean forcedDevMode){
-        devMode = config.getDevMode();
-        size = config.getNumberSize();
-        life = config.getLife();
-
-    }*/
 
     static public Logger logger = Logger.getLogger(SearchGame.class);
     Scanner sc = new Scanner(System.in);

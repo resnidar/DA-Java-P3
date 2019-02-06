@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class MastermindChallenger extends MastermindGame implements GameLogic {
     boolean devMode;
-    public MastermindChallenger(boolean devMode) {
-        super();
+    public MastermindChallenger(boolean devMode, int life, int numberSize) {
+        super(devMode, life, numberSize);
         this.devMode = devMode;
     }
 

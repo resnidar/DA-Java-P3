@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Menu {
     protected int numberSize;
     protected int life;
-    protected boolean  devMode;
+    protected boolean devMode;
     static Logger logger = Logger.getLogger(Menu.class);
 
     public Menu() {
@@ -30,10 +30,10 @@ public class Menu {
 
     void logic() {
         System.out.println("devMode dans Menu = " + devMode);
-        GameLogic searchGameChallenger = new SearchGameChallenger(devMode, life, numberSize); // TODO: 05/02/2019 ici le true devient false
-        GameLogic searchGameDefence = new SearchGameDefence(devMode);
-        GameLogic searchGameDuel = new SearchGameDuel(devMode);
-        GameLogic masterMindChallenger = new MastermindChallenger(devMode);
+        GameLogic searchGameChallenger = new SearchGameChallenger(devMode, life, numberSize);
+        GameLogic searchGameDefence = new SearchGameDefence(devMode, life, numberSize);
+        GameLogic searchGameDuel = new SearchGameDuel(devMode, life, numberSize);
+        GameLogic masterMindChallenger = new MastermindChallenger(devMode, life, numberSize);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
