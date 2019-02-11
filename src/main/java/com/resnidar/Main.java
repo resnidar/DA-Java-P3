@@ -30,3 +30,5 @@ static Logger logger = Logger.getLogger(Main.class);
 }
 // TODO: 29/01/2019  : a faire : algo
 // TODO: 29/01/2019 une seul fois le new config
+
+// TODO: 07/02/2019 test de git 
