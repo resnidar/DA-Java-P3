@@ -19,30 +19,36 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
 
     void iaMindMastermind(){
         RandomGeneration randomGeneration = new RandomGeneration();
-        char[][] answer = new char[1][3]; // sera connecter au properties
+        char[][] answer = new char[1][numberSize]; // sera connecter au properties
         char[] expected;
         char[] userRequest;
+        boolean next = false;
         int goodPlace = 0;
         int present = 0;
-        int life = 5;
-        expected = randomGeneration.getRandomNumber(4);
-        System.out.println("le nombre a trouver est ");
-        for (int i = 0; i < expected.length; i++)
-            System.out.println(expected[i]);
+        expected = randomGeneration.getRandomNumber(numberSize);
         System.out.println("entre les nombres que tu veut tester : ");
         userRequest = userRequest();
-        for (int i = 0; i < userRequest.length - 1; i++)
-            answer[0][i] = userRequest[i]; // permet de mettre userRequest dans mon tableau bidimensionnel
-            for (int i = 0; i <= answer.length ; i++){// permet de faire tout le tableau
-                System.out.println("expected = " + expected[0]);
-                System.out.println("answer = " + answer[0][i]);
-                if (expected[0] == answer[0][i]) {
-                    present++;
+        for (int i = 0; i < userRequest.length; i++) {
+            answer[0][i] = userRequest[i];// permet de mettre userRequest dans mon tableau bidimensionnel
+        }
+        for (int i = 0; i < numberSize ; i++){// permet de faire tout le tableau i = 0
+            // i = answer
+            // j = expected
+            next = false;
+            for (int j = 0; j < numberSize && i < 4 && !next; j++){
+                if (answer[0][i] == expected[i]) {  // oui
+                    goodPlace++;
+                    next = true;
                 }
-                System.out.println("la boucle a faite : " + i + " tours ");
+                else if (answer[0][i] == expected[j]){ // si je tombe sur le bon numero mais pas a la bonne place alors :
+                    present++; // ajoute 1 a present
+                    next = true;
+                }
             }
+        }
 
         System.out.println("il y a " + present + " numero present mais pas a la bonne place ");
+        System.out.println("il y a " + goodPlace + " numero a la bonne place");
     }
 }
 

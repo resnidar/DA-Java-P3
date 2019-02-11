@@ -18,13 +18,6 @@ public abstract class SearchGame extends Games {
         super(config);
     }
 
-    /*public SearchGame(Config config) {
-        super(config);
-        this.devMode = devMode;
-        this.staticLife = life;
-    }*/
-
-
     public void iaLogic() {
         String userIndic;
         char[] userIndicTab;
