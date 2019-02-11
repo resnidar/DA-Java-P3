@@ -17,35 +17,38 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         return restart;
     }
 
-    void iaMindMastermind() {
+    private void iaMindMastermind() {
         RandomGeneration randomGeneration = new RandomGeneration();
-        char[][] answer = new char[1][numberSize]; // sera connecter au properties
+        char[] answer; // sera connecter au properties
         char[] expected;
-        char[] userRequest;
-        boolean next = false;
+        char[] stat = new char[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
+        boolean next;
         boolean win = false;
         int goodPlace = 0;
-        int present = 0;
+        int present;
         expected = randomGeneration.getRandomNumber(numberSize);
+        System.out.println(stat);
         while (life > 0 && !win) {
             System.out.println("entre les nombres que tu veut tester : ");
-            userRequest = userRequest();
+            answer = userRequest();
             present = 0;
             goodPlace = 0;
-            for (int i = 0; i < userRequest.length; i++) {
-                answer[0][i] = userRequest[i];// permet de mettre userRequest dans mon tableau bidimensionnel
+            for (int i = 0; i < stat.length; i++){
+                stat[i] ='0';
             }
             for (int i = 0; i < numberSize; i++) {// permet de faire tout le tableau i = 0
                 // i = answer
                 // j = expected
                 next = false;
                 for (int j = 0; j < numberSize && i < 4 && !next; j++) {
-                    if (answer[0][i] == expected[i]) {  // oui
+                    if (answer[i] == expected[i]) {  // oui
                         goodPlace++;
                         next = true;
-                    } else if (answer[0][i] == expected[j]) { // si je tombe sur le bon numero mais pas a la bonne place alors :
+                        stat[i] = '2';
+                    } else if (answer[i] == expected[j]) { // si je tombe sur le bon numero mais pas a la bonne place alors :
                         present++; // ajoute 1 a present
                         next = true;
+                        stat[j] = '1';
                     }
                 }
             }
@@ -58,7 +61,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
                 win = true;
             System.out.println("il te reste " + life + " vie");
         }
-
         if (goodPlace == numberSize && life > 0) {
             System.out.println("bien joué tu a gagné !");
         } else {
