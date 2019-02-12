@@ -4,6 +4,8 @@ import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
+import java.util.Scanner;
+
 public class MastermindChallenger extends MastermindGame implements GameLogic {
 
     public MastermindChallenger(Config config) {
@@ -11,22 +13,31 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
     }
 
     public boolean logic() {
+        Scanner sc = new Scanner(System.in);
         boolean restart = false;
+        int restartResponse;
         System.out.println("lancement du jeu Mastermind Challenger");
         iaMindMastermind();
+        System.out.println("veut tu recommencer une partie de Mastermind en mode Challenger ? ");
+        System.out.println("1 pour oui ou 2 pour non");
+        restartResponse = sc.nextInt();
+        if (restartResponse == 1)
+            restart = true;
+        else if (restartResponse == 2)
+            restart = false;
         return restart;
     }
 
     private void iaMindMastermind() {
         RandomGeneration randomGeneration = new RandomGeneration();
         char[] answer; // sera connecter au properties
-        char[] expected;
+        char[] expected = {'5','8','3','0'};
         int[] stat = new int[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
         boolean next;
         boolean win = false;
         int goodPlace = 0;
         int present;
-        expected = randomGeneration.getRandomNumber(numberSize);
+        //expected = randomGeneration.getRandomNumber(numberSize);
         while (life > 0 && !win) {
             for (int i = 0; i < stat.length; i++){
                 stat[i] =0;
@@ -40,17 +51,19 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
                 // j = expected
                 next = false;
                 for (int j = 0; j < numberSize && i < 4 && !next; j++) {
-                    if (answer[i] == expected[i] && stat[j] < 2) {  // oui
-                        goodPlace++;
-                        next = true;
-                        stat[j] = 2;
-                    } else if (answer[i] == expected[j] && stat[j] == 0) { // si je tombe sur le bon numero mais pas a la bonne place alors :
+                    if (answer[i] == expected[j] && stat[i] == 0) { // si je tombe sur le bon numero mais pas a la bonne place alors :
                         present++; // ajoute 1 a present
                         next = true;
-                        stat[j] = 1;
+                        stat[i] = 1;
+                    }
+                    if (answer[i] == expected[i]) {
+                        goodPlace++;
                     }
                 }
             }
+            present -= goodPlace;
+            if (present < 0)
+                present -= -present;
             System.out.println("il y a " + present + " numero present mais pas a la bonne place ");
             System.out.println("il y a " + goodPlace + " numero a la bonne place");
             if (goodPlace != numberSize) {
