@@ -27,10 +27,10 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         int goodPlace = 0;
         int present;
         expected = randomGeneration.getRandomNumber(numberSize);
-        for (int i = 0; i < stat.length; i++){
-            stat[i] =0;
-        }
         while (life > 0 && !win) {
+            for (int i = 0; i < stat.length; i++){
+                stat[i] =0;
+            }
             System.out.println("entre les nombres que tu veut tester : ");
             answer = userRequest();
             present = 0;
