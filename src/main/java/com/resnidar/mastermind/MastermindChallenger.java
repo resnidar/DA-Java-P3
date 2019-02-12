@@ -21,34 +21,33 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         RandomGeneration randomGeneration = new RandomGeneration();
         char[] answer; // sera connecter au properties
         char[] expected;
-        char[] stat = new char[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
+        int[] stat = new int[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
         boolean next;
         boolean win = false;
         int goodPlace = 0;
         int present;
         expected = randomGeneration.getRandomNumber(numberSize);
-        System.out.println(stat);
+        for (int i = 0; i < stat.length; i++){
+            stat[i] =0;
+        }
         while (life > 0 && !win) {
             System.out.println("entre les nombres que tu veut tester : ");
             answer = userRequest();
             present = 0;
             goodPlace = 0;
-            for (int i = 0; i < stat.length; i++){
-                stat[i] ='0';
-            }
             for (int i = 0; i < numberSize; i++) {// permet de faire tout le tableau i = 0
                 // i = answer
                 // j = expected
                 next = false;
                 for (int j = 0; j < numberSize && i < 4 && !next; j++) {
-                    if (answer[i] == expected[i]) {  // oui
+                    if (answer[i] == expected[i] && stat[j] < 2) {  // oui
                         goodPlace++;
                         next = true;
-                        stat[i] = '2';
-                    } else if (answer[i] == expected[j]) { // si je tombe sur le bon numero mais pas a la bonne place alors :
+                        stat[j] = 2;
+                    } else if (answer[i] == expected[j] && stat[j] == 0) { // si je tombe sur le bon numero mais pas a la bonne place alors :
                         present++; // ajoute 1 a present
                         next = true;
-                        stat[j] = '1';
+                        stat[j] = 1;
                     }
                 }
             }
