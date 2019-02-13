@@ -31,45 +31,21 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
     private void iaMindMastermind() {
         RandomGeneration randomGeneration = new RandomGeneration();
         char[] answer; // sera connecter au properties
-        char[] expected = {'5','8','3','0'};
-        int[] stat = new int[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
-        boolean next;
+        char[] expected = {'1', '0', '6', '5'};
         boolean win = false;
         int goodPlace = 0;
-        int present;
+        int present = 0;
         //expected = randomGeneration.getRandomNumber(numberSize);
         while (life > 0 && !win) {
-            for (int i = 0; i < stat.length; i++){
-                stat[i] =0;
-            }
-            System.out.println("entre les nombres que tu veut tester : ");
+            System.out.println("veuillez entrer le nombre a testé : ");
             answer = userRequest();
-            present = 0;
-            goodPlace = 0;
-            for (int i = 0; i < numberSize; i++) {// permet de faire tout le tableau i = 0
-                // i = answer
-                // j = expected
-                next = false;
-                for (int j = 0; j < numberSize && i < 4 && !next; j++) {
-                    if (answer[i] == expected[j] && stat[i] == 0) { // si je tombe sur le bon numero mais pas a la bonne place alors :
-                        present++; // ajoute 1 a present
-                        next = true;
-                        stat[i] = 1;
-                    }
-                    if (answer[i] == expected[i]) {
-                        goodPlace++;
-                    }
-                }
-            }
-            present -= goodPlace;
-            if (present < 0)
-                present -= -present;
+            present = present(answer, expected);
+            goodPlace = goodPlace(answer,expected);
             System.out.println("il y a " + present + " numero present mais pas a la bonne place ");
             System.out.println("il y a " + goodPlace + " numero a la bonne place");
             if (goodPlace != numberSize) {
                 life--;
-            }
-            else
+            } else
                 win = true;
             System.out.println("il te reste " + life + " vie");
         }
@@ -78,27 +54,31 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         } else {
             System.out.println("tu est arriver a la fin de tes vies ,tu a perdu");
         }
+    }
 
+    public int present(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre qui sont present
+        int present = 0;
+        for (int answerIndex = 0; answerIndex < answer.length; answerIndex++){
+            for (int expectedIndex = 0; expectedIndex < expected.length; expectedIndex++){
+                if (answer[answerIndex] == expected[expectedIndex]){
+                    present++;
+                }
+            }
+        }
+        return present;
+    }
 
+    public int goodPlace(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre a la bonne place
+        return 0;
+    }
+
+    public int[] test(char[] expected, char[] answer){
+        int[] stat = new int[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
+
+        return stat;
     }
 }
-
-/*Set i = 1
-    Play fixed initial guess G1
-        Get the response X1 and Y1
-        Repeat while Xi ≠ P:
-        Increment i
-        Set Ei = ∅ and h = 1
-        Initialize population
-        Repeat while h ≤ maxgen and |Ei| ≤ maxsize:
-        Generate new population using crossover, mutation, inversion and permutation
-        Calculate fitness
-        Add eligible combinations to Ei
-        Increment h
-        Play guess Gi which belongs to Ei
-        Get response Xi and Yi
-*/
-
 //tester jusqu a 10
 
 //knuth
+
