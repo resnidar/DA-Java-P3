@@ -11,6 +11,8 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
     public MastermindChallenger(Config config) {
         super(config);
     }
+    int goodPlace = 0;
+    int present = 0;
 
     public boolean logic() {
         Scanner sc = new Scanner(System.in);
@@ -33,8 +35,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         char[] answer; // sera connecter au properties
         char[] expected = {'1', '0', '6', '5'};
         boolean win = false;
-        int goodPlace = 0;
-        int present = 0;
         //expected = randomGeneration.getRandomNumber(numberSize);
         while (life > 0 && !win) {
             System.out.println("veuillez entrer le nombre a testé : ");
@@ -56,6 +56,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         }
     }
 
+
     public int present(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre qui sont present
         int present = 0;
         for (int answerIndex = 0; answerIndex < answer.length; answerIndex++){
@@ -72,11 +73,19 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         return 0;
     }
 
-    public int[] test(char[] expected, char[] answer){
+    public int getGoodPlace() {
+        return goodPlace;
+    }
+
+    public int getPresent() {
+        return present;
+    }
+
+    /*public int[] test(char[] expected, char[] answer){
         int[] stat = new int[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
 
         return stat;
-    }
+    }*/
 }
 //tester jusqu a 10
 

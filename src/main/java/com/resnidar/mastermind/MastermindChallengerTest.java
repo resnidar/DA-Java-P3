@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class MastermindChallengerTest {
 
-    @org.junit.Test
+    /*@org.junit.Test
     public void test1() {
         MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
         char[] expected = {'1', '0', '6', '5'};
@@ -15,7 +15,7 @@ public class MastermindChallengerTest {
     }
 
     @org.junit.Test
-    void test2() {
+    public void test2() {
         MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
         char[] expected = {'5', '0', '0', '3'};
         char[] answer = {'5', '0', '0', '3'};
@@ -31,18 +31,27 @@ public class MastermindChallengerTest {
 
     public int getMalPlacé(int[] stat){
         //todo compté les 1
-    return 0;}
+    return 0;}*/
 
     @Test
-    public void present() {
+    public void test(){
         MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
         char[] expected = {'1', '0', '6', '5'};
         char[] answer = {'1', '0', '6', '5'};
         int present = mastermindChallenger.present(answer, expected);
+        assert getGoodPlace(present) == 4;
+        assert getPresent(present) == 0;
     }
 
-    public void getPresent(){
 
+
+    @Test
+    public int getPresent(int present){
+        return present;
+    }
+
+    public int getGoodPlace(int goodPlace){
+        return goodPlace;
     }
 }
 
