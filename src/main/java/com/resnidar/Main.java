@@ -25,7 +25,6 @@ static Logger logger = Logger.getLogger(Main.class);
             // TODO: 29/01/2019 a faire absolument ! terminé cette partie
         logger.debug("la class Menu est instancier");
         logger.debug("lancement de la methode logic de la class menu");
-
     }
 }
 // TODO: 29/01/2019  : a faire : algo

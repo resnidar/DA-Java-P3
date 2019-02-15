@@ -39,13 +39,72 @@ public class MastermindChallengerTest {
         char[] expected = {'1', '0', '6', '5'};
         char[] answer = {'1', '0', '6', '5'};
         int present = mastermindChallenger.present(answer, expected);
-        assert getGoodPlace(present) == 4;
+        int goodPlace = mastermindChallenger.goodPlace(answer, expected);
+        present -= goodPlace;
+        assert getGoodPlace(goodPlace) == 4;
         assert getPresent(present) == 0;
     }
 
-
+    @Test
+    public void test2(){
+        MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
+        char[] expected = {'0', '5', '0', '0'};
+        char[] answer = {'0', '5', '0', '0'};
+        int present = mastermindChallenger.present(answer, expected);
+        int goodPlace = mastermindChallenger.goodPlace(answer, expected);
+        present -= goodPlace;
+        assert getGoodPlace(goodPlace) == 4;
+        assert getPresent(present) == 0;
+    }
 
     @Test
+    public void test3(){
+        MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
+        char[] expected = {'6', '0', '6', '0'};
+        char[] answer = {'6', '0', '6', '0'};
+        int present = mastermindChallenger.present(answer, expected);
+        int goodPlace = mastermindChallenger.goodPlace(answer, expected);
+        present -= goodPlace;
+        assert getGoodPlace(goodPlace) == 4;
+        assert getPresent(present) == 0;
+    }
+
+    @Test
+    public void test4(){
+        MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
+        char[] expected = {'0', '0', '0', '0'};
+        char[] answer = {'0', '0', '0', '0'};
+        int present = mastermindChallenger.present(answer, expected);
+        int goodPlace = mastermindChallenger.goodPlace(answer, expected);
+        present -= goodPlace;
+        assert getGoodPlace(goodPlace) == 4;
+        assert getPresent(present) == 0;
+    }
+
+    @Test
+    public void test5(){
+        MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
+        char[] expected = {'0', '0', '5', '0'};
+        char[] answer = {'0', '0', '0', '0'};
+        int present = mastermindChallenger.present(answer, expected);
+        int goodPlace = mastermindChallenger.goodPlace(answer, expected);
+        present -= goodPlace;
+        assert getGoodPlace(goodPlace) == 3;
+        assert getPresent(present) == 0;
+    }
+
+    @Test
+    public void test6(){
+        MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
+        char[] expected = {'7', '4', '9', '2'};
+        char[] answer = {'2', '7', '4', '9'};
+        int present = mastermindChallenger.present(answer, expected);
+        int goodPlace = mastermindChallenger.goodPlace(answer, expected);
+        present -= goodPlace;
+        assert getGoodPlace(goodPlace) == 0;
+        assert getPresent(present) == 4;
+    }
+
     public int getPresent(int present){
         return present;
     }
