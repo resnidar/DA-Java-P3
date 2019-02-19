@@ -7,13 +7,15 @@ import com.resnidar.RandomGeneration;
 import java.util.Scanner;
 
 public class MastermindChallenger extends MastermindGame implements GameLogic {
-
     public MastermindChallenger(Config config) {
         super(config);
     }
-    int goodPlace = 0;
-    int present = 0;
 
+
+    /**
+     * method logic : is the logic of this Class
+     * @return restart : if is true ,the game restart
+     */
     public boolean logic() {
         Scanner sc = new Scanner(System.in);
         boolean restart = false;
@@ -25,18 +27,22 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         restartResponse = sc.nextInt();
         if (restartResponse == 1)
             restart = true;
-        else if (restartResponse == 2)
-            restart = false;
+        /*else if (restartResponse == 2)
+            restart = false;*/
         return restart;
     }
 
+    /**
+     * the base of Ia for mastermind challenger
+     */
     private void iaMindMastermind() {
         RandomGeneration randomGeneration = new RandomGeneration();
         char[] answer; // sera connecter au properties
-        char[] expected = {'6', '0', '6', '0'};
+        char[] expected;
         boolean win = false;
-
-        //expected = randomGeneration.getRandomNumber(numberSize);
+        int goodPlace = 0;
+        int present;
+        expected = randomGeneration.getRandomNumber(numberSize);
         while (life > 0 && !win) {
             System.out.println("veuillez entrer le nombre a testé : ");
             answer = userRequest();
@@ -58,13 +64,18 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         }
     }
 
-
-    public int present(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre qui sont present
+    /**
+     *
+     * @param answer an char tab of number of user
+     * @param expected an char tab of hidden number expected
+     * @return present : the number of present number
+     */
+    int present(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre qui sont present
         int present = 0;
         int[] stat = new int[expected.length];
-        for (int answerIndex = 0; answerIndex < answer.length; answerIndex++){
-            for (int expectedIndex = 0; expectedIndex < expected.length; expectedIndex++){
-                if (answer[answerIndex] == expected[expectedIndex] && stat[expectedIndex] == 0){
+        for (char c : answer) {
+            for (int expectedIndex = 0; expectedIndex < expected.length; expectedIndex++) {
+                if (c == expected[expectedIndex] && stat[expectedIndex] == 0) {
                     present++;
                     stat[expectedIndex] = 1;
                     break;
@@ -74,14 +85,18 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         return present;
     }
 
-    public int goodPlace(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre a la bonne place
+    /**
+     *
+     * @param answer an char tab of number of user
+     * @param expected an char tab of hidden number expected
+     * @return goodPlace : the number of number at goodPlace
+     */
+    int goodPlace(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre a la bonne place
         int goodPlace = 0;
-        int[] stat = new int[expected.length];
         for (int answerIndex = 0; answerIndex < answer.length; answerIndex++)
         {
             if (answer[answerIndex] == expected[answerIndex]){
                 goodPlace++;
-                stat[answerIndex] = 2;
             }
         }
         return goodPlace;
