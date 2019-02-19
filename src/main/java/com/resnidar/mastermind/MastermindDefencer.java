@@ -10,6 +10,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
 
     @Override
     public boolean logic() {
+        //algo de knuth
         return false;
     }
 }
