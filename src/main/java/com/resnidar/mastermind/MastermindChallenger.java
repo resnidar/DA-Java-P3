@@ -69,28 +69,16 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
                 }
             }
         }
-        System.out.println("les nombres presents : ");
-        for (int i = 0; i < answer.length; i++){
-            int number = i + 1;
-            System.out.println("nombre " + number + " : " + stat[i]);
-        }
         return present;
     }
 
     public int goodPlace(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre a la bonne place
         int goodPlace = 0;
-        int[] stat = new int[expected.length];
         for (int answerIndex = 0; answerIndex < answer.length; answerIndex++)
         {
             if (answer[answerIndex] == expected[answerIndex]){
                 goodPlace++;
-                stat[answerIndex] = 2;
             }
-        }
-        System.out.println("les nombres a la bonne place : ");
-        for (int i = 0; i < answer.length; i++){
-            int number = i + 1;
-            System.out.println("nombre " + number + " : " + stat[i]);
         }
         return goodPlace;
     }

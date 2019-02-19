@@ -33,7 +33,7 @@ public class MastermindChallengerTest {
         //todo compté les 1
     return 0;}*/
 
-    @Test
+  /*  @Test
     public void test(){
         MastermindChallenger mastermindChallenger = new MastermindChallenger(new Config(true));
         char[] expected = {'1', '0', '6', '5'};
@@ -111,7 +111,7 @@ public class MastermindChallengerTest {
 
     public int getGoodPlace(int goodPlace){
         return goodPlace;
-    }
+    }*/
 }
 
 // TODO: 12/02/2019 faire TDD !! 
