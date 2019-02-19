@@ -35,8 +35,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         char[] answer; // sera connecter au properties
         char[] expected = {'6', '0', '6', '0'};
         boolean win = false;
-        int[] statPresent = new int[numberSize];
-        int[] statGoodPlace = new int[numberSize];
 
         //expected = randomGeneration.getRandomNumber(numberSize);
         while (life > 0 && !win) {
@@ -69,6 +67,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
                 if (answer[answerIndex] == expected[expectedIndex] && stat[expectedIndex] == 0){
                     present++;
                     stat[expectedIndex] = 1;
+                    break;
                 }
             }
         }
@@ -88,11 +87,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         return goodPlace;
     }
 
-    /*public int[] test(char[] expected, char[] answer){
-        int[] stat = new int[numberSize]; // 0 = pas trouver 1 = present 2 = bonne place
-
-        return stat;
-    }*/
 }
 //tester jusqu a 10
 
