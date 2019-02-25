@@ -14,3 +14,6 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         return false;
     }
 }
+
+// TODO: 19/02/2019 preparé method avec signature method
+// TODO: 19/02/2019 avertir utilisateur des limites
