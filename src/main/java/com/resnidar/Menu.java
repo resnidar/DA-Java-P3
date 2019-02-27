@@ -1,6 +1,7 @@
 package com.resnidar;
 
 import com.resnidar.mastermind.MastermindChallenger;
+import com.resnidar.mastermind.MastermindDefencer;
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
 import com.resnidar.searchgame.SearchGameDuel;
@@ -23,6 +24,7 @@ public class Menu {
         GameLogic searchGameDefence = new SearchGameDefence(config);
         GameLogic searchGameDuel = new SearchGameDuel(config);
         GameLogic masterMindChallenger = new MastermindChallenger(config);
+        GameLogic masterMindDefencer = new MastermindDefencer(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -57,8 +59,8 @@ public class Menu {
                     System.out.println("vous avez choisi le mode de jeu challenger");
                     masterMindChallenger.logic();
                 } else if (result == 2) {
-                    System.out.println("vous avez choisi le mode de jeu defenser \n " +
-                            "mais le mode n est pas encore disponible ,attendre une prochaine mise a jour");
+                    System.out.println("vous avez choisi le mode de jeu defenser ");
+                    masterMindDefencer.logic();
                 }
             } else {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");
