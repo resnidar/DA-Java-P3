@@ -18,7 +18,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         //algo de knuth
         int present = 0;
         int goodPlace = 0;
-        listPrep(4, 999);
+        listPrep(3, 3);
         System.out.println("la liste est remplie ,le jeu commence");
         System.out.println("je te propose 1122");
         System.out.println("combiens y en a t il a la bonne place ?");
@@ -35,9 +35,10 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      *
      * temps de travail pour 7 base 10 : 2 minutes 08
      */
-    private void listPrep(int color, int size){
+    private void listPrep(int color, int realSize){
         Integer nombre = 0;
         int a = 0;
+        int size = sizeBreak(color, realSize);
         while (nombre <= size){
             nombre = baseConvert(a++ , color);
             list.add(nombre);
@@ -45,7 +46,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
                 break;
             System.out.println("remplissage en cour ,veuillez patientez");
         }
-        // TODO: 10/03/2019 terminé generateur de list 
+        // TODO: 10/03/2019 terminé generateur de list
         for (int i = 0; i < list.size(); i++){
         System.out.println("liste : " + list.get(i));
         // TODO: 28/02/2019 test unitaire
@@ -55,6 +56,17 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
     public int baseConvert (int a, int b){
         String numberConvert = Integer.toString(a, b);
         return Integer.parseInt(numberConvert);
+    }
+
+    public int sizeBreak (int color, int realSize){
+        int number = color - 1;
+        realSize -= 1;
+        for (int i = 0; i < realSize; i++){
+            number *= 10;
+            number += color - 1;
+        }
+        System.out.println("calcule puissance : " + number);
+        return number;
     }
 
     public ArrayList removePossibility (ArrayList currentChoices, int response, int present, int goodPlace){
