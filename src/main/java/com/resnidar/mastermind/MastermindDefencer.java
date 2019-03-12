@@ -26,7 +26,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         System.out.println("combien y en a t il de present ?");
         present = sc.nextInt();
         System.out.println("il y en a " + present + "de present et " + goodPlace + "a la bonne place ");
-
+        removePossibility(list, 0, present, goodPlace);
         return false;
     }
 
@@ -46,7 +46,6 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
                 break;
             System.out.println("remplissage en cour ,veuillez patientez");
         }
-        // TODO: 10/03/2019 terminé generateur de list
         for (int i = 0; i < list.size(); i++){
         System.out.println("liste : " + list.get(i));
         // TODO: 28/02/2019 test unitaire
@@ -75,6 +74,5 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
 }
 
 // TODO: 05/03/2019 faire removePossibility 
-// TODO: 19/02/2019 preparé method avec signature method
 // TODO: 19/02/2019 avertir utilisateur des limites
-// TODO: 28/02/2019 faire return result 
+// TODO: 28/02/2019 faire return result
