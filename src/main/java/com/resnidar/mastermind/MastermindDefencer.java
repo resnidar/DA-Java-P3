@@ -65,7 +65,6 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
             number *= 10;
             number += color - 1;
         }
-        System.out.println("calcule puissance : " + number);
         return number;
     }
 
