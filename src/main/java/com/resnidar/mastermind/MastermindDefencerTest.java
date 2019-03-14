@@ -41,4 +41,13 @@ public class MastermindDefencerTest {
         int size = mastermindDefencer.sizeBreak(3, 3);
         assertEquals(222, size);
     }
+
+    @Test
+    public void checkResponse() {
+        MastermindDefencer mastermindDefencer = new MastermindDefencer(new Config(true));
+        boolean result = mastermindDefencer.checkResponse("0000", "0000", 0, 4);
+        assertEquals(result, false);
+        result = mastermindDefencer.checkResponse("0000", "1122", 0, 4);
+        assertEquals(result, true);
+    }
 }
