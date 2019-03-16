@@ -57,10 +57,10 @@ public class Menu {
                 result = sc.nextInt();
                 if (result == 1) {
                     System.out.println("vous avez choisi le mode de jeu challenger");
-                    masterMindChallenger.logic();
+                    restart = masterMindChallenger.logic();
                 } else if (result == 2) {
                     System.out.println("vous avez choisi le mode de jeu defenser ");
-                    masterMindDefencer.logic();
+                    restart = masterMindDefencer.logic();
                 }
             } else {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");
