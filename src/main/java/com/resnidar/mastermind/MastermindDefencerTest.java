@@ -76,4 +76,5 @@ public class MastermindDefencerTest {
         boolean result = mastermindDefencer.checkResponse("8888", "7777");
         assertEquals(result, false);
     }
+
 }

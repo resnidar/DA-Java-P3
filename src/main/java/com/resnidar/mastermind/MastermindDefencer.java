@@ -4,6 +4,7 @@ import com.resnidar.Config;
 import com.resnidar.GameLogic;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MastermindDefencer extends MastermindGame implements GameLogic {
@@ -18,14 +19,14 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         Scanner sc = new Scanner(System.in);
         int present = 0;
         int goodPlace = 0;
+        int numberOfTurns = 0;
         boolean win = false;
         int restart;
         String response = "1122";
         listPrep(4, 4);
         System.out.println("la liste est remplie ,le jeu commence");
         while (!win) {
-            System.out.println("je te propose 1122");
-            System.out.println("combiens y en a t il a la bonne place ?");
+            Proposition(numberOfTurns, 4);
             goodPlace = sc.nextInt();
             System.out.println("combien y en a t il de present ?");
             present = sc.nextInt();
@@ -43,14 +44,67 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
                 else if (restart == 1)
                     return false;
             }
+            numberOfTurns++;
         }
         return false;
     }
 
-    /***
-     * preparation of list for knuth
-     *
-     * temps de travail pour 7 base 10 : 2 minutes 08
+    private void Proposition(int numberOfTurns, int size) {
+        if (numberOfTurns == 0) {
+            firstProposition(size);
+        }
+        else{
+            defineProposition();
+
+        }
+        System.out.println("combiens y en a t il a la bonne place ?");
+    }
+
+    //je n en suis pas fière ,en attente d une meilleur idée bien que sa marche parfaitement dans ce cas ci
+    private void firstProposition(int size){
+        switch (size){
+            case 1:
+                System.out.println("je te propose 1");
+                break;
+            case 2 :
+                System.out.println("je te propose 12");
+                break;
+            case 3:
+                System.out.println("je te propose 112");
+                break;
+            case 4:
+                System.out.println("je te propose 1122");
+                break;
+            case 5:
+                System.out.println("je te propose 11222");
+                break;
+            case 6:
+                System.out.println("je te propose 111222");
+                break;
+            case 7:
+                System.out.println("je te propose 1111222");
+                break;
+            case 8:
+                System.out.println("je te propose 11112222");
+                break;
+            case 9:
+                System.out.println("je te propose 111122222");
+                break;
+        }
+    }
+    
+    private void defineProposition(){
+        Random r = new Random();
+        System.out.println("je te propose : ");
+        System.out.println(list.get(r.nextInt(list.size())));
+        // TODO: 18/03/2019 définir les propositions
+    }
+
+    /**
+     * listPrep prepar the list for the game
+     * @param color number of color in the game
+     * @param realSize number of element to find
+     * @return the list ready for the game
      */
     private ArrayList listPrep(int color, int realSize) {
         int numberInt = 0;
@@ -65,7 +119,6 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         }
         for (int i = 0; i < list.size(); i++) {
             System.out.println("liste : " + list.get(i));
-            // TODO: 28/02/2019 test unitaire
         }
         return list;
     }
@@ -158,6 +211,4 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
     }
 }
 
-// TODO: 05/03/2019 faire removePossibility 
-// TODO: 14/03/2019 faire checkResponse 
 // TODO: 19/02/2019 avertir utilisateur des limites
