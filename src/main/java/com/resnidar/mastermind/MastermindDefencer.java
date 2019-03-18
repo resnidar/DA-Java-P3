@@ -22,11 +22,12 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         int numberOfTurns = 0;
         boolean win = false;
         int restart;
+        int indexToListForDelete;
         String response = "1122";
         listPrep(4, 4);
         System.out.println("la liste est remplie ,le jeu commence");
         while (!win) {
-            Proposition(numberOfTurns, 4);
+            indexToListForDelete = Proposition(numberOfTurns, 4);
             goodPlace = sc.nextInt();
             System.out.println("combien y en a t il de present ?");
             present = sc.nextInt();
@@ -34,7 +35,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
             if (present == 0 && goodPlace == 0) {
                 list = removePossibility(list, response);
             }
-            if (goodPlace == numberSize) {
+            else if (goodPlace == numberSize) {
                 win = true;
                 System.out.println("tu a gagné bien joué ! veut tu recommencer ?");
                 System.out.println("0 pour oui  \n1 pour non");
@@ -44,20 +45,25 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
                 else if (restart == 1)
                     return false;
             }
+            else {
+                System.out.println(list.get(indexToListForDelete) + "supprimé");
+                list.remove(indexToListForDelete);
+            }
             numberOfTurns++;
         }
         return false;
     }
 
-    private void Proposition(int numberOfTurns, int size) {
+    private int Proposition(int numberOfTurns, int size) {
+        int number = 0;
         if (numberOfTurns == 0) {
             firstProposition(size);
         }
         else{
-            defineProposition();
-
+            number = defineProposition();
         }
         System.out.println("combiens y en a t il a la bonne place ?");
+        return number;
     }
 
     //je n en suis pas fière ,en attente d une meilleur idée bien que sa marche parfaitement dans ce cas ci
@@ -93,11 +99,14 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         }
     }
     
-    private void defineProposition(){
+    private int defineProposition(){
         Random r = new Random();
+        int number;
+        number = r.nextInt(list.size());
         System.out.println("je te propose : ");
-        System.out.println(list.get(r.nextInt(list.size())));
+        System.out.println(list.get(number));
         // TODO: 18/03/2019 définir les propositions
+        return number;
     }
 
     /**
