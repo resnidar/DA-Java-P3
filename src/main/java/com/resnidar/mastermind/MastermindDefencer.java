@@ -12,28 +12,28 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         super(config);
     }
 
-    ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<String> list = new ArrayList<String>();
 
     @Override
     public boolean logic() {
         Scanner sc = new Scanner(System.in);
-        int present = 0;
-        int goodPlace = 0;
+        int present;
+        int goodPlace;
         int numberOfTurns = 0;
+        int size = 6;
         boolean win = false;
         int restart;
         int indexToListForDelete;
-        String response = "1122";
-        listPrep(4, 4);
+        listPrep(8, size);
         System.out.println("la liste est remplie ,le jeu commence");
         while (!win) {
-            indexToListForDelete = Proposition(numberOfTurns, 4);
+            indexToListForDelete = proposition(numberOfTurns, size);
             goodPlace = sc.nextInt();
             System.out.println("combien y en a t il de present ?");
             present = sc.nextInt();
             System.out.println("il y en a " + present + "de present et " + goodPlace + "a la bonne place ");
-            if (present == 0 && goodPlace == 0) {
-                list = removePossibility(list, response);
+            if (present == 0 && goodPlace == 0){
+                list = removePossibility(list, list.get(indexToListForDelete), numberOfTurns);
             }
             else if (goodPlace == numberSize) {
                 win = true;
@@ -54,10 +54,13 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         return false;
     }
 
-    private int Proposition(int numberOfTurns, int size) {
-        int number = 0;
+    private int proposition(int numberOfTurns, int size) {
+        int number;
+        String stringNumber;
         if (numberOfTurns == 0) {
-            firstProposition(size);
+            System.out.println("je te propose : " + firstProposition(size));
+            stringNumber = firstProposition(size);
+            number = Integer.parseInt(stringNumber);
         }
         else{
             number = defineProposition();
@@ -67,36 +70,28 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
     }
 
     //je n en suis pas fière ,en attente d une meilleur idée bien que sa marche parfaitement dans ce cas ci
-    private void firstProposition(int size){
+    private String firstProposition(int size){
         switch (size){
             case 1:
-                System.out.println("je te propose 1");
-                break;
+                return "1";
             case 2 :
-                System.out.println("je te propose 12");
-                break;
+                return "12";
             case 3:
-                System.out.println("je te propose 112");
-                break;
+                return "112";
             case 4:
-                System.out.println("je te propose 1122");
-                break;
+                return "1122";
             case 5:
-                System.out.println("je te propose 11222");
-                break;
+                return "11222";
             case 6:
-                System.out.println("je te propose 111222");
-                break;
+                return "111222";
             case 7:
-                System.out.println("je te propose 1111222");
-                break;
+                return "1111222";
             case 8:
-                System.out.println("je te propose 11112222");
-                break;
+                return "11112222";
             case 9:
-                System.out.println("je te propose 111122222");
-                break;
+                return "111122222";
         }
+        return "0";
     }
     
     private int defineProposition(){
@@ -116,7 +111,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      * @return the list ready for the game
      */
     private ArrayList listPrep(int color, int realSize) {
-        int numberInt = 0;
+        int numberInt;
         int a = 0;
         int size = sizeBreak(color, realSize); // permet de crée une boucle basé sur une base numerique differente que la base 10
         for (int i = 0; i <= size; i++) {
@@ -139,7 +134,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      * @param realSize  the size of the number
      * @return the number modified in String and ready for list
      */
-    public String convertIntToSringAndPreparForList(int numberInt, int realSize) {
+    private String convertIntToSringAndPreparForList(int numberInt, int realSize) {
         String number = String.valueOf(numberInt);
         String zero = "0";
         while (number.length() < realSize) {
@@ -155,7 +150,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      * @param b is the base X
      * @return int in base X
      */
-    public int baseConvert(int a, int b) {
+    private int baseConvert(int a, int b) {
         String numberConvert = Integer.toString(a, b);
         return Integer.parseInt(numberConvert);
     }
@@ -182,19 +177,24 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      *
      * @param currentChoices the List
      * @param response       the tested number
+     * @param turn           the number of turn
      * @return the List
      */
-    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response) {
-        int verif = 0;
+    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response,int turn) {
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
             boolean delete = false;
-            System.out.println(choice);
-            delete = checkResponse(choice, response);
-            if (delete == true) {
+            if (turn != 0) {
+                System.out.println(choice);
+                delete = checkResponse(choice, response);
+            }
+            else if (turn == 0) {
+                System.out.println(choice);
+                delete = checkResponse(choice, firstProposition(response.length()));
+            }
+            if (delete) {
                 System.out.println(choice + "supprimé");
                 currentChoices.remove(choice);
-                verif++;
                 i--;
             }
         }

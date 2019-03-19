@@ -12,6 +12,7 @@ public class Config {
     private int numberSize;
     private int life;
     static private boolean devMode;
+    private int colorNumber;
 
     public Config(boolean forcedDevMode) {
         readConfig();
@@ -36,6 +37,7 @@ public class Config {
             numberSize = Integer.parseInt(prop.getProperty("numberSize"));
             life = Integer.parseInt(prop.getProperty("life"));
             devMode = Boolean.parseBoolean(prop.getProperty("devMode"));
+            colorNumber = Integer.parseInt(prop.getProperty("colorNumber"));
             logger.debug("devMode : " + devMode);
         } catch (java.io.IOException e) {
             e.printStackTrace();
@@ -53,5 +55,9 @@ public class Config {
 
     public int getLife() {
         return life;
+    }
+
+    public int getColorNumber() {
+        return colorNumber;
     }
 }

@@ -27,8 +27,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         restartResponse = sc.nextInt();
         if (restartResponse == 1)
             restart = true;
-        /*else if (restartResponse == 2)
-            restart = false;*/
         return restart;
     }
 
