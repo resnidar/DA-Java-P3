@@ -24,7 +24,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         boolean win = false;
         int restart;
         int indexToListForDelete;
-        listPrep(8, size);
+        listPrep(3, size);
         System.out.println("la liste est remplie ,le jeu commence");
         while (!win) {
             indexToListForDelete = proposition(numberOfTurns, size);
@@ -54,22 +54,30 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         return false;
     }
 
+
+    // TODO: 18/03/2019 je ne doit pas retourné le numero mais l index !!!! 
     private int proposition(int numberOfTurns, int size) {
-        int number;
+        int indexList;
         String stringNumber;
         if (numberOfTurns == 0) {
             System.out.println("je te propose : " + firstProposition(size));
             stringNumber = firstProposition(size);
-            number = Integer.parseInt(stringNumber);
+            indexList = list.indexOf(stringNumber);
         }
         else{
-            number = defineProposition();
+            indexList = defineProposition();
         }
         System.out.println("combiens y en a t il a la bonne place ?");
-        return number;
+        return indexList;
     }
 
     //je n en suis pas fière ,en attente d une meilleur idée bien que sa marche parfaitement dans ce cas ci
+
+    /**
+     * proposition to User for the first turn of the game ,for respected knuth algo
+     * @param size the size of the number
+     * @return the number proposed
+     */
     private String firstProposition(int size){
         switch (size){
             case 1:
@@ -93,15 +101,20 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         }
         return "0";
     }
-    
+
+    /**
+     * make the proposition to User
+     *
+     * @return return the number proposed
+     */
     private int defineProposition(){
         Random r = new Random();
-        int number;
-        number = r.nextInt(list.size());
+        int indexList;
+        indexList = r.nextInt(list.size());
         System.out.println("je te propose : ");
-        System.out.println(list.get(number));
+        System.out.println(list.get(indexList));
         // TODO: 18/03/2019 définir les propositions
-        return number;
+        return indexList;
     }
 
     /**
@@ -181,6 +194,7 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      * @return the List
      */
     public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response,int turn) {
+        int indexOfList;
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
             boolean delete = false;
