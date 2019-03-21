@@ -42,39 +42,5 @@ public class MastermindDefencerTest {
         assertEquals(222, size);
     }
 
-    @Test
-    public void checkResponse0() {
-        MastermindDefencer mastermindDefencer = new MastermindDefencer(new Config(true));
-        boolean result = mastermindDefencer.checkResponse("0000", "0000");
-        assertEquals(result, true);
-    }
-
-    @Test
-    public void checkResponse1() {
-        MastermindDefencer mastermindDefencer = new MastermindDefencer(new Config(true));
-        boolean result = mastermindDefencer.checkResponse("1234", "5678");
-        assertEquals(result, false);
-    }
-
-    @Test
-    public void checkResponse2() {
-        MastermindDefencer mastermindDefencer = new MastermindDefencer(new Config(true));
-        boolean result = mastermindDefencer.checkResponse("1334", "0199");
-        assertEquals(result, true);
-    }
-
-    @Test
-    public void checkResponse3 () {
-        MastermindDefencer mastermindDefencer = new MastermindDefencer(new Config(true));
-        boolean result = mastermindDefencer.checkResponse("89222", "06799");
-        assertEquals(result, true);
-    }
-
-    @Test
-    public void checkResponse4() {
-        MastermindDefencer mastermindDefencer = new MastermindDefencer(new Config(true));
-        boolean result = mastermindDefencer.checkResponse("8888", "7777");
-        assertEquals(result, false);
-    }
 
 }

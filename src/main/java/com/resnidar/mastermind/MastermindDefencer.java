@@ -20,11 +20,11 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         int present;
         int goodPlace;
         int numberOfTurns = 0;
-        int size = 6;
+        int size = 4;
         boolean win = false;
         int restart;
         int indexToListForDelete;
-        listPrep(3, size);
+        listPrep(5, size);
         System.out.println("la liste est remplie ,le jeu commence");
         while (!win) {
             indexToListForDelete = proposition(numberOfTurns, size);
@@ -32,10 +32,8 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
             System.out.println("combien y en a t il de present ?");
             present = sc.nextInt();
             System.out.println("il y en a " + present + "de present et " + goodPlace + "a la bonne place ");
-            if (present == 0 && goodPlace == 0){
-                list = removePossibility(list, list.get(indexToListForDelete), numberOfTurns);
-            }
-            else if (goodPlace == numberSize) {
+                list = removePossibility(list, list.get(indexToListForDelete), numberOfTurns, goodPlace, present);
+             if (goodPlace == size) {
                 win = true;
                 System.out.println("tu a gagné bien joué ! veut tu recommencer ?");
                 System.out.println("0 pour oui  \n1 pour non");
@@ -45,62 +43,20 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
                 else if (restart == 1)
                     return false;
             }
-            else {
-                System.out.println(list.get(indexToListForDelete) + "supprimé");
-                list.remove(indexToListForDelete);
-            }
             numberOfTurns++;
         }
         return false;
     }
 
 
-    // TODO: 18/03/2019 je ne doit pas retourné le numero mais l index !!!! 
     private int proposition(int numberOfTurns, int size) {
         int indexList;
         String stringNumber;
-        if (numberOfTurns == 0) {
-            System.out.println("je te propose : " + firstProposition(size));
-            stringNumber = firstProposition(size);
-            indexList = list.indexOf(stringNumber);
-        }
-        else{
-            indexList = defineProposition();
-        }
+        indexList = defineProposition();
         System.out.println("combiens y en a t il a la bonne place ?");
         return indexList;
     }
 
-    //je n en suis pas fière ,en attente d une meilleur idée bien que sa marche parfaitement dans ce cas ci
-
-    /**
-     * proposition to User for the first turn of the game ,for respected knuth algo
-     * @param size the size of the number
-     * @return the number proposed
-     */
-    private String firstProposition(int size){
-        switch (size){
-            case 1:
-                return "1";
-            case 2 :
-                return "12";
-            case 3:
-                return "112";
-            case 4:
-                return "1122";
-            case 5:
-                return "11222";
-            case 6:
-                return "111222";
-            case 7:
-                return "1111222";
-            case 8:
-                return "11112222";
-            case 9:
-                return "111122222";
-        }
-        return "0";
-    }
 
     /**
      * make the proposition to User
@@ -193,19 +149,14 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
      * @param turn           the number of turn
      * @return the List
      */
-    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response,int turn) {
-        int indexOfList;
+    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response,int turn, int goodPlace, int present) {
+        // TODO: 19/03/2019 pour chaque currentChoice,
+        // TODO: 19/03/2019 utilisé les methodes goodPlace et present pour savoir si ils sont égaux aux argument goodplace et present dans la fonction
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
             boolean delete = false;
-            if (turn != 0) {
-                System.out.println(choice);
-                delete = checkResponse(choice, response);
-            }
-            else if (turn == 0) {
-                System.out.println(choice);
-                delete = checkResponse(choice, firstProposition(response.length()));
-            }
+            System.out.println(choice);
+            delete = checkResponse(choice, response, goodPlace, present);
             if (delete) {
                 System.out.println(choice + "supprimé");
                 currentChoices.remove(choice);
@@ -218,20 +169,30 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
 
     /**
      * see if response is deletable or not
-     *
-     * @param choice   the number of list to test
-     * @param response the number proposed
+     *** Temp
+     * for (int i = 0; i < choice.length(); i++) {
+     *             for (int j = 0; j < choice.length(); j++) {
+     *                 if (choice.charAt(j) == response.charAt(i))
+     *                     return true;
+     *             }
+     *         }
+     *         return false;
+     ***
+     * @param choiceOfList   the number of list to test
+     * @param choiceOfUser the number proposed
      * @return true if deletable
      */
-    public boolean checkResponse(String choice, String response) {
-        for (int i = 0; i < choice.length(); i++) {
-            for (int j = 0; j < choice.length(); j++) {
-                if (choice.charAt(j) == response.charAt(i))
-                    return true;
-            }
+    public boolean checkResponse(String choiceOfList, String choiceOfUser, int goodPlace, int present) {
+        int goodPlaceReference;
+        int presentReference;
+        presentReference = present(choiceOfUser.toCharArray(), choiceOfList.toCharArray());
+        goodPlaceReference = goodPlace(choiceOfUser.toCharArray(), choiceOfList.toCharArray());
+        if ((present == presentReference) && (goodPlace == goodPlaceReference)) {
+            return false;
         }
-        return false;
+        return true;
     }
 }
 
 // TODO: 19/02/2019 avertir utilisateur des limites
+// TODO: 19/03/2019 logger 
