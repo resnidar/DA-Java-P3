@@ -8,8 +8,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class MastermindDefencer extends MastermindGame implements GameLogic {
+    int size;
+    int numberOfColor;
     public MastermindDefencer(Config config) {
         super(config);
+        size = config.getNumberSize();
+        numberOfColor = config.getColorNumber();
     }
 
     private ArrayList<String> list = new ArrayList<String>();
@@ -20,11 +24,10 @@ public class MastermindDefencer extends MastermindGame implements GameLogic {
         int present;
         int goodPlace;
         int numberOfTurns = 0;
-        int size = 4;
         boolean win = false;
         int restart;
         int indexToListForDelete;
-        listPrep(5, size);
+        listPrep(numberOfColor, size);
         System.out.println("la liste est remplie ,le jeu commence");
         while (!win) {
             indexToListForDelete = proposition(numberOfTurns, size);
