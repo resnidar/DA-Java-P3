@@ -2,6 +2,7 @@ package com.resnidar;
 
 import com.resnidar.mastermind.MastermindChallenger;
 import com.resnidar.mastermind.MastermindDefencer;
+import com.resnidar.mastermind.MastermindDuel;
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
 import com.resnidar.searchgame.SearchGameDuel;
@@ -25,6 +26,7 @@ public class Menu {
         GameLogic searchGameDuel = new SearchGameDuel(config);
         GameLogic masterMindChallenger = new MastermindChallenger(config);
         GameLogic masterMindDefencer = new MastermindDefencer(config);
+        GameLogic mastermindDuel = new MastermindDuel(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -62,6 +64,10 @@ public class Menu {
                     System.out.println("vous avez choisi le mode de jeu defenser ");
                     restart = masterMindDefencer.logic();
                 }
+                else if (result == 3){
+                    System.out.println("vous avez choisi le mode de jeu Duel");
+                    restart = mastermindDuel.logic();
+                }
             } else {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");
                 logger.error("erreur ,vous avez rentrer " + result + " veuillez entrer 1 ou 2");
@@ -69,3 +75,5 @@ public class Menu {
         }
     }
 }
+
+// TODO: 26/03/2019 enum gagné ou perdu
