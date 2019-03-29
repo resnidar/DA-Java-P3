@@ -16,6 +16,7 @@ public abstract class SearchGame extends Games {
 
     public SearchGame(Config config) {
         super(config);
+        devMode = config.getDevMode();
     }
 
     public void iaLogic() {

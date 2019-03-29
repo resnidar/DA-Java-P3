@@ -16,6 +16,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
 
     public SearchGameChallenger(Config config) {
         super(config);
+
     }
     /*public SearchGameChallenger(Config config){
         super(config);
@@ -29,7 +30,9 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
      * @return permet au programme de redemarré ou non
      */
     public boolean logic(){
-        System.out.println("challenger est sur : " + devMode);
+
+        if (devMode == true)
+        System.out.println("le devMode est activé ");
         System.out.println("life = " + life + "\nnumberSize " + numberSize);
         logger.debug("début du searchGame");
         RandomGeneration randomGeneration = new RandomGeneration();

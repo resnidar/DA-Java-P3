@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import java.util.Random;
 
 public class RandomGeneration {
+    boolean devMod;
     private static Logger logger = Logger.getLogger(SearchGame.class);
     Config config = new Config(true);
 
@@ -14,7 +15,6 @@ public class RandomGeneration {
      * @return retourne le tableau rempli
      */
     public char[] getRandomNumber(int size) {
-        boolean devMod;
         int[] randomNumberTab = new int[size];
         logger.debug("tableau de int crée");
         char[] randomNumberChar = new char[size];
