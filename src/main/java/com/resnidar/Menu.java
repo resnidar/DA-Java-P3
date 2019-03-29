@@ -30,17 +30,29 @@ public class Menu {
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
-            System.out.println("taper : 1 pour joué au nombre secret");
-            System.out.println("taper : 2 pour joué au Mastermind");
-            logger.debug("attente de l'entrer utilisateur");
+            System.out.println("------------------------------------");
+            System.out.println("taper : 1 pour jouer au nombre secret :\n\nle but du jeu est de trouver ou faire trouver " +
+                    "le bon nombre aidé des signes +, - ou =. \n" +
+                    "attention vous avez un nombre de vies limité.");
+            System.out.println("------------------------------------");
+            System.out.println("taper : 2 pour jouer au Mastermind :\n\nle but du jeu est de trouver ou faire trouver le code secret" +
+                    " détenu par l'adversaire,\nvous n'aurez comme aide que le nombre de couleurs" +
+                    " (représenté par des chiffres) présents ou à la bonne place ");
+            logger.debug("attente de l'entrer utilisateur.");
             Scanner sc = new Scanner(System.in);
             int result = sc.nextInt();
+            for (int i = 0; i < 10; i++)
+                System.out.println();
             if (result == 1) {
-                System.out.println("vous avez choisi le jeu du nombre secret");
+                System.out.println("vous avez choisi le jeu du nombre secret\n");
                 System.out.println("quel mode de jeu voulez vous ?");
+                System.out.println("------------------------------------");
                 System.out.println("taper : 1 pour le mode challenger");
+                System.out.println("------------------------------------");
                 System.out.println("taper : 2 pour le mode defenseur");
+                System.out.println("------------------------------------");
                 System.out.println("taper : 3 pour le mode duel");
+                System.out.println("------------------------------------");
                 result = sc.nextInt();
                 if (result == 1) {
                     System.out.println("lancement de searchGame en mode challenger");
