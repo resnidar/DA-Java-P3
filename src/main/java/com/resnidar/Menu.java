@@ -47,37 +47,51 @@ public class Menu {
                 System.out.println("vous avez choisi le jeu du nombre secret\n");
                 System.out.println("quel mode de jeu voulez vous ?");
                 System.out.println("------------------------------------");
-                System.out.println("taper : 1 pour le mode challenger");
+                System.out.println("taper : 1 pour le mode challenger" +
+                        "\n\nvous devrez deviner le nombre secret détenu par l'ordinateur");
                 System.out.println("------------------------------------");
-                System.out.println("taper : 2 pour le mode defenseur");
+                System.out.println("taper : 2 pour le mode défenseur" +
+                        "\n\nvous devrez choisir un nombre que l'ordinateur devra trouver");
                 System.out.println("------------------------------------");
-                System.out.println("taper : 3 pour le mode duel");
+                System.out.println("taper : 3 pour le mode duel" +
+                        "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
+                        " et l'ordinateur");
                 System.out.println("------------------------------------");
                 result = sc.nextInt();
                 if (result == 1) {
-                    System.out.println("lancement de searchGame en mode challenger");
                     logger.debug("lancement de Searchgame en mode challenger");
                     restart = searchGameChallenger.logic();
                 } else if (result == 2) {
-                    System.out.println("lancement de serachGame en mode defenseur");
                     logger.debug("lancement de SearchGame en mode defenseur");
                     restart = searchGameDefence.logic();
                 } else if (result == 3) {
-                    System.out.println("lancement de SearchGame en mode duel");
+                    logger.debug("lancement de SearchGame en mode duel");
                     restart = searchGameDuel.logic();
                 }
             } else if (result == 2) {
-                System.out.println("vous avez choisi le jeu : mastermind");
+                System.out.println("vous avez choisi le jeu Mastermind\n");
+                System.out.println("quel mode de jeu voulez vous ?");
+                System.out.println("------------------------------------");
+                System.out.println("taper : 1 pour le mode challenger" +
+                        "\n\nvous devrez deviner la combinaison secrète détenu par l'ordinateur");
+                System.out.println("------------------------------------");
+                System.out.println("taper : 2 pour le mode défenseur" +
+                        "\n\nvous devrez choisir une combinaison secrète que l'ordinateur devra trouver");
+                System.out.println("------------------------------------");
+                System.out.println("taper : 3 pour le mode duel" +
+                        "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
+                        " et l'ordinateur");
+                System.out.println("------------------------------------");
                 result = sc.nextInt();
                 if (result == 1) {
-                    System.out.println("vous avez choisi le mode de jeu challenger");
+                    logger.debug("vous avez choisi le mode de jeu challenger");
                     restart = masterMindChallenger.logic();
                 } else if (result == 2) {
-                    System.out.println("vous avez choisi le mode de jeu defenser ");
+                    logger.debug("vous avez choisi le mode de jeu defenser ");
                     restart = masterMindDefender.logic();
                 }
                 else if (result == 3){
-                    System.out.println("vous avez choisi le mode de jeu Duel");
+                    logger.debug("vous avez choisi le mode de jeu Duel");
                     restart = masterMindDuel.logic();
                 }
             } else {
