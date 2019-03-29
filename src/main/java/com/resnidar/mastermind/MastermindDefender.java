@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MastermindDefencer extends MastermindGame implements GameLogic {
+public class MastermindDefender extends MastermindGame implements GameLogic {
     int numberOfColor;
-    public MastermindDefencer(Config config) {
+    public MastermindDefender(Config config) {
         super(config);
         numberOfColor = config.getColorNumber();
     }

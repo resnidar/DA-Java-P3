@@ -21,7 +21,9 @@
         </layout>
     </appender>
 
+
     <root>
+        <!--LEVEL : OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL -->
         <level value="error" />
         <appender-ref ref="console" />
         <appender-ref ref="file" />

@@ -1,7 +1,7 @@
 package com.resnidar;
 
 import com.resnidar.mastermind.MastermindChallenger;
-import com.resnidar.mastermind.MastermindDefencer;
+import com.resnidar.mastermind.MastermindDefender;
 import com.resnidar.mastermind.MastermindDuel;
 import com.resnidar.searchgame.SearchGameChallenger;
 import com.resnidar.searchgame.SearchGameDefence;
@@ -25,8 +25,8 @@ public class Menu {
         GameLogic searchGameDefence = new SearchGameDefence(config);
         GameLogic searchGameDuel = new SearchGameDuel(config);
         GameLogic masterMindChallenger = new MastermindChallenger(config);
-        GameLogic masterMindDefencer = new MastermindDefencer(config);
-        GameLogic mastermindDuel = new MastermindDuel(config);
+        GameLogic masterMindDefender = new MastermindDefender(config);
+        GameLogic masterMindDuel = new MastermindDuel(config);
         Boolean restart = true;
         while (restart == true) {
             System.out.println("Voici la listes des jeux : ");
@@ -62,11 +62,11 @@ public class Menu {
                     restart = masterMindChallenger.logic();
                 } else if (result == 2) {
                     System.out.println("vous avez choisi le mode de jeu defenser ");
-                    restart = masterMindDefencer.logic();
+                    restart = masterMindDefender.logic();
                 }
                 else if (result == 3){
                     System.out.println("vous avez choisi le mode de jeu Duel");
-                    restart = mastermindDuel.logic();
+                    restart = masterMindDuel.logic();
                 }
             } else {
                 System.out.println("il y a surement une erreur ,veuillez recommencé ");

@@ -65,3 +65,4 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 }
+// TODO: 26/03/2019 deplacé class test dans leurs propre package ou leurs propres dossiers 
