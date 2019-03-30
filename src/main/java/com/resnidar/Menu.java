@@ -95,11 +95,11 @@ public class Menu {
                     restart = masterMindDuel.logic();
                 }
             } else {
-                System.out.println("il y a surement une erreur ,veuillez recommencé ");
+                System.err.println("il y a surement une erreur ,veuillez recommencé ");
                 logger.error("erreur ,vous avez rentrer " + result + " veuillez entrer 1 ou 2");
             }
         }
     }
 }
 
-// TODO: 26/03/2019 enum gagné ou perdu
+// TODO: 26/03/2019 enum gagné ou perdu ?
