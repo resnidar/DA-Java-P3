@@ -9,17 +9,16 @@ import java.util.Scanner;
 public abstract class SearchGame extends Games {
 
     static Logger logger = Logger.getLogger(SearchGame.class);
-    protected int staticLife;
-    protected int win;
+    private int win;
     protected boolean devMode;
     Scanner sc = new Scanner(System.in);
 
-    public SearchGame(Config config) {
+    SearchGame(Config config) {
         super(config);
         devMode = config.getDevMode();
     }
 
-    public void iaLogic() {
+    void iaLogic() {
         String userIndic;
         char[] userIndicTab;
         boolean loose;
@@ -30,8 +29,7 @@ public abstract class SearchGame extends Games {
             iaTab[i] = '5';
         while (this.life > 0 && this.win != userNumberChar.length) { // cette boucle est limité par la vie
             System.out.print("AiA : je te propose ");
-            for (int j = 0; j < iaTab.length; j++)
-                System.out.print(iaTab[j]);
+            for (char c : iaTab) System.out.print(c);
             System.out.println(" saisie  + , - ou =");
             userIndic = sc.next();
             userIndicTab = userIndic.toCharArray();
@@ -48,7 +46,7 @@ public abstract class SearchGame extends Games {
      *
      * @param userIndicTab indication of user for ia (+ ,- or =)
      * @param iaTab        le nombre que propose l'ia
-     * @return
+     * @return lose        if true : the game is lose
      */
     boolean iaMind(char[] userIndicTab, char[] iaTab) {
         boolean lose = false;
@@ -81,12 +79,11 @@ public abstract class SearchGame extends Games {
             } else
                 System.out.println("erreur !");
         }
-
         return lose;
     }
 
-    public void iaWinOrLose(char[] userNumberChar, boolean fail) {
-        if (fail == true)
+    private void iaWinOrLose(char[] userNumberChar, boolean fail) {
+        if (fail)
             this.life -= 1;
         if (this.win == userNumberChar.length && this.life != 0)
             System.out.println("AiA : j'ai gagné ! il me restait " + this.life + " vie :D !");
@@ -108,7 +105,7 @@ public abstract class SearchGame extends Games {
         char[] userTab;
         int totalFail = 0;
         int fail = 0;
-        for (int i = 0; i < life && endGame == false; i++) {
+        for (int i = 0; i < life && !endGame; i++) {
             System.out.println("AiA : c'est à toi, essai de trouver le nombre que je te cache");
             SearchGameChallenger.logger.debug("attente de l'user");
             proposition = sc.next();
