@@ -32,7 +32,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
     public boolean logic(){
         for (int i = 0; i < 20; i++)
             System.out.println();
-        if (devMode == true)
+        if (devMode)
         System.out.println("le devMode est activé ");
         System.out.println("aIa : pour cette partie, tu as " + life +" vies, tu peux changer ça dans le config.properties \n");
         logger.debug("débug : début du jeu searchGameChallenger");
@@ -56,8 +56,6 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
         restartInt = sc.nextInt();
         if (restartInt == 1)
             restart = true;
-        if (restartInt == 2)
-            restart = false;
         logger.debug("débug : le Scanner a receptionner les donnees ");
         return restart;
     }
