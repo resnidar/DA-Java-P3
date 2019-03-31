@@ -29,6 +29,8 @@ public class Menu {
         GameLogic masterMindDuel = new MastermindDuel(config);
         Boolean restart = true;
         while (restart == true) {
+            for (int i = 0; i < 50; i++)
+                System.out.println();
             System.out.println("Voici la listes des jeux : ");
             System.out.println("------------------------------------");
             System.out.println("taper : 1 pour jouer au nombre secret :\n\nle but du jeu est de trouver ou faire trouver " +
@@ -101,5 +103,3 @@ public class Menu {
         }
     }
 }
-
-// TODO: 26/03/2019 enum gagné ou perdu ?

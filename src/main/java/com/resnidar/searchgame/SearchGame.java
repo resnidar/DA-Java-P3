@@ -109,7 +109,7 @@ public abstract class SearchGame extends Games {
         int totalFail = 0;
         int fail = 0;
         for (int i = 0; i < life && endGame == false; i++) {
-            System.out.println("trouve les bon numero :");
+            System.out.println("AiA : c'est à toi, essai de trouver le nombre que je te cache");
             SearchGameChallenger.logger.debug("attente de l'user");
             proposition = sc.next();
             SearchGameChallenger.logger.debug("proposition recu");
@@ -122,6 +122,10 @@ public abstract class SearchGame extends Games {
                     endGame = true;
                 if (fail > 0)
                     totalFail++;
+                if (fail != userTab.length && fail != 0)
+                    System.out.println("\nAiA : bien joué, tu te rapproches du bon résultat");
+                if (fail == userTab.length)
+                    System.out.println("\n\nAiA : dommage, tu n'y es pas");
                 fail = 0;
             } catch (ArrayIndexOutOfBoundsException e) {
                 SearchGameChallenger.logger.error("method propositionCompar don't work");
@@ -129,9 +133,9 @@ public abstract class SearchGame extends Games {
             }
         }
         if (totalFail < life) {
-            System.out.println("\n\rbien joué ,tu a gagné");
+            System.out.println("\n\rAiA : Mince, j'ai perdu ... bien jouer ! ");
         } else
-            System.out.println("tu a perdu désolé");
+            System.out.println("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois");
     }
 }
 // TODO: 15/01/2019 faire une class abstraite 
