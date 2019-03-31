@@ -1,7 +1,6 @@
 package com.resnidar;
 
 import com.resnidar.searchgame.SearchGame;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.log4j.Logger;
 
 import java.util.Random;
@@ -29,11 +28,11 @@ public class RandomGeneration  {
             randomNumberChar[i] += '0';
         }
         logger.debug("return randomNumberChar");
-        if (devMod == true){
+        if (devMod){
             System.out.println("-----------------devMode-------------------");
             System.out.println("le nombre a trouver est ");
-            for (int i = 0; i < randomNumberChar.length; i++) {
-                System.out.print(randomNumberChar[i]);
+            for (char c : randomNumberChar) {
+                System.out.print(c);
             }
             System.out.println("\n-------------------------------------------");
         }

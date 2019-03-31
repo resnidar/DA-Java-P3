@@ -13,9 +13,9 @@ import java.util.Scanner;
 public class Menu {
     protected Config config;
 
-    static Logger logger = Logger.getLogger(Menu.class);
+    private static Logger logger = Logger.getLogger(Menu.class);
 
-    public Menu(boolean forcedDevMode) {
+    Menu(boolean forcedDevMode) {
         config = new Config(forcedDevMode);
     }
 
@@ -27,8 +27,8 @@ public class Menu {
         GameLogic masterMindChallenger = new MastermindChallenger(config);
         GameLogic masterMindDefender = new MastermindDefender(config);
         GameLogic masterMindDuel = new MastermindDuel(config);
-        Boolean restart = true;
-        while (restart == true) {
+        boolean restart = true;
+        while (restart) {
             for (int i = 0; i < 50; i++)
                 System.out.println();
             System.out.println("Voici la listes des jeux : ");

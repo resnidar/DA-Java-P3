@@ -16,8 +16,8 @@ public class Config {
 
     public Config(boolean forcedDevMode) {
         readConfig();
-        if (forcedDevMode == true) {
-            this.devMode = true;
+        if (forcedDevMode) {
+            devMode = true;
         }
     }
 
@@ -28,7 +28,7 @@ public class Config {
     /**
      * cette methode permet la lecture du .properties
      */
-    public void readConfig() {
+    private void readConfig() {
         Properties prop = new Properties();
         try {
             logger.debug("lecture du fichier log4j.xml");
@@ -53,7 +53,7 @@ public class Config {
         return devMode;
     }
 
-    public int getLife() {
+    int getLife() {
         return life;
     }
 

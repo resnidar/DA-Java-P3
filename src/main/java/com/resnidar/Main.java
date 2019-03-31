@@ -3,7 +3,7 @@ package com.resnidar;
 import org.apache.log4j.Logger;
 
 public class Main {
-static Logger logger = Logger.getLogger(Main.class);
+private static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
         if (args.length != 0) {
