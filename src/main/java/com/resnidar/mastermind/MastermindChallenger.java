@@ -40,7 +40,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         boolean win = false;
         int goodPlace = 0;
         int present;
-        expected = randomGeneration.getRandomNumber(numberSize);
+        expected = randomGeneration.getRandomNumber(numberSize, devMode);
         while (life > 0 && !win) {
             System.out.println("veuillez entrer le nombre a testé : ");
             answer = userRequest();

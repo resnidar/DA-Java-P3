@@ -42,7 +42,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
         System.out.println("lancement du jeu : nombre secret ");
         logger.debug("appel de la class RandomGeneration");
         logger.debug("appel de randomGeneration");
-        char[] randomNumberTab = randomGeneration.getRandomNumber(numberSize);
+        char[] randomNumberTab = randomGeneration.getRandomNumber(numberSize, devMode);
         System.out.println("le nombre est composé de " + numberSize + " caractères");
         userInteract(life, randomNumberTab);
         System.out.println("voulez vous rejouer ? y/n ");

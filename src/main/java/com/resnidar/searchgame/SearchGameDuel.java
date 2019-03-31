@@ -37,7 +37,7 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         System.out.println("entre le numero que je doit trouver : ");
         System.out.println("AiA : Attention ,il faut mettre un nombre de : " + numberSize + " exactement");
         System.out.println("tu peut changer sa dans le .properties");
-        iaNumberChar = rg.getRandomNumber(numberSize); // method
+        iaNumberChar = rg.getRandomNumber(numberSize, devMode); // method
         while (winGame == false) {
             fail = 0;
             if (this.life == staticLife) {
