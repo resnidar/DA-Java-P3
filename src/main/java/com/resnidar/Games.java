@@ -10,18 +10,16 @@ public abstract class Games {
     protected int numberSize;
     protected int life;
     protected boolean devMode;
-    private final Config config;
 
     public Games(Config config){
         super();
-        this.config = config;
         this.numberSize = config.getNumberSize();
         this.life = config.getLife();
         this.devMode = config.getDevMode();
     }
 
     static public Logger logger = Logger.getLogger(SearchGame.class);
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     /*Config config = new Config(true); // TODO: 04/02/2019 temporaire */
 
     /*protected int size;
@@ -33,9 +31,9 @@ public abstract class Games {
      * @param randomNumberTab tableau de nombre aléatoire
      * @param userTab         tableu remplie par l'utilisateur
      * @param fail            le nombre de faute
-     * @return
+     * @return the number of dismatch in randomNumberTab and userTab
      */
-    public int propositionCompar(char[] randomNumberTab, char[] userTab, int fail) {
+    protected int propositionCompar(char[] randomNumberTab, char[] userTab, int fail) {
         for (int j = 0; j < randomNumberTab.length; j++) {
             if (randomNumberTab[j] > userTab[j]) {
                 System.out.print("+");
@@ -54,10 +52,10 @@ public abstract class Games {
     }
 
     /**
-     * this method request an entry at user in a String and pass String in Char Board
-     * @return
+     * this method request an entry at user in a String and pass String in Char array
+     * @return number of user in a char array
      */
-    public char[] userRequest() {
+    protected char[] userRequest() {
         String userNumber;
         char[] userNumberChar;
         userNumber = sc.next();

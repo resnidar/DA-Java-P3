@@ -10,20 +10,10 @@ import java.util.Scanner;
 public class SearchGameChallenger extends SearchGame implements GameLogic{
     static Logger logger = Logger.getLogger(SearchGameChallenger.class);
 
-    //boolean devMode;
-    //int life;
-    //int numberSize;
-
     public SearchGameChallenger(Config config) {
         super(config);
 
     }
-    /*public SearchGameChallenger(Config config){
-        super(config);
-        this.devMode = devMode;
-        this.life = life;
-        this.numberSize = numberSize;
-    }*/
 
     /**
      *cette methode gère la logique du programme
