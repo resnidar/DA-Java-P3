@@ -20,10 +20,6 @@ public abstract class Games {
 
     static public Logger logger = Logger.getLogger(SearchGame.class);
     private Scanner sc = new Scanner(System.in);
-    /*Config config = new Config(true); // TODO: 04/02/2019 temporaire */
-
-    /*protected int size;
-    protected int life;*/
 
     /**
      * cette fonction permet de comparé les tableaux entres eux
@@ -64,7 +60,5 @@ public abstract class Games {
         return userNumberChar;
     }
     // TODO: 18/12/2018 faire verif endtest
-    // TODO: 18/12/2018 control erreur
     // TODO: 22/01/2019 approfondir abstract
-    // TODO: 22/01/2019 method abstraite
 }

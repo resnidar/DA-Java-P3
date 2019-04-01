@@ -34,7 +34,7 @@ public class RandomGeneration  {
             for (char c : randomNumberChar) {
                 System.out.print(c);
             }
-            System.out.println("\n-------------------------------------------");
+            System.err.println("\n-------------------------------------------");
         }
         return randomNumberChar;
     }

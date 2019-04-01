@@ -69,9 +69,9 @@ public abstract class SearchGame extends Games {
                 if (temporary > 5)
                     temporary += 5;
                 if (temporary < 5)
-                    temporary += 2; // car 5 + 2 / 2 = 3.5 Donc floor 3
+                    temporary += 0; // car 5 + 2 / 2 = 3.5 Donc floor 3
                 temporary /= 2;
-                iaTab[j] = (char) Math.floor(temporary);
+                iaTab[j] = (char) Math.ceil(temporary);
                 iaTab[j] += '0';
                 lose = true;
             } else if (userIndicTab[j] == '=') {

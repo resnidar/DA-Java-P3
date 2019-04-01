@@ -24,7 +24,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic{
             System.out.println();
         if (devMode)
         System.out.println("le devMode est activé ");
-        System.out.println("aIa : pour cette partie, tu as " + life +" vies, tu peux changer ça dans le config.properties \n");
+        System.out.println("AiA : pour cette partie, tu as " + life +" vies, tu peux changer ça dans le config.properties \n");
         logger.debug("débug : début du jeu searchGameChallenger");
         RandomGeneration randomGeneration = new RandomGeneration();
         Scanner sc = new Scanner(System.in);

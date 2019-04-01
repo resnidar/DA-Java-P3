@@ -5,9 +5,8 @@ import com.resnidar.GameLogic;
 import org.apache.log4j.Logger;
 
 public class SearchGameDefence extends SearchGame implements GameLogic {
-    static Logger logger = Logger.getLogger(SearchGameDefence.class);
+    private static Logger logger = Logger.getLogger(SearchGameDefence.class);
 
-    boolean devMode;
     public SearchGameDefence(Config config) {
         super(config);
     }
@@ -17,32 +16,32 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      * @return restart ,it's for restart or not the program at the end of the game
      */
     public boolean logic() {
-        System.out.println("challenger est sur : " + devMode);
-        System.out.println("life = " + life + "\nnumberSize " + numberSize);
-        System.out.println("defence est sur : " + devMode);
-        boolean restart = false;
-        logger.debug("searchGame en mode defensif actif");
-        System.out.println("mode logique actif");
-        System.out.println("Salut ! je m'appel AiA et je serais ton adversaire pour cette partie ");
-        System.out.println("AiA : Donne moi un nombre a trouver :)");
-        restart = iaTurn(restart);
+        boolean restart;
+        for (int i = 0; i < 15; i++)
+            System.out.println();
+        if (devMode == true) {
+            System.out.println("devMode activé");
+        }
+        System.out.println("AiA : pour cette partie, tu as " + life + " vies, tu peux changer ça dans le config.properties \n");
+        System.out.println("AiA : Donne moi un nombre a trouver :) le nombre peut faire la taille que tu veut");
+        restart = iaTurn();
     return restart;
     }
 
     /**
      *it's the base of Ia
-     * @param restart is a boolean that manages if users want restart or not at the end of game
      * @return return the restart
      */
-    protected boolean iaTurn(boolean restart) {
+    private boolean iaTurn() {
         char restartChar;
+        boolean restart = false;
         iaLogic();
         System.out.println("AIA : veut tu recommencer une partie avec moi ? y pour oui ou n pour non ");
         restartChar = sc.next().charAt(0);
         if ( restartChar == 'y')
             restart = true;
         else if (restartChar == 'n')
-            restart = false;
+            System.out.println("le jeu ce ferme, a bientot");
         else
             System.out.println("erreur");
         return restart;
