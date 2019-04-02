@@ -98,11 +98,9 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         else if (restartByte == 2 )
             System.out.println("AiA : ca marche ! à plus tard");
         else
-            System.err.println("il y a une erreur ,il fallait rentré 1 ou 2");
+            System.err.println("il y a une erreur, il faut rentré 1 ou 2");
         return restart;
     }
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
     // TODO: 15/01/2019 faire la documentation
-    // TODO: 22/01/2019 sonar > a telecharger (ou utiliser)
-    // TODO: 22/01/2019 trevis (se renseigner)
 }

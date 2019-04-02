@@ -30,7 +30,7 @@ public class RandomGeneration  {
         logger.debug("return randomNumberChar");
         if (devMod){
             System.out.println("-----------------devMode-------------------");
-            System.out.println("le nombre a trouver est ");
+            System.out.println("le nombre à trouver est ");
             for (char c : randomNumberChar) {
                 System.out.print(c);
             }

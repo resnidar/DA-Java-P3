@@ -20,7 +20,16 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         Scanner sc = new Scanner(System.in);
         boolean restart = false;
         int restartResponse;
-        System.out.println("lancement du jeu Mastermind Challenger");
+        for (int i = 0; i < 15; i++)
+            System.out.println();
+        System.out.println("------------------------------------\n" +
+                "AiA : bienvenue sur le mode de jeu challenger du mastermind,\n" +
+                "je t'explique les règles : \n" +
+                "tu dois trouver mon code secret, je ne t'aiderais qu'avec des indices simples :\n" +
+                "combien de chiffres sont présents, combiens sont à la bonne place\n" +
+                "pour bien jouer tu as deux règles à connètres :\n" +
+                "s'il y a 4 couleurs ,la première est 0. donc il y a les couleurs : 0, 1, 2, 3\n" +
+                "s'il y a 4 couleurs a la bonne place, c'est qu'elles sont aussi présentes !");
         iaMindMastermind();
         System.out.println("veut tu recommencer une partie de Mastermind en mode Challenger ? ");
         System.out.println("1 pour oui ou 2 pour non");
