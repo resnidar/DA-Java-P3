@@ -53,7 +53,7 @@ public class Config {
         return devMode;
     }
 
-    int getLife() {
+    public int getLife() {
         return life;
     }
 

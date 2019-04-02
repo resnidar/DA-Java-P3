@@ -8,88 +8,97 @@ import java.util.Scanner;
 
 public class SearchGameDuel extends SearchGame implements GameLogic {
 
-    RandomGeneration rg = new RandomGeneration();
-    Scanner sc = new Scanner(System.in);
-    static int staticLife;
+    private RandomGeneration rg = new RandomGeneration();
+    private Scanner sc = new Scanner(System.in);
+    private static int staticLife;
 
-    boolean devMode;
     public SearchGameDuel(Config config) {
         super(config);
-        //staticLife = life;
+        staticLife = config.getLife();
     }
 
     public boolean logic() {
-        System.out.println("challenger est sur : " + devMode);
-        System.out.println("life = " + life + "\nnumberSize " + numberSize);
-        System.out.println("duel est sur : " + devMode);
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
         char[] userTab;
-        int fail = 0;
-        boolean lose = false;
+        int fail;
+        boolean lose;
         boolean winGame = false;
         boolean restart = false;
-        char restartChar;
+        byte restartByte;
+        for (int i = 0; i < 15; i++)
+            System.out.println();
+        if (devMode)
+        System.out.println("le devMode est activé pour cette partie");
+        System.out.println("AiA : pour cette partie, tu as " + life + " vies, tu peux changer ça dans le config.properties \n");
         String proposition;
         logger.debug("Mode duel du SearchGme lancé");
         System.out.println("AiA : d'accord" +
                 " c'est partie pour le mode duel !");
-        System.out.println("entre le numero que je doit trouver : ");
-        System.out.println("AiA : Attention ,il faut mettre un nombre de : " + numberSize + " exactement");
-        System.out.println("tu peut changer sa dans le .properties");
+        System.out.println("------------------------------------\n" +
+                "je t'éxplique les règles rapidement:\n" +
+                "nous devons chacun notre tour essayé de trouver le numéro caché de l'autre\n" +
+                "le premier a trouvé le numéro a gagner, il n'y a pas de point de vie\n" +
+                "chaque numéro a une longueur d'exactement " + numberSize + " chiffres\n" +
+                "------------------------------------");
         iaNumberChar = rg.getRandomNumber(numberSize, devMode); // method
-        while (winGame == false) {
+        while (!winGame) {
             fail = 0;
             if (this.life == staticLife) {
-                System.out.println("AiA : allez ! c'est a moi de deviné ton nombre ,est ce que c'est : ");
+                System.out.println("AiA : allez ! c'est à moi de deviner ton nombre, est ce que c'est : ");
                 for (int j = 0; j < iaTab.length; j++) {
                     iaTab[j] = '5';
                     System.out.print(iaTab[j]);
                 }
             } else {
-                System.out.println("AiA : moi je te propose : ");
-                for (int j = 0; j < iaTab.length; j++)
-                    System.out.print(iaTab[j]);
+                System.out.println("AiA : je te propose : ");
+                for (char c : iaTab) System.out.print(c);
             }
             System.out.println("\nAiA : répond moi avec +, - ou =");
             String userIndic = sc.next();
             char[] userIndicTab = userIndic.toCharArray();
             lose = iaMind(userIndicTab, iaTab);
-            if (lose == false) {
+            if (!lose) {
                 System.out.println("AiA : haha ! j'ai gagner !");
                 winGame = true;
             }
-            if (winGame == false) {
-                System.out.println("très bien c'est noté ,a toi !");
+            if (!winGame) {
+                System.out.println("AiA : très bien, c'est noté ,a toi de faire une proposition\n" +
+                        "je te répondrais avec des indices!");
                 System.out.println("fait moi une proposition : ");
                 proposition = sc.next();
                 userTab = proposition.toCharArray();
                 fail = propositionCompar(iaNumberChar, userTab, fail); // method
                 if (fail == 0) {
-                    System.out.println("\nAiA : bien jouer ,tu m'a battue ... ");
+                    System.out.println("\nAiA : Mince tu m'as battue !  Bien joué");
                     winGame = true;
                 }
                 if (fail != 0 && fail != proposition.length() - 1 && fail != 1)
-                    System.out.println("\nAiA : ce n'est pas ca");
+                    System.out.println("\nAiA : ce n'est pas ça");
                 if (fail == proposition.length() - 1)
                     System.out.println("\nAiA : bien jouer sa progresse ! ");
                 if (fail == 1)
-                    System.out.println("\nAiA : tu y est presque ! plus qu'un a trouver");
+                    System.out.println("\nAiA : tu y es presque ! plus qu'un a trouvé");
                 if (fail != 0) {
-                    System.out.println("AiA : et non tu t'es tromper");
+                    System.out.println("AiA : tu t'es trompé");
                     this.life--;
                 }
             }
         }
-        System.out.println("voulez vous recommencer ?");
-        System.out.println("oui : y \n non : n");
-        restartChar = sc.next().charAt(0);
-        if (restartChar == 'y')
+        System.out.println("AiA : veux-tu refaire une partie avec moi de ce jeu ou d'un autre mode de jeu ?");
+        System.out.println("------------------------------------");
+        System.out.println("taper : 1 pour recommencer une partie");
+        System.out.println("------------------------------------");
+        System.out.println("taper : 2 pour fermer le jeu");
+        System.out.println("------------------------------------");
+        logger.debug("débug : Scanner en attente de l user");
+        restartByte = sc.nextByte();
+        if (restartByte == 1)
             restart = true;
-        else if (restartChar == 'n')
-            restart = false;
+        else if (restartByte == 2 )
+            System.out.println("AiA : ca marche ! à plus tard");
         else
-            System.out.println("il y a une erreur ,il fallait rentré y ou n");
+            System.err.println("il y a une erreur ,il fallait rentré 1 ou 2");
         return restart;
     }
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi

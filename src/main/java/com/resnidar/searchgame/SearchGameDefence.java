@@ -19,7 +19,7 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
         boolean restart;
         for (int i = 0; i < 15; i++)
             System.out.println();
-        if (devMode == true) {
+        if (devMode) {
             System.out.println("devMode activé");
         }
         System.out.println("AiA : pour cette partie, tu as " + life + " vies, tu peux changer ça dans le config.properties \n");
@@ -33,22 +33,27 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      * @return return the restart
      */
     private boolean iaTurn() {
-        char restartChar;
+        byte restartByte;
         boolean restart = false;
         iaLogic();
-        System.out.println("AIA : veut tu recommencer une partie avec moi ? y pour oui ou n pour non ");
-        restartChar = sc.next().charAt(0);
-        if ( restartChar == 'y')
+        //peut ètre faire une class qui permet d'affiché, de sout ?
+        System.out.println("AiA : veux-tu refaire une partie avec moi de ce jeu ou d'un autre mode de jeu ?");
+        System.out.println("------------------------------------");
+        System.out.println("taper : 1 pour recommencer une partie");
+        System.out.println("------------------------------------");
+        System.out.println("taper : 2 pour fermer le jeu");
+        System.out.println("------------------------------------");
+        logger.debug("débug : Scanner en attente de l user");
+        restartByte = sc.nextByte();
+        if ( restartByte == 1)
             restart = true;
-        else if (restartChar == 'n')
+        else if (restartByte == 2)
             System.out.println("le jeu ce ferme, a bientot");
         else
-            System.out.println("erreur");
+            System.err.println("erreur, ta réponse doit être composé soit de 1 soit de 2");
         return restart;
     }
     // TODO: 04/02/2019 BUG : ne trouve pas le 3 ,seulement 2 - 4 - 2 - 4
 }
-
-// TODO: 15/01/2019 décomposé en méthode 
-// TODO: 15/01/2019 organisation mere fille 
-//dichotomie
+// TODO: 15/01/2019 décomposé en méthode
+// TODO: 15/01/2019 organisation mere fille
