@@ -134,6 +134,7 @@ public abstract class SearchGame extends Games {
         } else
             System.out.println("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois");
     }
+
 }
 // TODO: 15/01/2019 faire une class abstraite 
 // TODO: 15/01/2019 faire une method abstraite

@@ -17,17 +17,16 @@ public abstract class MastermindGame extends Games implements GameLogic {
         super(config);
     }
 
-    public boolean logic(){
-        return false;
+    public byte logic() {
+        return 3;
     }
 
     /**
-     *
-     * @param answer an char tab of number of user
+     * @param answer   an char tab of number of user
      * @param expected an char tab of hidden number expected
      * @return present : the number of present number
      */
-    int present(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre qui sont present
+    int present(char[] answer, char[] expected) { // ici nous allons calculé le nombre de nombre qui sont present
         int present = 0;
         int[] stat = new int[expected.length];
         for (char c : answer) {
@@ -43,16 +42,14 @@ public abstract class MastermindGame extends Games implements GameLogic {
     }
 
     /**
-     *
-     * @param answer an char tab of number of user
+     * @param answer   an char tab of number of user
      * @param expected an char tab of hidden number expected
      * @return goodPlace : the number of number at goodPlace
      */
-    int goodPlace(char[] answer, char[] expected){ // ici nous allons calculé le nombre de nombre a la bonne place
+    int goodPlace(char[] answer, char[] expected) { // ici nous allons calculé le nombre de nombre a la bonne place
         int goodPlace = 0;
-        for (int answerIndex = 0; answerIndex < answer.length; answerIndex++)
-        {
-            if (answer[answerIndex] == expected[answerIndex]){
+        for (int answerIndex = 0; answerIndex < answer.length; answerIndex++) {
+            if (answer[answerIndex] == expected[answerIndex]) {
                 goodPlace++;
             }
         }
@@ -61,7 +58,8 @@ public abstract class MastermindGame extends Games implements GameLogic {
 
     /**
      * listPrep prepar the list for the game
-     * @param color number of color in the game
+     *
+     * @param color    number of color in the game
      * @param realSize number of element to find
      * @return the list ready for the game
      */
@@ -132,7 +130,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      *
      * @return return the number proposed
      */
-    protected int defineProposition(){
+    protected int defineProposition() {
         Random r = new Random();
         int indexList;
         indexList = r.nextInt(list.size());
@@ -158,7 +156,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @param turn           the number of turn
      * @return the List
      */
-    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response,int turn, int goodPlace, int present) {
+    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response, int turn, int goodPlace, int present) {
         // TODO: 19/03/2019 pour chaque currentChoice,
         // TODO: 19/03/2019 utilisé les methodes goodPlace et present pour savoir si ils sont égaux aux argument goodplace et present dans la fonction
         for (int i = 0; i < currentChoices.size(); i++) {
@@ -179,7 +177,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
     /**
      * see if response is deletable or not
      *
-     * @param choiceOfList   the number of list to test
+     * @param choiceOfList the number of list to test
      * @param choiceOfUser the number proposed
      * @return true if deletable
      */

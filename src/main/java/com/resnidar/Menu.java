@@ -28,7 +28,9 @@ public class Menu {
         GameLogic masterMindDefender = new MastermindDefender(config);
         GameLogic masterMindDuel = new MastermindDuel(config);
         boolean restart = true;
-        while (restart) {
+        byte restartByte = 1;
+        while (restartByte != 3) {
+            restartByte = 1;
             for (int i = 0; i < 50; i++)
                 System.out.println();
             System.out.println("Voici la listes des jeux : ");
@@ -62,13 +64,16 @@ public class Menu {
                 result = sc.nextInt();
                 if (result == 1) {
                     logger.debug("lancement de Searchgame en mode challenger");
-                    restart = searchGameChallenger.logic();
+                    while (restartByte == 1)
+                        restartByte = searchGameChallenger.logic();
                 } else if (result == 2) {
                     logger.debug("lancement de SearchGame en mode defenseur");
-                    restart = searchGameDefence.logic();
+                    while (restartByte == 1)
+                        restartByte = searchGameDefence.logic();
                 } else if (result == 3) {
                     logger.debug("lancement de SearchGame en mode duel");
-                    restart = searchGameDuel.logic();
+                    while (restartByte == 1)
+                        restartByte = searchGameDuel.logic();
                 }
             } else if (result == 2) {
                 System.out.println("vous avez choisi le jeu Mastermind\n");
@@ -87,14 +92,16 @@ public class Menu {
                 result = sc.nextInt();
                 if (result == 1) {
                     logger.debug("vous avez choisi le mode de jeu challenger");
-                    restart = masterMindChallenger.logic();
+                    while (restartByte == 1)
+                        restartByte = masterMindChallenger.logic();
                 } else if (result == 2) {
                     logger.debug("vous avez choisi le mode de jeu defenser ");
-                    restart = masterMindDefender.logic();
-                }
-                else if (result == 3){
+                    while (restartByte == 1)
+                        restartByte = masterMindDefender.logic();
+                } else if (result == 3) {
                     logger.debug("vous avez choisi le mode de jeu Duel");
-                    restart = masterMindDuel.logic();
+                    while (restartByte == 1)
+                        restartByte = masterMindDuel.logic();
                 }
             } else {
                 System.err.println("il y a surement une erreur ,veuillez recommencé ");

@@ -3,19 +3,19 @@ package com.resnidar.mastermind;
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MastermindDefender extends MastermindGame implements GameLogic {
     int numberOfColor;
+
     public MastermindDefender(Config config) {
         super(config);
         numberOfColor = config.getColorNumber();
     }
 
     @Override
-    public boolean logic() {
+    public byte logic() {
+        byte restartByte;
         Scanner sc = new Scanner(System.in);
         int present;
         int goodPlace;
@@ -31,20 +31,15 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
             System.out.println("combien y en a t il de present ?");
             present = sc.nextInt();
             System.out.println("il y en a " + present + "de present et " + goodPlace + "a la bonne place ");
-                list = removePossibility(list, list.get(indexToListForDelete),numberOfTurns , goodPlace, present);
-             if (goodPlace == numberSize) {
+            list = removePossibility(list, list.get(indexToListForDelete), numberOfTurns, goodPlace, present);
+            if (goodPlace == numberSize) {
                 win = true;
-                System.out.println("tu a gagné bien joué ! veut tu recommencer ?");
-                System.out.println("0 pour oui  \n1 pour non");
-                restart = sc.nextInt();
-                if (restart == 0)
-                    return true;
-                else if (restart == 1)
-                    return false;
+                System.out.println("tu a gagné bien joué !");
             }
             numberOfTurns++;
         }
-        return false;
+        restartByte = fonctionRestartChoice();
+        return restartByte;
     }
 
 

@@ -17,7 +17,7 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         staticLife = config.getLife();
     }
 
-    public boolean logic() {
+    public byte logic() {
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
         char[] userTab;
@@ -29,7 +29,7 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         for (int i = 0; i < 15; i++)
             System.out.println();
         if (devMode)
-        System.out.println("le devMode est activé pour cette partie");
+            System.out.println("le devMode est activé pour cette partie");
         System.out.println("AiA : pour cette partie, tu as " + life + " vies, tu peux changer ça dans le config.properties \n");
         String proposition;
         logger.debug("Mode duel du SearchGme lancé");
@@ -85,22 +85,10 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
                 }
             }
         }
-        System.out.println("AiA : veux-tu refaire une partie avec moi de ce jeu ou d'un autre mode de jeu ?");
-        System.out.println("------------------------------------");
-        System.out.println("taper : 1 pour recommencer une partie");
-        System.out.println("------------------------------------");
-        System.out.println("taper : 2 pour fermer le jeu");
-        System.out.println("------------------------------------");
-        logger.debug("débug : Scanner en attente de l user");
-        restartByte = sc.nextByte();
-        if (restartByte == 1)
-            restart = true;
-        else if (restartByte == 2 )
-            System.out.println("AiA : ca marche ! à plus tard");
-        else
-            System.err.println("il y a une erreur, il faut rentré 1 ou 2");
-        return restart;
+        restartByte = fonctionRestartChoice();
+        return restartByte;
     }
+
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
     // TODO: 15/01/2019 faire la documentation
 }

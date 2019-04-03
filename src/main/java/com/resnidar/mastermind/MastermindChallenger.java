@@ -14,12 +14,14 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
 
     /**
      * method logic : is the logic of this Class
+     *
      * @return restart : if is true ,the game restart
      */
-    public boolean logic() {
+    public byte logic() {
         Scanner sc = new Scanner(System.in);
         boolean restart = false;
         int restartResponse;
+        byte restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();
         System.out.println("------------------------------------\n" +
@@ -27,16 +29,12 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
                 "je t'explique les règles : \n" +
                 "tu dois trouver mon code secret, je ne t'aiderais qu'avec des indices simples :\n" +
                 "combien de chiffres sont présents, combiens sont à la bonne place\n" +
-                "pour bien jouer tu as deux règles à connètres :\n" +
+                "pour bien jouer tu as deux règles à connaitres :\n" +
                 "s'il y a 4 couleurs ,la première est 0. donc il y a les couleurs : 0, 1, 2, 3\n" +
                 "s'il y a 4 couleurs a la bonne place, c'est qu'elles sont aussi présentes !");
         iaMindMastermind();
-        System.out.println("veut tu recommencer une partie de Mastermind en mode Challenger ? ");
-        System.out.println("1 pour oui ou 2 pour non");
-        restartResponse = sc.nextInt();
-        if (restartResponse == 1)
-            restart = true;
-        return restart;
+        restartByte = fonctionRestartChoice();
+        return restartByte;
     }
 
     /**
@@ -54,7 +52,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
             System.out.println("veuillez entrer le nombre a testé : ");
             answer = userRequest();
             present = present(answer, expected);
-            goodPlace = goodPlace(answer,expected);
+            goodPlace = goodPlace(answer, expected);
             present -= goodPlace;
             System.out.println("il y a " + present + " numero present mais pas a la bonne place ");
             System.out.println("il y a " + goodPlace + " numero a la bonne place");
