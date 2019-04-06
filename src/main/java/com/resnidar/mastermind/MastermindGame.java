@@ -9,11 +9,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class MastermindGame extends Games implements GameLogic {
-    protected ArrayList<String> list = new ArrayList<String>();
+    ArrayList<String> list = new ArrayList<String>();
     Scanner sc = new Scanner(System.in);
 
-
-    public MastermindGame(Config config) {
+    MastermindGame(Config config) {
         super(config);
     }
 
@@ -63,7 +62,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @param realSize number of element to find
      * @return the list ready for the game
      */
-    protected ArrayList listPrep(int color, int realSize) {
+    ArrayList listPrep(int color, int realSize) {
         int numberInt;
         int a = 0;
         int size = sizeBreak(color, realSize); // permet de crée une boucle basé sur une base numerique differente que la base 10
@@ -74,8 +73,8 @@ public abstract class MastermindGame extends Games implements GameLogic {
                 break;
             System.out.println("remplissage en cour ,veuillez patientez");
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println("liste : " + list.get(i));
+        for (String s : list) {
+            System.out.println("liste : " + s);
         }
         return list;
     }
@@ -87,7 +86,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @param realSize the number of element in the party
      * @return the number at use for break loop
      */
-    public int sizeBreak(int color, int realSize) {
+    int sizeBreak(int color, int realSize) {
         int number = color - 1;
         realSize -= 1;
         for (int i = 0; i < realSize; i++) {
@@ -130,7 +129,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      *
      * @return return the number proposed
      */
-    protected int defineProposition() {
+    private int defineProposition() {
         Random r = new Random();
         int indexList;
         indexList = r.nextInt(list.size());
@@ -140,9 +139,8 @@ public abstract class MastermindGame extends Games implements GameLogic {
         return indexList;
     }
 
-    protected int proposition() {
+    int proposition() {
         int indexList;
-        String stringNumber;
         indexList = defineProposition();
         System.out.println("combiens y en a t il a la bonne place ?");
         return indexList;
@@ -156,12 +154,12 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @param turn           the number of turn
      * @return the List
      */
-    public ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response, int turn, int goodPlace, int present) {
+    ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response, int turn, int goodPlace, int present) {
         // TODO: 19/03/2019 pour chaque currentChoice,
         // TODO: 19/03/2019 utilisé les methodes goodPlace et present pour savoir si ils sont égaux aux argument goodplace et present dans la fonction
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
-            boolean delete = false;
+            boolean delete;
             System.out.println(choice);
             delete = checkResponse(choice, response, goodPlace, present);
             if (delete) {
@@ -181,7 +179,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @param choiceOfUser the number proposed
      * @return true if deletable
      */
-    public boolean checkResponse(String choiceOfList, String choiceOfUser, int goodPlace, int present) {
+    private boolean checkResponse(String choiceOfList, String choiceOfUser, int goodPlace, int present) {
         int goodPlaceReference;
         int presentReference;
         presentReference = present(choiceOfUser.toCharArray(), choiceOfList.toCharArray());

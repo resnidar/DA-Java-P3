@@ -60,4 +60,4 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 }
-// TODO: 03/04/2019 terminé mastermindDuel 
+// TODO: 03/04/2019 terminé mastermindDuel
