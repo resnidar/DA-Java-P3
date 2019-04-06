@@ -6,7 +6,7 @@ import com.resnidar.GameLogic;
 import java.util.Scanner;
 
 public class MastermindDefender extends MastermindGame implements GameLogic {
-    int numberOfColor;
+    private int numberOfColor;
 
     public MastermindDefender(Config config) {
         super(config);
@@ -52,8 +52,6 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         restartByte = fonctionRestartChoice();
         return restartByte;
     }
-
-
 }
 
 // TODO: 19/02/2019 avertir utilisateur des limites

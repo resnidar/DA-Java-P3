@@ -17,7 +17,6 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      * @return restart ,it's for restart or not the program at the end of the game
      */
     public byte logic() {
-        boolean restart;
         byte restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();

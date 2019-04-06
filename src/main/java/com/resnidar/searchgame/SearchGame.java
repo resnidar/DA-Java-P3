@@ -138,14 +138,7 @@ public abstract class SearchGame extends Games {
             System.out.println("\n\rAiA : Mince, j'ai perdu ... bien jouer ! ");
         } else
             System.out.println("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois");
+        System.out.println("AiA : la réponse était " + randomGeneration.getWholeNumber());
     }
 
 }
-// TODO: 15/01/2019 faire une class abstraite 
-// TODO: 15/01/2019 faire une method abstraite
-// TODO: 15/01/2019 faire une interface 
-// TODO: 15/01/2019 faire un enum 
-// TODO: 15/01/2019 mastermind : les collections ARRAYLIST 
-// TODO: 15/01/2019 utiliser une bibliothèque
-// TODO: 22/01/2019 mettre en place mode dev via menu
-// TODO: 22/01/2019 arraylist hmap etc. collection java

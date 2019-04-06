@@ -22,6 +22,7 @@ public abstract class Games {
 
     static public Logger logger = Logger.getLogger(SearchGame.class);
     private Scanner sc = new Scanner(System.in);
+    public RandomGeneration randomGeneration = new RandomGeneration();
 
     /**
      * cette fonction permet de comparé les tableaux entres eux

@@ -5,11 +5,13 @@ import org.apache.log4j.Logger;
 
 import java.util.Random;
 
-public class RandomGeneration  {
+public class RandomGeneration {
+    String wholeNumber = "";
     private static Logger logger = Logger.getLogger(SearchGame.class);
 
     /**
      * permet de crée ,pour chaque case d un tableau ,un numero aléatoire
+     *
      * @return retourne le tableau rempli
      */
     public char[] getRandomNumber(int size, boolean devMod) {
@@ -28,15 +30,21 @@ public class RandomGeneration  {
             randomNumberChar[i] += '0';
         }
         logger.debug("return randomNumberChar");
-        if (devMod){
+        if (devMod) {
             System.out.println("-----------------devMode-------------------");
             System.out.println("le nombre à trouver est ");
             for (char c : randomNumberChar) {
                 System.out.print(c);
+                wholeNumber += c;
             }
             System.out.println("\n-------------------------------------------");
         }
         return randomNumberChar;
     }
+
+    public String getWholeNumber() {
+        return wholeNumber;
+    }
 }
+
 // TODO: 08/12/2018  log warning

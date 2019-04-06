@@ -2,13 +2,10 @@ package com.resnidar.searchgame;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
-import com.resnidar.RandomGeneration;
 
 import java.util.Scanner;
 
 public class SearchGameDuel extends SearchGame implements GameLogic {
-
-    private RandomGeneration rg = new RandomGeneration();
     private Scanner sc = new Scanner(System.in);
     private static int staticLife;
 
@@ -22,9 +19,8 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         char[] iaNumberChar;
         char[] userTab;
         int fail;
-        boolean lose;
+        boolean loose;
         boolean winGame = false;
-        boolean restart = false;
         byte restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();
@@ -41,7 +37,7 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
                 "le premier a trouvé le numéro a gagner, il n'y a pas de point de vie\n" +
                 "chaque numéro a une longueur d'exactement " + numberSize + " chiffres\n" +
                 "------------------------------------");
-        iaNumberChar = rg.getRandomNumber(numberSize, devMode); // method
+        iaNumberChar = randomGeneration.getRandomNumber(numberSize, devMode); // method
         while (!winGame) {
             fail = 0;
             if (this.life == staticLife) {
@@ -57,9 +53,10 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
             System.out.println("\nAiA : répond moi avec +, - ou =");
             String userIndic = sc.next();
             char[] userIndicTab = userIndic.toCharArray();
-            lose = iaMind(userIndicTab, iaTab);
-            if (!lose) {
+            loose = iaMind(userIndicTab, iaTab);
+            if (!loose) {
                 System.out.println("AiA : haha ! j'ai gagner !");
+                System.out.println("mon nombre secret était " + randomGeneration.getWholeNumber());
                 winGame = true;
             }
             if (!winGame) {

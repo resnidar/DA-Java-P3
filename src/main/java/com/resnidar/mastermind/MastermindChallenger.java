@@ -2,7 +2,6 @@ package com.resnidar.mastermind;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
-import com.resnidar.RandomGeneration;
 
 public class MastermindChallenger extends MastermindGame implements GameLogic {
     public MastermindChallenger(Config config) {
@@ -36,7 +35,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
      * the base of Ia for mastermind challenger
      */
     private void iaMindMastermind() {
-        RandomGeneration randomGeneration = new RandomGeneration();
         char[] answer; // sera connecter au properties
         char[] expected;
         boolean win = false;
@@ -61,11 +59,9 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
             System.out.println("bien joué tu a gagné !");
         } else {
             System.out.println("tu est arriver a la fin de tes vies ,tu a perdu");
+            System.out.println("la combinaison secrète était " + randomGeneration.getWholeNumber());
         }
     }
 
 }
-//tester jusqu a 10
-
-//knuth
-
+// TODO: 06/04/2019 : bug ,l'ordinateur crée un nombre aléatoire entre 0 et 9 
