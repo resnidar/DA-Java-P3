@@ -21,11 +21,11 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         int goodPlace;
         int numberOfTurns = 0;
         boolean win = false;
-        int restart;
+        boolean loose = false;
         int indexToListForDelete;
         listPrep(numberOfColor, numberSize);
         System.out.println("la liste est remplie ,le jeu commence");
-        while (!win) {
+        while (!win && !loose) {
             indexToListForDelete = proposition();
             goodPlace = sc.nextInt();
             System.out.println("combien y en a t il de present ?");
@@ -34,7 +34,18 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
             list = removePossibility(list, list.get(indexToListForDelete), numberOfTurns, goodPlace, present);
             if (goodPlace == numberSize) {
                 win = true;
-                System.out.println("tu a gagné bien joué !");
+                System.out.println("AiA : j'ai gagné  !");
+            } else {
+                life--;
+                System.out.print("AiA : il me reste " + life);
+                if (life == 1)
+                    System.out.println(" vie");
+                else
+                    System.out.println(" vies");
+            }
+            if (life == 0) {
+                loose = true;
+                System.out.println("AiA : Arf, j'ai perdu .... bien joué");
             }
             numberOfTurns++;
         }

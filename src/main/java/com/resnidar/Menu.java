@@ -27,7 +27,6 @@ public class Menu {
         GameLogic masterMindChallenger = new MastermindChallenger(config);
         GameLogic masterMindDefender = new MastermindDefender(config);
         GameLogic masterMindDuel = new MastermindDuel(config);
-        boolean restart = true;
         byte restartByte = 1;
         while (restartByte != 3) {
             restartByte = 1;

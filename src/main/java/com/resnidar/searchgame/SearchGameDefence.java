@@ -37,9 +37,7 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      */
     private byte iaTurn() {
         byte restartByte;
-        boolean restart = false;
         iaLogic();
-        //peut ètre faire une class qui permet d'affiché, de sout ?
         restartByte = fonctionRestartChoice();
         return restartByte;
     }

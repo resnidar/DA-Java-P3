@@ -4,8 +4,6 @@ import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
 
-import java.util.Scanner;
-
 public class MastermindChallenger extends MastermindGame implements GameLogic {
     public MastermindChallenger(Config config) {
         super(config);
@@ -18,9 +16,6 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
      * @return restart : if is true ,the game restart
      */
     public byte logic() {
-        Scanner sc = new Scanner(System.in);
-        boolean restart = false;
-        int restartResponse;
         byte restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();

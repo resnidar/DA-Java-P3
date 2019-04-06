@@ -30,9 +30,9 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
             System.out.println();
         if (devMode)
             System.out.println("le devMode est activé pour cette partie");
-        System.out.println("AiA : pour cette partie, tu as " + life + " vies, tu peux changer ça dans le config.properties \n");
+        System.out.println("AiA : pour cette partie, nous n'avons pas de vie, c'est le premier à trouver la combinaison qui gagne \n");
         String proposition;
-        logger.debug("Mode duel du SearchGme lancé");
+        logger.debug("Mode duel du SearchGame lancé");
         System.out.println("AiA : d'accord" +
                 " c'est partie pour le mode duel !");
         System.out.println("------------------------------------\n" +

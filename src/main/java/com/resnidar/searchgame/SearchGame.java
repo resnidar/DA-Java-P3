@@ -37,6 +37,11 @@ public abstract class SearchGame extends Games {
             // ia
             loose = iaMind(userIndicTab, iaTab);
             iaWinOrLose(userNumberChar, loose);
+            System.out.print("AiA : il me reste " + life);
+            if (life == 1)
+                System.out.println(" vie");
+            else
+                System.out.println(" vies");
         }
     }
 
