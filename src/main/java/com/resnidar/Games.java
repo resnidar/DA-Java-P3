@@ -84,7 +84,7 @@ public abstract class Games {
         else if (choiceByte == 3)
             System.out.println("AiA : ca marche ! à plus tard");
         else
-            System.err.println("il y a une erreur, il faut rentré 1 ou 2");
+            System.err.println("il y a une erreur, il faut rentré 1, 2 ou 3");
         return choiceByte;
     }
     // TODO: 18/12/2018 faire verif endtest
