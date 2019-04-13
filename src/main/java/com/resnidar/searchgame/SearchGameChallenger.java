@@ -29,7 +29,7 @@ public class SearchGameChallenger extends SearchGame implements GameLogic {
         logger.debug("débug : début du jeu searchGameChallenger");
         System.out.println("AiA : c'est parti !");
         logger.debug("débug : appel de la class RandomGeneration");
-        char[] randomNumberTab = randomGeneration.getRandomNumber(numberSize, devMode);
+        char[] randomNumberTab = randomGeneration.getRandomNumber(numberSize, devMode, 10);
         System.out.println("AiA : le nombre que j'ai choisi est que tu dois trouver est composé de  " + numberSize + " caractères" +
                 "\nbonne chance !\n");
         userInteract(life, randomNumberTab);

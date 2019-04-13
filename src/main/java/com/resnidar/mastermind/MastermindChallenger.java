@@ -40,7 +40,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         boolean win = false;
         int goodPlace = 0;
         int present;
-        expected = randomGeneration.getRandomNumber(numberSize, devMode);
+        expected = randomGeneration.getRandomNumber(numberSize, devMode, numberSize);
         while (life > 0 && !win) {
             System.out.println("veuillez entrer le nombre a testé : ");
             answer = userRequest();
@@ -64,4 +64,3 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
     }
 
 }
-// TODO: 06/04/2019 : bug ,l'ordinateur crée un nombre aléatoire entre 0 et 9 

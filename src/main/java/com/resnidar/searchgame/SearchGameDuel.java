@@ -37,7 +37,7 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
                 "le premier a trouvé le numéro a gagner, il n'y a pas de point de vie\n" +
                 "chaque numéro a une longueur d'exactement " + numberSize + " chiffres\n" +
                 "------------------------------------");
-        iaNumberChar = randomGeneration.getRandomNumber(numberSize, devMode); // method
+        iaNumberChar = randomGeneration.getRandomNumber(numberSize, devMode, 10); // method
         while (!winGame) {
             fail = 0;
             if (this.life == staticLife) {

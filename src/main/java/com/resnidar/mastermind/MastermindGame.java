@@ -97,34 +97,6 @@ public abstract class MastermindGame extends Games implements GameLogic {
     }
 
     /**
-     * For convert base 10 in base X
-     *
-     * @param a is the base 10 for convert to base X
-     * @param b is the base X
-     * @return int in base X
-     */
-    private int baseConvert(int a, int b) {
-        String numberConvert = Integer.toString(a, b);
-        return Integer.parseInt(numberConvert);
-    }
-
-    /**
-     * can convert int in string and add 0 if the number is too short
-     *
-     * @param numberInt the number in int
-     * @param realSize  the size of the number
-     * @return the number modified in String and ready for list
-     */
-    private String convertIntToSringAndPreparForList(int numberInt, int realSize) {
-        String number = String.valueOf(numberInt);
-        String zero = "0";
-        while (number.length() < realSize) {
-            number = zero + number;
-        }
-        return number;
-    }
-
-    /**
      * make the proposition to User
      *
      * @return return the number proposed

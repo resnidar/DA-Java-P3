@@ -9,12 +9,13 @@ public class RandomGeneration {
     String wholeNumber = "";
     private static Logger logger = Logger.getLogger(SearchGame.class);
 
+
     /**
-     * permet de crée ,pour chaque case d un tableau ,un numero aléatoire
+     * creates an array of random numbers
      *
-     * @return retourne le tableau rempli
+     * @return return array full
      */
-    public char[] getRandomNumber(int size, boolean devMod) {
+    public char[] getRandomNumber(int size, boolean devMod,int numberSize) {
         int[] randomNumberTab = new int[size];
         logger.debug("tableau de int crée");
         char[] randomNumberChar = new char[size];
@@ -22,7 +23,7 @@ public class RandomGeneration {
         for (int i = 0; i < randomNumberTab.length; i++) {
             logger.debug("numero aléatoire mis dans la case " + i + "du tableau");
             Random random = new Random();
-            int number = random.nextInt(10);
+            int number = random.nextInt(numberSize);
             randomNumberTab[i] = number;
         }
         for (int i = 0; i < randomNumberChar.length; i++) {

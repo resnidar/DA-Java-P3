@@ -23,7 +23,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         System.out.println("bienvenue dans le mode duel");
         System.out.println("la partie commence :");
         listPrep(numberColor, numberSize);
-        secretNumberOfIa = randomGeneration.getRandomNumber(numberSize, devMode);
+        secretNumberOfIa = randomGeneration.getRandomNumber(numberSize, devMode, 10);
         System.out.println("aia : tu commence ! propose moi un nombre : ");
         for (int turn = 0; turn < 10 || !game; turn++) { // TODO: 26/03/2019 nombre de tour !!!
             userTurn(secretNumberOfIa);

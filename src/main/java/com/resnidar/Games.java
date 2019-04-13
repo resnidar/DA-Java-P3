@@ -11,6 +11,7 @@ public abstract class Games {
     protected int numberSize;
     protected int life;
     protected boolean devMode;
+    protected int colorNumber;
 
     public Games(Config config) {
         super();
@@ -18,6 +19,7 @@ public abstract class Games {
         this.life = config.getLife();
         lifeStatic = config.getLife();
         this.devMode = config.getDevMode();
+        this.colorNumber = config.getColorNumber();
     }
 
     static public Logger logger = Logger.getLogger(SearchGame.class);
@@ -86,6 +88,34 @@ public abstract class Games {
         else
             System.err.println("il y a une erreur, il faut rentré 1, 2 ou 3");
         return choiceByte;
+    }
+
+    /**
+     * can convert int in string and add 0 if the number is too short
+     *
+     * @param numberInt the number in int
+     * @param realSize  the size of the number
+     * @return the number modified in String and ready for list
+     */
+    protected String convertIntToSringAndPreparForList(int numberInt, int realSize) {
+        String number = String.valueOf(numberInt);
+        String zero = "0";
+        while (number.length() < realSize) {
+            number = zero + number;
+        }
+        return number;
+    }
+
+    /**
+     * For convert base 10 in base X
+     *
+     * @param a is the base 10 for convert to base X
+     * @param b is the base X
+     * @return int in base X
+     */
+    protected int baseConvert(int a, int b) {
+        String numberConvert = Integer.toString(a, b);
+        return Integer.parseInt(numberConvert);
     }
     // TODO: 18/12/2018 faire verif endtest
     // TODO: 22/01/2019 approfondir abstract
