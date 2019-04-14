@@ -22,7 +22,6 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         int numberOfTurns = 0;
         boolean win = false;
         boolean loose = false;
-        boolean error = false;
         int indexToListForDelete;
         logger.debug("appel de la fonction listPrep pour remplissage de la liste");
         listPrep(numberOfColor, numberSize);
@@ -88,4 +87,3 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
 }
 
 // TODO: 19/02/2019 avertir utilisateur des limites
-// TODO: 19/03/2019 logger

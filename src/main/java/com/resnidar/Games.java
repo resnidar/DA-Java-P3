@@ -66,6 +66,10 @@ public abstract class Games {
         return userNumberChar;
     }
 
+    /**this method asks at user if he wants to restart or not and how
+     *
+     * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
+     */
     public byte fonctionRestartChoice() {
         byte choiceByte;
         this.life = lifeStatic;
