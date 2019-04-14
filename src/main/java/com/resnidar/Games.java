@@ -86,7 +86,7 @@ public abstract class Games {
         else if (choiceByte == 3)
             System.out.println("AiA : ca marche ! à plus tard");
         else
-            System.err.println("il y a une erreur, il faut rentré 1, 2 ou 3");
+            logger.error("il y a une erreur, l'utilisateur a rentré des données inexactes");
         return choiceByte;
     }
 
