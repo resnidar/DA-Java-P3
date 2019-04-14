@@ -59,8 +59,9 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         return restartByte;
     }
 
-    // TODO: 14/04/2019 puis-je mettre un lien dans les docs?
+    // TODO: 14/04/2019 MENTOR puis-je mettre un lien dans les docs?
     /**this method call fonctionRestartChoice and check the validity of the user response
+     * this method is linked at fonctionRestartChoice.
      *
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */

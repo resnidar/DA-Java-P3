@@ -66,7 +66,9 @@ public abstract class Games {
         return userNumberChar;
     }
 
+    // TODO: MENTOR 14/04/2019 est ce une bonne idée ?
     /**this method asks at user if he wants to restart or not and how
+     * if you want us this fonction, it's more securised to use checkingRestartChoice
      *
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */
