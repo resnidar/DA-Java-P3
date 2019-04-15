@@ -66,15 +66,17 @@ public abstract class MastermindGame extends Games implements GameLogic {
         int numberInt;
         int a = 0;
         int size = sizeBreak(color, realSize); // permet de crée une boucle basé sur une base numerique differente que la base 10
+        for (int i = 0; i < 25; i++)
+            System.out.println("");
+        System.out.println("remplissage en cour ,veuillez patientez ...");
         for (int i = 0; i <= size; i++) {
             numberInt = baseConvert(a++, color);
             list.add(convertIntToSringAndPreparForList(numberInt, realSize));
             if (numberInt >= size)
                 break;
-            System.out.println("remplissage en cour ,veuillez patientez");
         }
         for (String s : list) {
-            System.out.println("liste : " + s);
+            logger.debug("ajout à la liste : " + s);
         }
         return list;
     }

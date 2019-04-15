@@ -25,7 +25,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         listPrep(numberColor, numberSize);
         secretNumberOfIa = randomGeneration.getRandomNumber(numberSize, devMode, numberSize);
         System.out.println("aia : tu commence ! propose moi un nombre : ");
-        for (int turn = 0; turn < 10 || !game; turn++) { // TODO: 26/03/2019 nombre de tour !!!
+        while (!game) {
             if (!game)
             game = userTurn(secretNumberOfIa);
             if (!game) {
@@ -70,6 +70,5 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 }
-// TODO: 03/04/2019 terminé mastermindDuel
 // TODO: 15/04/2019 renplissage list silencieux
 // TODO: 15/04/2019 ajouté vie
