@@ -66,13 +66,14 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */
     public byte checkingUserRestartChoice() {
-        boolean error;
+        boolean error = false;
         byte restartByte;
         do{
-            if (error = true)
+            if (error == true) // pourquoi variable peut être crée
                 System.out.println("tu n'as pas entré un nombre entre 1 et 3, recommence");
             error = false;
             restartByte = fonctionRestartChoice();
+            //switch
             if (restartByte == 1)
                 logger.debug("l'utilisateur a choisi de recommencé une partie");
             else if (restartByte == 2)
