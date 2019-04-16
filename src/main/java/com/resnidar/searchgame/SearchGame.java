@@ -18,6 +18,11 @@ public abstract class SearchGame extends Games {
         devMode = config.getDevMode();
     }
 
+    /**
+     * the base of class, it's the logic.
+     *
+     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
+     */
     void iaLogic() {
         String userIndic;
         char[] userIndicTab;

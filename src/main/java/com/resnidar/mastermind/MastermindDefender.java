@@ -14,6 +14,11 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         numberOfColor = config.getColorNumber();
     }
 
+    /**
+     * the base of class, it's the logic.
+     *
+     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
+     */
     @Override
     public byte logic() {
         byte restartByte;

@@ -14,6 +14,11 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         numberColor = config.getColorNumber();
     }
 
+    /**
+     * the base of class, it's the logic.
+     *
+     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
+     */
     @Override
     public byte logic() {
         RandomGeneration randomGeneration = new RandomGeneration();
@@ -37,6 +42,10 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return restartByte;
     }
 
+    /**
+     * the ia part of the game
+     * @return true if the ia win the game, false if game continue
+     */
     private boolean iaTurn() {
         int index;
         int goodPlace;
@@ -55,6 +64,11 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 
+    /**
+     * the user part of the game
+     * @param secretNumberOfIa it's the secretnumber of ia, the number the player has to find
+     * @return true if the ia lose, false if the game continue
+     */
     public boolean userTurn(char[] secretNumberOfIa) {
         System.out.println("devine la combinaisont secrète : ");
         String userResponse = sc.next();

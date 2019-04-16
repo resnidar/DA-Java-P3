@@ -14,6 +14,11 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         staticLife = config.getLife();
     }
 
+    /**
+     * the base of class, it's the logic.
+     *
+     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
+     */
     public byte logic() {
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
@@ -87,5 +92,4 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
     }
 
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
-    // TODO: 15/01/2019 faire la documentation
 }

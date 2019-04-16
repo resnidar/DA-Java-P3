@@ -16,9 +16,14 @@ public abstract class MastermindGame extends Games implements GameLogic {
         super(config);
     }
 
+    /**
+     * the base of class, it's the logic.
+     *
+     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
+     */
     public byte logic() {
         return 3;
-    }
+    } // TODO: 16/04/2019 MENTOR !!!
 
     /**
      * @param answer   an char tab of number of user

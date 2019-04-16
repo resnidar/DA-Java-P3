@@ -10,9 +10,9 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
 
 
     /**
-     * method logic : is the logic of this Class
+     * the base of class, it's the logic.
      *
-     * @return restart : if is true ,the game restart
+     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
      */
     public byte logic() {
         byte restartByte;

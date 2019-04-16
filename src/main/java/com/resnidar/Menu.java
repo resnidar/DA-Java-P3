@@ -19,6 +19,9 @@ public class Menu {
         config = new Config(forcedDevMode);
     }
 
+    /**
+     * the base of class, it's the logic.
+     */
     void logic() {
         System.out.println("devMode dans Menu = " + config.getDevMode());
         GameLogic searchGameChallenger = new SearchGameChallenger(config);
