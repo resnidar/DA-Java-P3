@@ -3,6 +3,7 @@ package com.resnidar.mastermind;
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MastermindDefender extends MastermindGame implements GameLogic {
@@ -23,11 +24,12 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         boolean win = false;
         boolean loose = false;
         int indexToListForDelete;
-        if (numberSize > 7 || numberOfColor > 5)
+        if (numberSize > 7 && numberOfColor > 5) { // TODO: 16/04/2019 MENTOR : peut ont err si ce n est pas une erreur ?
             System.out.println("attention, si vous utilisez un nombre de couleurs ou de pion trop important, " +
                     "l'ordinateur risque de mettre beaucoup de temps à trouver une réponse, " +
                     "nous vous conseillons de ne pas dépasser un nombre de pion de 7 si le nombre de couleurs " +
                     "est supérieur à 6");
+        }
         logger.debug("appel de la fonction listPrep pour remplissage de la liste");
         listPrep(numberOfColor, numberSize);
         System.out.println("AiA : J'ai rempli ma liste, on peut commencer");
@@ -100,5 +102,3 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         return restartByte;
     }
 }
-
-// TODO: 19/02/2019 avertir utilisateur des limites = 7 color.6 size environ avec machine de guerre

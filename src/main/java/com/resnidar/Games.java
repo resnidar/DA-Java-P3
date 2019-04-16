@@ -60,7 +60,11 @@ public abstract class Games {
     protected char[] userRequest() {
         String userNumber;
         char[] userNumberChar;
-        userNumber = sc.next();
+        do {
+            userNumber = sc.next();
+            if (userNumber.length() != numberSize)
+                System.err.println("Attention ! Le nombre que tu a entrée doit faire " + numberSize + " caractères, recommence");
+        }while (userNumber.length() != numberSize);
         userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
         Games.logger.debug("l user a entrée : " + userNumber);
         return userNumberChar;

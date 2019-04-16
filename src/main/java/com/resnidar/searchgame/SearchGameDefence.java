@@ -24,7 +24,7 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
             System.out.println("devMode activé");
         }
         System.out.println("AiA : pour cette partie, tu as " + life + " vies, tu peux changer ça dans le config.properties \n");
-        System.out.println("AiA : Donne moi un nombre a trouver :) le nombre peut faire la taille que tu veut");
+        System.out.println("AiA : Donne moi un nombre a trouver :) le nombre doit faire " + numberSize + " caractères");
         restartByte = iaTurn();
         return restartByte;
     }
@@ -41,4 +41,3 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
         return restartByte;
     }
 }
-// TODO: 16/04/2019 limité la taille !!! ne pas laissé le joueur décidé hors properties !!
