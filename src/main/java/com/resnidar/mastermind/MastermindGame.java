@@ -68,7 +68,10 @@ public abstract class MastermindGame extends Games implements GameLogic {
         int size = sizeBreak(color, realSize); // permet de crée une boucle basé sur une base numerique differente que la base 10
         for (int i = 0; i < 25; i++)
             System.out.println("");
-        System.out.println("remplissage en cour ,veuillez patientez ...");
+        System.out.println("AiA : Je rempli la liste qui m'aidera a trouver le bon numéro\n" +
+                "sa pourrais prendre un peu de temps si tu as choisi un trop gros nombre ou trop de couleur\n" +
+                "par apport aux capacités de ta machine");
+        System.out.println("------------------------------------");
         for (int i = 0; i <= size; i++) {
             numberInt = baseConvert(a++, color);
             list.add(convertIntToSringAndPreparForList(numberInt, realSize));
@@ -109,14 +112,14 @@ public abstract class MastermindGame extends Games implements GameLogic {
         indexList = r.nextInt(list.size());
         System.out.println("je te propose : ");
         System.out.println(list.get(indexList));
-        // TODO: 18/03/2019 définir les propositions
         return indexList;
     }
 
     int proposition() {
         int indexList;
         indexList = defineProposition();
-        System.out.println("combiens y en a t il a la bonne place ?");
+        System.out.println("");
+        System.out.println("AiA : Combiens y en a-t-il à la bonne place ?");
         return indexList;
     }
 
@@ -129,20 +132,22 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @return the List
      */
     ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response, int turn, int goodPlace, int present) {
-        // TODO: 19/03/2019 pour chaque currentChoice,
-        // TODO: 19/03/2019 utilisé les methodes goodPlace et present pour savoir si ils sont égaux aux argument goodplace et present dans la fonction
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
             boolean delete;
-            System.out.println(choice);
+            if (devMode == true)
+                System.out.println(choice);
             delete = checkResponse(choice, response, goodPlace, present);
             if (delete) {
-                System.out.println(choice + "supprimé");
+                if (devMode == true)
+                    System.out.println(choice + "supprimé");
                 currentChoices.remove(choice);
                 i--;
             }
         }
-        System.out.println("il ne reste plus que " + currentChoices.size() + " numero dans la liste");
+        System.out.println("AiA : il ne reste plus que " + currentChoices.size() + " numero dans ma liste");
+        if (list.size() < 50 && goodPlace != numberSize)
+            System.out.println("AiA : je vais bientôt gagner, attention à toi");
         return currentChoices;
     }
 

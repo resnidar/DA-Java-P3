@@ -47,5 +47,3 @@ public class RandomGeneration {
         return wholeNumber;
     }
 }
-
-// TODO: 08/12/2018  log warning

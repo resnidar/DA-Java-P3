@@ -40,7 +40,5 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
         restartByte = fonctionRestartChoice();
         return restartByte;
     }
-    // TODO: 04/02/2019 BUG : ne trouve pas le 3 ,seulement 2 - 4 - 2 - 4
 }
-// TODO: 15/01/2019 décomposé en méthode
-// TODO: 15/01/2019 organisation mere fille
+// TODO: 16/04/2019 limité la taille !!! ne pas laissé le joueur décidé hors properties !!

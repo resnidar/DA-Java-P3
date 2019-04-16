@@ -123,6 +123,4 @@ public abstract class Games {
         String numberConvert = Integer.toString(a, b);
         return Integer.parseInt(numberConvert);
     }
-    // TODO: 18/12/2018 faire verif endtest
-    // TODO: 22/01/2019 approfondir abstract
 }

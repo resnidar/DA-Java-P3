@@ -70,5 +70,3 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 }
-// TODO: 15/04/2019 renplissage list silencieux
-// TODO: 15/04/2019 ajouté vie
