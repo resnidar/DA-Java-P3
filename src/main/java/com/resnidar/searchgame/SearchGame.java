@@ -78,8 +78,8 @@ public abstract class SearchGame extends Games {
                 temporary = (double) iaTab[j] - '0';
                 if (temporary > 5)
                     temporary += 5;
-                if (temporary < 5) // TODO: 01/04/2019 peut ètre a supprimé, ne sert plus a rien 
-                    temporary += 0;
+                if (temporary == 1)
+                    temporary = 0;
                 temporary /= 2;
                 iaTab[j] = (char) Math.ceil(temporary);
                 iaTab[j] += '0';

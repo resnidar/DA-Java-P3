@@ -24,7 +24,7 @@
 
     <root>
         <!--LEVEL : OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL -->
-        <level value="debug" />
+        <level value="INFO" />
         <appender-ref ref="console" />
         <appender-ref ref="file" />
     </root>

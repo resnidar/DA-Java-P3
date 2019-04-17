@@ -2,8 +2,9 @@ package com.resnidar.mastermind;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
+import com.resnidar.Games;
+import com.resnidar.UserRestartChoice;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class MastermindDefender extends MastermindGame implements GameLogic {
@@ -20,8 +21,8 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
      * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
      */
     @Override
-    public byte logic() {
-        byte restartByte;
+    public UserRestartChoice logic() {
+        UserRestartChoice restartByte;
         Scanner sc = new Scanner(System.in);
         int present;
         int goodPlace;
@@ -29,7 +30,7 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         boolean win = false;
         boolean loose = false;
         int indexToListForDelete;
-        if (numberSize > 7 && numberOfColor > 5) { // TODO: 16/04/2019 MENTOR : peut ont err si ce n est pas une erreur ?
+        if (numberSize > 7 && numberOfColor > 5) {
             System.out.println("attention, si vous utilisez un nombre de couleurs ou de pion trop important, " +
                     "l'ordinateur risque de mettre beaucoup de temps à trouver une réponse, " +
                     "nous vous conseillons de ne pas dépasser un nombre de pion de 7 si le nombre de couleurs " +
@@ -75,28 +76,29 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         return restartByte;
     }
 
-    // TODO: 14/04/2019 MENTOR puis-je mettre un lien dans les docs?
-    /**this method call fonctionRestartChoice and check the validity of the user response
+    /**
+     * @see Games#fonctionRestartChoice()
+     * this method call fonctionRestartChoice and check the validity of the user response
      * this method is linked at fonctionRestartChoice.
      *
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */
-    public byte checkingUserRestartChoice() {
+    public UserRestartChoice checkingUserRestartChoice() {
         boolean error = false;
-        byte restartByte;
+        UserRestartChoice restartByte;
         do{
             if (error == true) // pourquoi variable peut être crée
-                System.out.println("tu n'as pas entré un nombre entre 1 et 3, recommence");
+                System.err.println("tu n'as pas entré un nombre entre 1 et 3, recommence");
             error = false;
             restartByte = fonctionRestartChoice();
             switch (restartByte) {
-                case 1:
+                case RESTART:
                     logger.debug("l'utilisateur a choisi de recommencé une partie");
                     break;
-                case 2 :
+                case CHANGE:
                     logger.debug("l'utilisateur a choisi de changé de mode de jeu");
                     break;
-                case 3 :
+                case QUIT:
                     logger.debug("l'utilisateur ferme le programme");
                     break;
                     default:

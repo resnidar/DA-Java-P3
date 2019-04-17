@@ -2,6 +2,7 @@ package com.resnidar.searchgame;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
+import com.resnidar.UserRestartChoice;
 import org.apache.log4j.Logger;
 
 public class SearchGameChallenger extends SearchGame implements GameLogic {
@@ -19,8 +20,8 @@ public class SearchGameChallenger extends SearchGame implements GameLogic {
      *
      * @return permet au programme de redemarré ou non
      */
-    public byte logic() {
-        byte restartChoice;
+    public UserRestartChoice logic() {
+        UserRestartChoice restartChoice;
         for (int i = 0; i < 20; i++)
             System.out.println();
         if (devMode)

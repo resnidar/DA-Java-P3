@@ -2,6 +2,7 @@ package com.resnidar.searchgame;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
+import com.resnidar.UserRestartChoice;
 import org.apache.log4j.Logger;
 
 public class SearchGameDefence extends SearchGame implements GameLogic {
@@ -16,8 +17,8 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      *
      * @return restart ,it's for restart or not the program at the end of the game
      */
-    public byte logic() {
-        byte restartByte;
+    public UserRestartChoice logic() {
+        UserRestartChoice restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();
         if (devMode) {
@@ -34,8 +35,8 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
      *
      * @return return the restart
      */
-    private byte iaTurn() {
-        byte restartByte;
+    private UserRestartChoice iaTurn() {
+        UserRestartChoice restartByte;
         iaLogic();
         restartByte = fonctionRestartChoice();
         return restartByte;

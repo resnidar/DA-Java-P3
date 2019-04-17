@@ -30,9 +30,9 @@ public class Menu {
         GameLogic masterMindChallenger = new MastermindChallenger(config);
         GameLogic masterMindDefender = new MastermindDefender(config);
         GameLogic masterMindDuel = new MastermindDuel(config);
-        byte restartByte = 1;
-        while (restartByte != 3) {
-            restartByte = 1;
+        UserRestartChoice restartByte = UserRestartChoice.RESTART;
+        while (restartByte != UserRestartChoice.QUIT) {
+            restartByte = UserRestartChoice.RESTART;
             for (int i = 0; i < 50; i++)
                 System.out.println();
             System.out.println("Voici la listes des jeux : ");
@@ -66,15 +66,15 @@ public class Menu {
                 result = sc.nextInt();
                 if (result == 1) {
                     logger.debug("lancement de Searchgame en mode challenger");
-                    while (restartByte == 1)
+                    while (restartByte == UserRestartChoice.RESTART)
                         restartByte = searchGameChallenger.logic();
                 } else if (result == 2) {
                     logger.debug("lancement de SearchGame en mode defenseur");
-                    while (restartByte == 1)
+                    while (restartByte == UserRestartChoice.RESTART)
                         restartByte = searchGameDefence.logic();
                 } else if (result == 3) {
                     logger.debug("lancement de SearchGame en mode duel");
-                    while (restartByte == 1)
+                    while (restartByte == UserRestartChoice.RESTART)
                         restartByte = searchGameDuel.logic();
                 }
             } else if (result == 2) {
@@ -94,15 +94,15 @@ public class Menu {
                 result = sc.nextInt();
                 if (result == 1) {
                     logger.debug("vous avez choisi le mode de jeu challenger");
-                    while (restartByte == 1)
+                    while (restartByte == UserRestartChoice.RESTART)
                         restartByte = masterMindChallenger.logic();
                 } else if (result == 2) {
                     logger.debug("vous avez choisi le mode de jeu defenser ");
-                    while (restartByte == 1)
+                    while (restartByte == UserRestartChoice.RESTART)
                         restartByte = masterMindDefender.logic();
                 } else if (result == 3) {
                     logger.debug("vous avez choisi le mode de jeu Duel");
-                    while (restartByte == 1)
+                    while (restartByte == UserRestartChoice.RESTART)
                         restartByte = masterMindDuel.logic();
                 }
             } else {
@@ -119,5 +119,4 @@ public class Menu {
 // TODO: 06/04/2019 nom des variables soigné
 // TODO: 06/04/2019 nom des methodes soigné
 // TODO: 06/04/2019 pour la soutenance, quel point abordé ? préparation a la soutenance de validation
-// TODO: 09/04/2019 cassé !!!! 
-// TODO: 16/04/2019 erreur dans log 
+// TODO: 09/04/2019 cassé !!!!

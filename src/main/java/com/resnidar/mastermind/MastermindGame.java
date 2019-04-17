@@ -3,6 +3,7 @@ package com.resnidar.mastermind;
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.Games;
+import com.resnidar.UserRestartChoice;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,14 +17,6 @@ public abstract class MastermindGame extends Games implements GameLogic {
         super(config);
     }
 
-    /**
-     * the base of class, it's the logic.
-     *
-     * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
-     */
-    public byte logic() {
-        return 3;
-    } // TODO: 16/04/2019 MENTOR !!!
 
     /**
      * @param answer   an char tab of number of user
@@ -141,11 +134,11 @@ public abstract class MastermindGame extends Games implements GameLogic {
             String choice = currentChoices.get(i);
             boolean delete;
             if (devMode == true)
-                System.out.println(choice);
+                logger.debug(choice);
             delete = checkResponse(choice, response, goodPlace, present);
             if (delete) {
                 if (devMode == true)
-                    System.out.println(choice + "supprimé");
+                    logger.debug(choice + " supprimé");
                 currentChoices.remove(choice);
                 i--;
             }

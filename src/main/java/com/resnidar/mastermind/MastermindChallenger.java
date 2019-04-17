@@ -2,6 +2,7 @@ package com.resnidar.mastermind;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
+import com.resnidar.UserRestartChoice;
 
 public class MastermindChallenger extends MastermindGame implements GameLogic {
     public MastermindChallenger(Config config) {
@@ -14,8 +15,8 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
      *
      * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
      */
-    public byte logic() {
-        byte restartByte;
+    public UserRestartChoice logic() {
+        UserRestartChoice restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();
         System.out.println("------------------------------------\n" +
@@ -40,7 +41,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         boolean win = false;
         int goodPlace = 0;
         int present;
-        expected = randomGeneration.getRandomNumber(numberSize, devMode, numberSize);
+        expected = randomGeneration.getRandomNumber(numberSize, devMode, colorNumber);
         while (life > 0 && !win) {
             System.out.println("veuillez entrer le nombre a testé : ");
             answer = userRequest();

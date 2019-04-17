@@ -70,14 +70,14 @@ public abstract class Games {
         return userNumberChar;
     }
 
-    // TODO: MENTOR 14/04/2019 est ce une bonne idée ?
     /**this method asks at user if he wants to restart or not and how
      * if you want us this fonction, it's more securised to use checkingRestartChoice
      *
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */
-    public byte fonctionRestartChoice() {
+    public UserRestartChoice fonctionRestartChoice() {
         byte choiceByte;
+        UserRestartChoice res = UserRestartChoice.UNKNOWN;
         this.life = lifeStatic;
         System.out.println("AiA : veux-tu refaire une partie avec moi de ce jeu ou d'un autre mode de jeu ?");
         System.out.println("------------------------------------");
@@ -89,15 +89,21 @@ public abstract class Games {
         System.out.println("------------------------------------");
         logger.debug("débug : Scanner en attente de l user");
         choiceByte = sc.nextByte();
-        if (choiceByte == 1)
+        if (choiceByte == 1) {
             System.out.println("AiA : c'est reparti ! ");
-        else if (choiceByte == 2)
+            res = UserRestartChoice.RESTART;
+        }
+        else if (choiceByte == 2) {
             System.out.println("AiA : d'accord changeons de mode de jeu ");
-        else if (choiceByte == 3)
+            res = UserRestartChoice.CHANGE;
+        }
+        else if (choiceByte == 3) {
             System.out.println("AiA : ca marche ! à plus tard");
+            res = UserRestartChoice.QUIT;
+        }
         else
             logger.error("il y a une erreur, l'utilisateur a rentré des données inexactes");
-        return choiceByte;
+        return res;
     }
 
     /**

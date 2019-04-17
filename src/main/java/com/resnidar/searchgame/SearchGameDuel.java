@@ -2,6 +2,7 @@ package com.resnidar.searchgame;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
+import com.resnidar.UserRestartChoice;
 
 import java.util.Scanner;
 
@@ -19,14 +20,14 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
      *
      * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
      */
-    public byte logic() {
+    public UserRestartChoice logic() {
         char[] iaTab = new char[numberSize];
         char[] iaNumberChar;
         char[] userTab;
         int fail;
         boolean loose;
         boolean winGame = false;
-        byte restartByte;
+        UserRestartChoice restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();
         if (devMode)

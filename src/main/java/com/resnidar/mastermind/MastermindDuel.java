@@ -3,6 +3,7 @@ package com.resnidar.mastermind;
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.RandomGeneration;
+import com.resnidar.UserRestartChoice;
 
 public class MastermindDuel extends MastermindGame implements GameLogic {
     int numberSize;
@@ -20,11 +21,11 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
      * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
      */
     @Override
-    public byte logic() {
+    public UserRestartChoice logic() {
         RandomGeneration randomGeneration = new RandomGeneration();
         char[] secretNumberOfIa;
         boolean game = false;
-        byte restartByte;
+        UserRestartChoice restartByte;
         System.out.println("bienvenue dans le mode duel");
         System.out.println("la partie commence :");
         listPrep(numberColor, numberSize);
