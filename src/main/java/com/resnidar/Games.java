@@ -133,4 +133,37 @@ public abstract class Games {
         String numberConvert = Integer.toString(a, b);
         return Integer.parseInt(numberConvert);
     }
+
+    /**
+     * @see Games#fonctionRestartChoice()
+     * this method call fonctionRestartChoice and check the validity of the user response
+     * this method is linked at fonctionRestartChoice.
+     *
+     * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
+     */
+    public UserRestartChoice checkingUserRestartChoice() {
+        boolean error = false;
+        UserRestartChoice restartByte;
+        do{
+            if (error == true) // pourquoi variable peut être crée
+                System.err.println("tu n'as pas entré un nombre entre 1 et 3, recommence");
+            error = false;
+            restartByte = fonctionRestartChoice();
+            switch (restartByte) {
+                case RESTART:
+                    logger.debug("l'utilisateur a choisi de recommencé une partie");
+                    break;
+                case CHANGE:
+                    logger.debug("l'utilisateur a choisi de changé de mode de jeu");
+                    break;
+                case QUIT:
+                    logger.debug("l'utilisateur ferme le programme");
+                    break;
+                    default:
+                        error = true;
+                        break;
+            }
+        }while(error);
+        return restartByte;
+    }
 }

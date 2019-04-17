@@ -28,7 +28,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
                 "s'il y a 4 couleurs ,la première est 0. donc il y a les couleurs : 0, 1, 2, 3\n" +
                 "s'il y a 4 couleurs a la bonne place, c'est qu'elles sont aussi présentes !");
         iaMindMastermind();
-        restartByte = fonctionRestartChoice();
+        restartByte = checkingUserRestartChoice();
         return restartByte;
     }
 
@@ -65,3 +65,5 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
     }
 
 }
+
+// TODO: 06/04/2019 si le joueur perd, affiché la solution

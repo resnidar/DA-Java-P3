@@ -147,3 +147,5 @@ public abstract class SearchGame extends Games {
     }
 
 }
+
+// TODO: 06/04/2019 si le joueur perd, affiché la solution

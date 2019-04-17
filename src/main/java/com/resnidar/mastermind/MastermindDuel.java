@@ -39,7 +39,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
                 game = iaTurn();
             }
         }
-        restartByte = fonctionRestartChoice();
+        restartByte = checkingUserRestartChoice();
         return restartByte;
     }
 
@@ -85,3 +85,5 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 }
+
+// TODO: 06/04/2019 si le joueur perd, affiché la solution

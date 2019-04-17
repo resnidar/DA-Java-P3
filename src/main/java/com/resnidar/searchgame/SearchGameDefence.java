@@ -38,7 +38,9 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
     private UserRestartChoice iaTurn() {
         UserRestartChoice restartByte;
         iaLogic();
-        restartByte = fonctionRestartChoice();
+        restartByte = checkingUserRestartChoice();
         return restartByte;
     }
 }
+
+// TODO: 06/04/2019 si le joueur perd, affiché la solution

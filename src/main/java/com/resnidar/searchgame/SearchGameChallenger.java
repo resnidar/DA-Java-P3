@@ -34,9 +34,11 @@ public class SearchGameChallenger extends SearchGame implements GameLogic {
         System.out.println("AiA : le nombre que j'ai choisi est que tu dois trouver est composé de  " + numberSize + " caractères" +
                 "\nbonne chance !\n");
         userInteract(life, randomNumberTab);
-        restartChoice = fonctionRestartChoice();
+        restartChoice = checkingUserRestartChoice();
         logger.debug("débug : le Scanner a receptionner les donnees ");
         return restartChoice;
     }
 
 }
+
+// TODO: 06/04/2019 si le joueur perd, affiché la solution
