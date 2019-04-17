@@ -141,11 +141,16 @@ public abstract class SearchGame extends Games {
         }
         if (totalFail < life) {
             System.out.println("\n\rAiA : Mince, j'ai perdu ... bien jouer ! ");
-        } else
-            System.out.println("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois");
+        } else {
+            System.out.print("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois" +
+                    "\nle nombre que je te cachait est le ");
+            for (int i = 0; i < randomNumberTab.length; i++) {
+                System.out.println(randomNumberTab[i]);
+            }
+        }
         System.out.println("AiA : la réponse était " + randomGeneration.getWholeNumber());
     }
-
 }
 
-// TODO: 06/04/2019 si le joueur perd, affiché la solution
+// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
+

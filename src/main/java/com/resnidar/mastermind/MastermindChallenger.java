@@ -60,10 +60,12 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
             System.out.println("bien joué tu a gagné !");
         } else {
             System.out.println("tu est arriver a la fin de tes vies ,tu a perdu");
+            System.out.println("------------------------------------");
             System.out.println("la combinaison secrète était " + randomGeneration.getWholeNumber());
+            for (int i = 0; i < 5; i++)
+                System.out.println();
         }
     }
-
 }
 
-// TODO: 06/04/2019 si le joueur perd, affiché la solution
+// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi

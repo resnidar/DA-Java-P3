@@ -36,7 +36,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
             game = userTurn(secretNumberOfIa);
             if (!game) {
                 System.out.println("aia : a moi de joué !");
-                game = iaTurn();
+                game = iaTurn(secretNumberOfIa);
             }
         }
         restartByte = checkingUserRestartChoice();
@@ -47,7 +47,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
      * the ia part of the game
      * @return true if the ia win the game, false if game continue
      */
-    private boolean iaTurn() {
+    private boolean iaTurn(char[] secretNumberOfIa) {
         int index;
         int goodPlace;
         int present;
@@ -59,6 +59,10 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         present = sc.nextInt();
         if (goodPlace == numberSize) {
             System.out.println("AiA : Super j'ai gagné !!! tu feras mieux la prochaine fois !");
+            System.out.print("ma combinaisont secrète était ");
+            for (int i = 0; i < secretNumberOfIa.length; i++)
+                System.out.print(secretNumberOfIa[i]);
+            System.out.println();
             return true;
         }
         removePossibility(list, list.get(index), 0, goodPlace, present);
@@ -86,4 +90,4 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
     }
 }
 
-// TODO: 06/04/2019 si le joueur perd, affiché la solution
+// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi

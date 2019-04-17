@@ -95,4 +95,3 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
     // TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
 }
 
-// TODO: 06/04/2019 si le joueur perd, affiché la solution
