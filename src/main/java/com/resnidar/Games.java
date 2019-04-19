@@ -3,6 +3,7 @@ package com.resnidar;
 import com.resnidar.searchgame.SearchGame;
 import org.apache.log4j.Logger;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Games {
@@ -13,7 +14,7 @@ public abstract class Games {
     protected boolean devMode;
     protected int colorNumber;
 
-    public Games(Config config) {
+    public Games (Config config) {
         super();
         this.numberSize = config.getNumberSize();
         this.life = config.getLife();
@@ -58,15 +59,24 @@ public abstract class Games {
      * @return number of user in a char array
      */
     protected char[] userRequest() {
+        boolean error;
         String userNumber;
         char[] userNumberChar;
-        do {
+        /*do {
+            error = false;
             userNumber = sc.next();
+            userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
             if (userNumber.length() != numberSize)
                 System.err.println("Attention ! Le nombre que tu a entrée doit faire " + numberSize + " caractères, recommence");
-        }while (userNumber.length() != numberSize);
-        userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
-        Games.logger.debug("l user a entrée : " + userNumber);
+            for (int i = 0; i < numberSize && error == false; i++){
+                if (userNumberChar[i] < 48 || userNumberChar[i] > 57){
+                    error = true;
+                    System.err.println("Attention, il ne faut pas rentrer de caractères spéciaux ni de lettres alphabétiques");
+                }
+            }
+        }while (userNumber.length() != numberSize || error == true);*/
+        userNumberChar = controlUserNumberScanner();
+        //Games.logger.debug("l user a entrée : " + userNumber);
         return userNumberChar;
     }
 
@@ -76,7 +86,7 @@ public abstract class Games {
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */
     public UserRestartChoice fonctionRestartChoice() {
-        byte choiceByte;
+        int choice;
         UserRestartChoice res = UserRestartChoice.UNKNOWN;
         this.life = lifeStatic;
         System.out.println("AiA : veux-tu refaire une partie avec moi de ce jeu ou d'un autre mode de jeu ?");
@@ -88,16 +98,16 @@ public abstract class Games {
         System.out.println("taper : 3 pour quitter le programme");
         System.out.println("------------------------------------");
         logger.debug("débug : Scanner en attente de l user");
-        choiceByte = sc.nextByte();
-        if (choiceByte == 1) {
+        choice = controlUserNumberScanner(1, 3);
+        if (choice == 1) {
             System.out.println("AiA : c'est reparti ! ");
             res = UserRestartChoice.RESTART;
         }
-        else if (choiceByte == 2) {
+        else if (choice == 2) {
             System.out.println("AiA : d'accord changeons de mode de jeu ");
             res = UserRestartChoice.CHANGE;
         }
-        else if (choiceByte == 3) {
+        else if (choice == 3) {
             System.out.println("AiA : ca marche ! à plus tard");
             res = UserRestartChoice.QUIT;
         }
@@ -165,6 +175,43 @@ public abstract class Games {
             }
         }while(error);
         return restartByte;
+    }
+
+    public int controlUserNumberScanner(int min, int max) {
+        int result;
+        do {
+            result = 999;
+            try {
+                Scanner trysc = new Scanner(System.in);
+                result = trysc.nextInt();
+                if (result < min || result > max)
+                    System.err.println("attention, tu doit entré un chiffre entre " + min + " et " + max);
+            } catch (InputMismatchException e) {
+                System.err.println("attention, tu doit entré un chiffre entre "+ min +" et " + max);
+            }
+        }while (result < min || result > max);
+        return result;
+    }
+
+    public char[] controlUserNumberScanner(){
+        boolean error;
+        char[] userNumberChar;
+        String userNumber;
+        do {
+            error = false;
+            userNumber = sc.next();
+            userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
+            if (userNumber.length() != numberSize)
+                System.err.println("Attention ! Le nombre que tu a entrée doit faire " + numberSize + " caractères, recommence");
+            else
+            for (int i = 0; i < numberSize && error == false; i++){
+                if (userNumberChar[i] < 48 || userNumberChar[i] > 57){
+                    error = true;
+                    System.err.println("Attention, il ne faut pas rentrer de caractères spéciaux ni de lettres alphabétiques");
+                }
+            }
+        }while (userNumber.length() != numberSize || error == true);
+        return userNumberChar;
     }
 }
 // TODO: 06/04/2019 nom des variables soigné

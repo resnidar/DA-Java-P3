@@ -54,9 +54,9 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         System.out.println("aia : c'est a moi");
         index = proposition();
         System.out.println("donne moi le nombre de nombre a la bonne place");
-        goodPlace = sc.nextInt();
+        goodPlace = controlUserNumberScanner(0, 9);
         System.out.println("donne moi le nombre de present");
-        present = sc.nextInt();
+        present = controlUserNumberScanner(0, 9);
         if (goodPlace == numberSize) {
             System.out.println("AiA : Super j'ai gagné !!! tu feras mieux la prochaine fois !");
             System.out.print("ma combinaisont secrète était ");
@@ -77,6 +77,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
     public boolean userTurn(char[] secretNumberOfIa) {
         System.out.println("devine la combinaisont secrète : ");
         String userResponse = sc.next();
+        // TODO: 19/04/2019 protection string
         int present;
         int goodPlace;
         present = present(userResponse.toCharArray(), secretNumberOfIa);

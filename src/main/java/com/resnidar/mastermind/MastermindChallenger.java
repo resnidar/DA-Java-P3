@@ -67,5 +67,3 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
         }
     }
 }
-
-// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi

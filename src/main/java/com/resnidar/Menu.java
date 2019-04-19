@@ -26,6 +26,7 @@ public class Menu {
     void logic() {
         Scanner sc = new Scanner(System.in);
         System.out.println("devMode dans Menu = " + config.getDevMode());
+        Games games;
         GameLogic searchGameChallenger = new SearchGameChallenger(config);
         GameLogic searchGameDefence = new SearchGameDefence(config);
         GameLogic searchGameDuel = new SearchGameDuel(config);
@@ -48,7 +49,7 @@ public class Menu {
                     " détenu par l'adversaire,\nvous n'aurez comme aide que le nombre de couleurs" +
                     " (représenté par des chiffres) présents ou à la bonne place ");
             logger.debug("attente de l'entrer utilisateur.");
-            do {
+            /*do {
                 try {
                     Scanner trysc = new Scanner(System.in);
                     result = trysc.nextInt();
@@ -57,7 +58,8 @@ public class Menu {
                 } catch (InputMismatchException e) {
                     System.err.println("attention, tu doit entré un chiffre entre 1 et 2");
                 }
-            }while (result < 1 || result > 2);
+            }while (result < 1 || result > 2);*/
+            result = controlUserNumberScanner(1, 2);
             for (int i = 0; i < 10; i++)
                 System.out.println();
             if (result == 1) {
@@ -69,7 +71,12 @@ public class Menu {
                 System.out.println("------------------------------------");
                 System.out.println("taper : 2 pour le mode défenseur" +
                         "\n\nvous devrez choisir un nombre que l'ordinateur devra trouver");
-                result = controlResult1To3(result);
+                System.out.println("------------------------------------");
+                System.out.println("taper : 3 pour le mode duel" +
+                        "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
+                        " et l'ordinateur");
+                System.out.println("------------------------------------");
+                result = controlUserNumberScanner(1, 3);
                 if (result == 1) {
                     logger.debug("lancement de Searchgame en mode challenger");
                     while (restartByte == UserRestartChoice.RESTART)
@@ -92,7 +99,12 @@ public class Menu {
                 System.out.println("------------------------------------");
                 System.out.println("taper : 2 pour le mode défenseur" +
                         "\n\nvous devrez choisir une combinaison secrète que l'ordinateur devra trouver");
-                result = controlResult1To3(result);
+                System.out.println("------------------------------------");
+                System.out.println("taper : 3 pour le mode duel" +
+                        "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
+                        " et l'ordinateur");
+                System.out.println("------------------------------------");
+                result = controlUserNumberScanner(1, 3);
                 if (result == 1) {
                     logger.debug("vous avez choisi le mode de jeu challenger");
                     while (restartByte == UserRestartChoice.RESTART)
@@ -112,23 +124,19 @@ public class Menu {
             }
         }
     }
-
-    private int controlResult1To3(int result) {
-        System.out.println("------------------------------------");
-        System.out.println("taper : 3 pour le mode duel" +
-                "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
-                " et l'ordinateur");
-        System.out.println("------------------------------------");
+    public int controlUserNumberScanner(int min, int max) {
+        int result = 0;
         do {
             try {
                 result = 0;
                 Scanner trysc = new Scanner(System.in);
                 result = trysc.nextInt();
-                System.err.println("attention, tu doit entré un chiffre entre 1 et 3");
+                if (result < min || result > max)
+                    System.err.println("attention, tu doit entré un chiffre entre " + min + " et " + max);
             } catch (InputMismatchException e) {
-                System.err.println("attention, tu doit entré un chiffre entre 1 et 3");
+                System.err.println("attention, tu doit entré un chiffre entre "+ min +" et " + max);
             }
-        }while (result < 1 || result > 3);
+        }while (result < min || result > max);
         return result;
     }
 }

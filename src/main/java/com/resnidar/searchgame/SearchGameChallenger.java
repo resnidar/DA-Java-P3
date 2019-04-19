@@ -7,8 +7,6 @@ import org.apache.log4j.Logger;
 
 public class SearchGameChallenger extends SearchGame implements GameLogic {
     static Logger logger = Logger.getLogger(SearchGameChallenger.class);
-    //RandomGeneration randomGeneration = new RandomGeneration();
-    public String wholeNumber = randomGeneration.getWholeNumber();
 
     public SearchGameChallenger(Config config) {
         super(config);
