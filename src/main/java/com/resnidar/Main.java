@@ -24,3 +24,5 @@ private static Logger logger = Logger.getLogger(Main.class);
         logger.debug("lancement de la methode logic de la class menu");
     }
 }
+// TODO: 06/04/2019 nom des variables soigné
+// TODO: 06/04/2019 nom des methodes soigné

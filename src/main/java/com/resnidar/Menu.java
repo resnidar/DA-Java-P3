@@ -8,6 +8,7 @@ import com.resnidar.searchgame.SearchGameDefence;
 import com.resnidar.searchgame.SearchGameDuel;
 import org.apache.log4j.Logger;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -23,6 +24,7 @@ public class Menu {
      * the base of class, it's the logic.
      */
     void logic() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("devMode dans Menu = " + config.getDevMode());
         GameLogic searchGameChallenger = new SearchGameChallenger(config);
         GameLogic searchGameDefence = new SearchGameDefence(config);
@@ -31,6 +33,7 @@ public class Menu {
         GameLogic masterMindDefender = new MastermindDefender(config);
         GameLogic masterMindDuel = new MastermindDuel(config);
         UserRestartChoice restartByte = UserRestartChoice.RESTART;
+        int result = 0;
         while (restartByte != UserRestartChoice.QUIT) {
             restartByte = UserRestartChoice.RESTART;
             for (int i = 0; i < 50; i++)
@@ -45,8 +48,16 @@ public class Menu {
                     " détenu par l'adversaire,\nvous n'aurez comme aide que le nombre de couleurs" +
                     " (représenté par des chiffres) présents ou à la bonne place ");
             logger.debug("attente de l'entrer utilisateur.");
-            Scanner sc = new Scanner(System.in);
-            int result = sc.nextInt();
+            do {
+                try {
+                    Scanner trysc = new Scanner(System.in);
+                    result = trysc.nextInt();
+                    if (result < 1 || result > 2)
+                        System.err.println("attention, tu doit entré un chiffre entre 1 et 2");
+                } catch (InputMismatchException e) {
+                    System.err.println("attention, tu doit entré un chiffre entre 1 et 2");
+                }
+            }while (result < 1 || result > 2);
             for (int i = 0; i < 10; i++)
                 System.out.println();
             if (result == 1) {
@@ -58,12 +69,7 @@ public class Menu {
                 System.out.println("------------------------------------");
                 System.out.println("taper : 2 pour le mode défenseur" +
                         "\n\nvous devrez choisir un nombre que l'ordinateur devra trouver");
-                System.out.println("------------------------------------");
-                System.out.println("taper : 3 pour le mode duel" +
-                        "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
-                        " et l'ordinateur");
-                System.out.println("------------------------------------");
-                result = sc.nextInt();
+                result = controlResult1To3(result);
                 if (result == 1) {
                     logger.debug("lancement de Searchgame en mode challenger");
                     while (restartByte == UserRestartChoice.RESTART)
@@ -86,12 +92,7 @@ public class Menu {
                 System.out.println("------------------------------------");
                 System.out.println("taper : 2 pour le mode défenseur" +
                         "\n\nvous devrez choisir une combinaison secrète que l'ordinateur devra trouver");
-                System.out.println("------------------------------------");
-                System.out.println("taper : 3 pour le mode duel" +
-                        "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
-                        " et l'ordinateur");
-                System.out.println("------------------------------------");
-                result = sc.nextInt();
+                result = controlResult1To3(result);
                 if (result == 1) {
                     logger.debug("vous avez choisi le mode de jeu challenger");
                     while (restartByte == UserRestartChoice.RESTART)
@@ -111,10 +112,27 @@ public class Menu {
             }
         }
     }
+
+    private int controlResult1To3(int result) {
+        System.out.println("------------------------------------");
+        System.out.println("taper : 3 pour le mode duel" +
+                "\n\nc'est un mélange des modes défenseur et challenger, vous jouerez chacun de votre tour vous" +
+                " et l'ordinateur");
+        System.out.println("------------------------------------");
+        do {
+            try {
+                result = 0;
+                Scanner trysc = new Scanner(System.in);
+                result = trysc.nextInt();
+                System.err.println("attention, tu doit entré un chiffre entre 1 et 3");
+            } catch (InputMismatchException e) {
+                System.err.println("attention, tu doit entré un chiffre entre 1 et 3");
+            }
+        }while (result < 1 || result > 3);
+        return result;
+    }
 }
 
-// TODO: 06/04/2019 si le joueur perd, affiché la solution
-// TODO: 06/04/2019 le mode developpeur doit affiché les solutions au debut
 // TODO: 06/04/2019 faire le readme expliquant comment compilé et lancer le code
 // TODO: 06/04/2019 nom des variables soigné
 // TODO: 06/04/2019 nom des methodes soigné
