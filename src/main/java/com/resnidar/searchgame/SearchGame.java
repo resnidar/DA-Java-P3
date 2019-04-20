@@ -27,6 +27,7 @@ public abstract class SearchGame extends Games {
         String userIndic;
         char[] userIndicTab;
         boolean loose;
+        boolean error; // for protect all user entry
         this.win = 0;
         char[] userNumberChar = userRequest();
         char[] iaTab = new char[userNumberChar.length];
@@ -36,10 +37,24 @@ public abstract class SearchGame extends Games {
             System.out.print("AiA : je te propose ");
             for (char c : iaTab) System.out.print(c);
             System.out.println(" saisie  + , - ou =");
-            userIndic = sc.next();
-            userIndicTab = userIndic.toCharArray();
+            do {
+                error = false;
+                userIndic = sc.next();
+                userIndicTab = userIndic.toCharArray();
+                if (userIndicTab.length != numberSize) {
+                    error = true;
+                    System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
+                            "\ntu dois rentrer " + numberSize + " caractères");
+                }
+                for (int i = 0; i < userIndicTab.length && error == false; i++){
+                    if (userIndicTab[i] != '=' && userIndicTab[i] != '+' && userIndicTab[i] != '-' && !error) {
+                        System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
+                                "\ntu dois rentrer " + numberSize + " caractères");
+                        error = true;
+                    }
+                }
+            }while(error == true);
             win = 0;
-            // ia
             loose = iaMind(userIndicTab, iaTab);
             iaWinOrLose(userNumberChar, loose);
             System.out.print("AiA : il me reste " + life);
