@@ -27,13 +27,14 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
         int fail;
         boolean loose;
         boolean winGame = false;
+        boolean error;
+        String proposition;
         UserRestartChoice restartByte;
         for (int i = 0; i < 15; i++)
             System.out.println();
         if (devMode)
             System.out.println("le devMode est activé pour cette partie");
         System.out.println("AiA : pour cette partie, nous n'avons pas de vie, c'est le premier à trouver la combinaison qui gagne \n");
-        String proposition;
         logger.debug("Mode duel du SearchGame lancé");
         System.out.println("AiA : d'accord" +
                 " c'est partie pour le mode duel !");
@@ -57,8 +58,8 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
                 for (char c : iaTab) System.out.print(c);
             }
             System.out.println("\nAiA : répond moi avec +, - ou =");
-            String userIndic = sc.next();
-            char[] userIndicTab = userIndic.toCharArray();
+            //String userIndic = sc.next();
+            char[] userIndicTab = controlCharOfUserForOperatorCarac();
             loose = iaMind(userIndicTab, iaTab);
             if (!loose) {
                 System.out.println("AiA : haha ! j'ai gagner !");
@@ -69,8 +70,26 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
                 System.out.println("AiA : très bien, c'est noté ,a toi de faire une proposition\n" +
                         "je te répondrais avec des indices!");
                 System.out.println("fait moi une proposition : ");
-                proposition = sc.next();
-                userTab = proposition.toCharArray();
+                /*proposition est en string, userTab est un array de char contenant le numero
+                *
+                * */
+                do {
+                    error = false;
+                    proposition = sc.next();
+                    userTab = proposition.toCharArray();
+                    if (userTab.length != numberSize){
+                        error = true;
+                        System.err.println("Attention ! le nombre doit avoir une taille de " + numberSize +
+                                " et n'avoir que des chiffres");
+                    }
+                    for (int i = 0; i < userTab.length && !error; i++) {
+                        if (userTab[i] < '0' || userTab[i] > '9'){
+                            error = true;
+                            System.err.println("Attention ! le nombre doit avoir une taille de " + numberSize +
+                                    " et n'avoir que des chiffres");
+                        }
+                    }
+                } while(error);
                 fail = propositionCompar(iaNumberChar, userTab, fail); // method
                 if (fail == 0) {
                     System.out.println("\nAiA : Mince tu m'as battue !  Bien joué");

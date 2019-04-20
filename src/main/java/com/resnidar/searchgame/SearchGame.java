@@ -37,23 +37,7 @@ public abstract class SearchGame extends Games {
             System.out.print("AiA : je te propose ");
             for (char c : iaTab) System.out.print(c);
             System.out.println(" saisie  + , - ou =");
-            do {
-                error = false;
-                userIndic = sc.next();
-                userIndicTab = userIndic.toCharArray();
-                if (userIndicTab.length != numberSize) {
-                    error = true;
-                    System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
-                            "\ntu dois rentrer " + numberSize + " caractères");
-                }
-                for (int i = 0; i < userIndicTab.length && error == false; i++){
-                    if (userIndicTab[i] != '=' && userIndicTab[i] != '+' && userIndicTab[i] != '-' && !error) {
-                        System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
-                                "\ntu dois rentrer " + numberSize + " caractères");
-                        error = true;
-                    }
-                }
-            }while(error == true);
+            userIndicTab = controlCharOfUserForOperatorCarac();
             win = 0;
             loose = iaMind(userIndicTab, iaTab);
             iaWinOrLose(userNumberChar, loose);
@@ -63,6 +47,30 @@ public abstract class SearchGame extends Games {
             else
                 System.out.println(" vies");
         }
+    }
+
+    public char[] controlCharOfUserForOperatorCarac() {
+        boolean error;
+        String userIndic;
+        char[] userIndicTab;
+        do {
+            error = false;
+            userIndic = sc.next();
+            userIndicTab = userIndic.toCharArray();
+            if (userIndicTab.length != numberSize) {
+                error = true;
+                System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
+                        "\ntu dois rentrer " + numberSize + " caractères");
+            }
+            for (int i = 0; i < userIndicTab.length && error == false; i++){
+                if (userIndicTab[i] != '=' && userIndicTab[i] != '+' && userIndicTab[i] != '-' && !error) {
+                    System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
+                            "\ntu dois rentrer " + numberSize + " caractères");
+                    error = true;
+                }
+            }
+        }while(error == true);
+        return userIndicTab;
     }
 
     /**
