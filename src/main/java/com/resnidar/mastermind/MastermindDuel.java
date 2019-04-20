@@ -54,9 +54,9 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         System.out.println("aia : c'est a moi");
         index = proposition();
         System.out.println("donne moi le nombre de nombre a la bonne place");
-        goodPlace = controlUserNumberScanner(0, 9);
+        goodPlace = controlUserNumberScanner(0, numberSize);
         System.out.println("donne moi le nombre de present");
-        present = controlUserNumberScanner(0, 9);
+        present = controlUserNumberScanner(0, numberSize);
         if (goodPlace == numberSize) {
             System.out.println("AiA : Super j'ai gagné !!! tu feras mieux la prochaine fois !");
             System.out.print("ma combinaisont secrète était ");
@@ -75,9 +75,23 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
      * @return true if the ia lose, false if the game continue
      */
     public boolean userTurn(char[] secretNumberOfIa) {
+        boolean error;
+        String userResponse;
         System.out.println("devine la combinaisont secrète : ");
-        String userResponse = sc.next();
-        // TODO: 19/04/2019 protection string
+        do {
+            error = false;
+            userResponse = String.valueOf(controlUserNumberScanner());
+            for (int i = 0; i < userResponse.length() && !error; i++){
+                char numberColorChar;
+                numberColorChar = (char)numberColor;
+                numberColorChar += '0';
+                numberColorChar--;
+                if (userResponse.charAt(i) < '0' || userResponse.charAt(i) > numberColorChar){
+                    error = true;
+                    System.err.println("Attention ! Le nombre que tu a entrée doit ètre compris entre 0 et " + (numberColor - 1) + ", recommence\n");
+                }
+            }
+        } while(error);
         int present;
         int goodPlace;
         present = present(userResponse.toCharArray(), secretNumberOfIa);
