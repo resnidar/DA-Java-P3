@@ -118,9 +118,9 @@ public abstract class SearchGame extends Games {
         for (int i = 0; i < life && !endGame; i++) {
             System.out.println("AiA : c'est à toi, essai de trouver le nombre que je te cache");
             SearchGameChallenger.logger.debug("attente de l'user");
-            proposition = sc.next();
+            userTab = controlUserNumberScanner();
             SearchGameChallenger.logger.debug("proposition recu");
-            userTab = proposition.toCharArray();
+            //userTab = proposition.toCharArray();
             SearchGameChallenger.logger.debug("String > tableau de char");
             try {
                 SearchGameChallenger.logger.debug("propositionCompar : comparaison entrée utilisateur et entrée");

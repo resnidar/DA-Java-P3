@@ -59,24 +59,8 @@ public abstract class Games {
      * @return number of user in a char array
      */
     protected char[] userRequest() {
-        boolean error;
-        String userNumber;
         char[] userNumberChar;
-        /*do {
-            error = false;
-            userNumber = sc.next();
-            userNumberChar = userNumber.toCharArray();//mise du string dans un tableau de char
-            if (userNumber.length() != numberSize)
-                System.err.println("Attention ! Le nombre que tu a entrée doit faire " + numberSize + " caractères, recommence");
-            for (int i = 0; i < numberSize && error == false; i++){
-                if (userNumberChar[i] < 48 || userNumberChar[i] > 57){
-                    error = true;
-                    System.err.println("Attention, il ne faut pas rentrer de caractères spéciaux ni de lettres alphabétiques");
-                }
-            }
-        }while (userNumber.length() != numberSize || error == true);*/
         userNumberChar = controlUserNumberScanner();
-        //Games.logger.debug("l user a entrée : " + userNumber);
         return userNumberChar;
     }
 
