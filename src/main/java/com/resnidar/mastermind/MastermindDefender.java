@@ -42,10 +42,10 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         while (!win && !loose) {
             logger.debug("appel de la fonction proposition");
             indexToListForDelete = proposition();
-            goodPlace = controlUserNumberScanner(0, 9);
+            goodPlace = controlUserNumberScanner(0, numberSize);
             System.out.println("combien y en a t il de present ?");
             logger.debug("attente de l'entrée d'un int de l'user");
-            present = controlUserNumberScanner(0, 9);
+            present = controlUserNumberScanner(0, numberSize);
             logger.debug("appel de la fonction removePossibility");
             for (int i = 0; i < 25; i++)
                 System.out.println();
