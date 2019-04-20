@@ -23,7 +23,6 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
     @Override
     public UserRestartChoice logic() {
         UserRestartChoice restartByte;
-        Scanner sc = new Scanner(System.in);
         int present;
         int goodPlace;
         int numberOfTurns = 0;

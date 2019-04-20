@@ -59,8 +59,21 @@ public abstract class Games {
      * @return number of user in a char array
      */
     protected char[] userRequest() {
+        boolean error;
         char[] userNumberChar;
-        userNumberChar = controlUserNumberScanner();
+        do {
+            error = false;
+            userNumberChar = controlUserNumberScanner();
+            for (int i = 0; i < userNumberChar.length && !error; i++){
+                char colorNumberChar = (char)colorNumber;
+                colorNumberChar += '0';
+                colorNumberChar--;
+                if (userNumberChar[i] < '0' || userNumberChar[i] > colorNumberChar) {
+                    System.err.println("Attention ! tu doit rentré que des chiffres, allant de 0 a " + (colorNumber - 1));
+                    error = true;
+                }
+            }
+        }while(error);
         return userNumberChar;
     }
 
