@@ -42,5 +42,4 @@ public class SearchGameDefence extends SearchGame implements GameLogic {
         return restartByte;
     }
 }
-
-// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
+// TODO: 22/04/2019 IU

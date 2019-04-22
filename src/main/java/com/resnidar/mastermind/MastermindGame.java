@@ -146,6 +146,10 @@ public abstract class MastermindGame extends Games implements GameLogic {
         System.out.println("AiA : il ne reste plus que " + currentChoices.size() + " numero dans ma liste");
         if (list.size() < 50 && goodPlace != numberSize)
             System.out.println("AiA : je vais bientôt gagner, attention à toi");
+        if (list.size() == 0){
+            System.err.println("Attention ! \nla liste ne contient plus possibilité,\n ça arrive lorsque tu t'es trompé dans" +
+                    "le nombre de présent et bien placé");
+        }
         return currentChoices;
     }
 
@@ -168,5 +172,4 @@ public abstract class MastermindGame extends Games implements GameLogic {
     }
 
 }
-
-// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
+// TODO: 22/04/2019 IU

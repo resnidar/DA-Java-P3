@@ -139,11 +139,13 @@ public abstract class SearchGame extends Games {
         int totalFail = 0;
         int fail = 0;
         for (int i = 0; i < life && !endGame; i++) {
+            if (i == 0)
             System.out.println("AiA : c'est à toi, essai de trouver le nombre que je te cache");
+            else
+                System.out.println("AiA : c'est à toi, rentre un nouveau nombre : ");
             SearchGameChallenger.logger.debug("attente de l'user");
             userTab = controlUserNumberScanner();
             SearchGameChallenger.logger.debug("proposition recu");
-            //userTab = proposition.toCharArray();
             SearchGameChallenger.logger.debug("String > tableau de char");
             try {
                 SearchGameChallenger.logger.debug("propositionCompar : comparaison entrée utilisateur et entrée");
@@ -165,15 +167,8 @@ public abstract class SearchGame extends Games {
         if (totalFail < life) {
             System.out.println("\n\rAiA : Mince, j'ai perdu ... bien jouer ! ");
         } else {
-            System.out.print("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois" +
-                    "\nle nombre que je te cachait est le ");
-            for (int i = 0; i < randomNumberTab.length; i++) {
-                System.out.println(randomNumberTab[i]);
-            }
+            System.out.println("\n\nAiA : Génial j'ai gagné ! tu feras peu être mieux la prochaine fois" +
+                    "\nle nombre que je te cachait est le " + randomGeneration.getWholeNumber());
         }
-        System.out.println("AiA : la réponse était " + randomGeneration.getWholeNumber());
     }
 }
-
-// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
-

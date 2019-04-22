@@ -30,12 +30,13 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         System.out.println("la partie commence :");
         listPrep(numberColor, numberSize);
         secretNumberOfIa = randomGeneration.getRandomNumber(numberSize, devMode, numberSize);
-        System.out.println("aia : tu commence ! propose moi un nombre : ");
+        System.out.println("AiA : tu commences ! propose-moi un nombre composé de : " + numberColor + " couleurs et d'une taille de " + numberSize + " caractères ");
         while (!game) {
             if (!game)
             game = userTurn(secretNumberOfIa);
             if (!game) {
-                System.out.println("aia : a moi de joué !");
+                System.out.println("------------------------------------");
+                System.out.println("AiA : a moi de joué !");
                 game = iaTurn(secretNumberOfIa);
             }
         }
@@ -51,15 +52,14 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         int index;
         int goodPlace;
         int present;
-        System.out.println("aia : c'est a moi");
         index = proposition();
-        System.out.println("donne moi le nombre de nombre a la bonne place");
+        System.out.println("donne moi le nombre de nombre à la bonne place");
         goodPlace = controlUserNumberScanner(0, numberSize);
         System.out.println("donne moi le nombre de present");
         present = controlUserNumberScanner(0, numberSize);
         if (goodPlace == numberSize) {
             System.out.println("AiA : Super j'ai gagné !!! tu feras mieux la prochaine fois !");
-            System.out.print("ma combinaisont secrète était ");
+            System.out.print("Ma combinaison secrète était ");
             for (int i = 0; i < secretNumberOfIa.length; i++)
                 System.out.print(secretNumberOfIa[i]);
             System.out.println();
@@ -104,5 +104,4 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         return false;
     }
 }
-
-// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
+// TODO: 22/04/2019 IU

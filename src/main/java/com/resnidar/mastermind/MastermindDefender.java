@@ -56,7 +56,11 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
                 win = true;
                 System.out.println("AiA : j'ai gagné  !");
                 logger.debug("l'utilisateur a gagné");
-            } else {
+            }
+            else if (list.size() == 0){
+                life = 0;
+            }
+            else {
                 life--;
                 System.out.print("AiA : il me reste " + life);
                 if (life == 1)
@@ -76,5 +80,4 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
     }
 
 }
-
-// TODO: 15/01/2019 sécurisé le code pour évité que l user rentre n importe quoi
+// TODO: 22/04/2019 IU
