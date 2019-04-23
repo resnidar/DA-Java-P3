@@ -37,4 +37,3 @@ public class SearchGameChallenger extends SearchGame implements GameLogic {
         return restartChoice;
     }
 }
-// TODO: 22/04/2019 IU

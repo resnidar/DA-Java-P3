@@ -49,16 +49,6 @@ public class Menu {
                     " détenu par l'adversaire,\nvous n'aurez comme aide que le nombre de couleurs" +
                     " (représenté par des chiffres) présents ou à la bonne place ");
             logger.debug("attente de l'entrer utilisateur.");
-            /*do {
-                try {
-                    Scanner trysc = new Scanner(System.in);
-                    result = trysc.nextInt();
-                    if (result < 1 || result > 2)
-                        System.err.println("attention, tu doit entré un chiffre entre 1 et 2");
-                } catch (InputMismatchException e) {
-                    System.err.println("attention, tu doit entré un chiffre entre 1 et 2");
-                }
-            }while (result < 1 || result > 2);*/
             result = controlUserNumberScanner(1, 2);
             for (int i = 0; i < 10; i++)
                 System.out.println();
@@ -124,6 +114,14 @@ public class Menu {
             }
         }
     }
+
+    // TODO: 23/04/2019 FAIT 
+    /**
+     * method that allows the user to enter a number and checks the validity
+     * @param min the minimum number authorised
+     * @param max the maximum number authorised
+     * @return
+     */
     public int controlUserNumberScanner(int min, int max) {
         int result = 0;
         do {
@@ -142,7 +140,7 @@ public class Menu {
 }
 
 // TODO: 06/04/2019 faire le readme expliquant comment compilé et lancer le code
-// TODO: 06/04/2019 nom des variables soigné
+//  TODO: 06/04/2019 nom des variables soigné
 // TODO: 06/04/2019 nom des methodes soigné
 // TODO: 06/04/2019 pour la soutenance, quel point abordé ? préparation a la soutenance de validation
 // TODO: 09/04/2019 cassé !!!!

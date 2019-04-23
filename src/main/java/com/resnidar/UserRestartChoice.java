@@ -1,5 +1,6 @@
 package com.resnidar;
 
+// TODO: 23/04/2019 mentor 
 public enum UserRestartChoice {
     RESTART,
     CHANGE,

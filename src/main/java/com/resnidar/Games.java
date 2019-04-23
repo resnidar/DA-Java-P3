@@ -28,11 +28,11 @@ public abstract class Games {
     public RandomGeneration randomGeneration = new RandomGeneration();
 
     /**
-     * cette fonction permet de comparé les tableaux entres eux
+     * this function allows you to compare the tables with each other
      *
-     * @param randomNumberTab tableau de nombre aléatoire
-     * @param userTab         tableu remplie par l'utilisateur
-     * @param fail            le nombre de faute
+     * @param randomNumberTab random number table
+     * @param userTab         table completed by the user
+     * @param fail            the number of errors
      * @return the number of dismatch in randomNumberTab and userTab
      */
     protected int propositionCompar(char[] randomNumberTab, char[] userTab, int fail) {
@@ -174,6 +174,12 @@ public abstract class Games {
         return restartByte;
     }
 
+    /**
+     * method that allows the user to enter a number and checks the validity
+     * @param min the minimum number authorised
+     * @param max the maximum number authorised
+     * @return
+     */
     public int controlUserNumberScanner(int min, int max) {
         int result;
         do {
@@ -190,6 +196,11 @@ public abstract class Games {
         return result;
     }
 
+    /**
+     * method that allows the user to enter a number and checks the validity
+     *
+     * @return the number in char table
+     */
     public char[] controlUserNumberScanner(){
         boolean error;
         char[] userNumberChar;

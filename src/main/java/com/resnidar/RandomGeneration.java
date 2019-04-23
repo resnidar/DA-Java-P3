@@ -43,6 +43,10 @@ public class RandomGeneration {
         return randomNumberChar;
     }
 
+    /**
+     *method for get the number number in string
+     * @return the random number in String
+     */
     public String getWholeNumber() {
         return wholeNumber;
     }
