@@ -49,7 +49,7 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
                 System.out.println();
             System.out.println("AiA : Ok, je réfléchis, attend une seconde ...");
             System.out.println("------------------------------------");
-            list = removePossibility(list, list.get(indexToListForDelete), numberOfTurns, goodPlace, present);
+            list = removePossibility(list, list.get(indexToListForDelete), goodPlace, present);
             if (goodPlace == numberSize) {
                 win = true;
                 System.out.println("AiA : j'ai gagné  !");

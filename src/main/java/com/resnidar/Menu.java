@@ -113,9 +113,3 @@ public class Menu {
         }
     }
 }
-
-// TODO: 06/04/2019 faire le readme expliquant comment compilé et lancer le code
-//  TODO: 06/04/2019 nom des variables soigné
-// TODO: 06/04/2019 nom des methodes soigné
-// TODO: 06/04/2019 pour la soutenance, quel point abordé ? préparation a la soutenance de validation
-// TODO: 09/04/2019 cassé !!!!

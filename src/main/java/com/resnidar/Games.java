@@ -222,6 +222,3 @@ public abstract class Games {
         return userNumberChar;
     }
 }
-// TODO: 06/04/2019 nom des variables soigné
-// TODO: 06/04/2019 nom des methodes soigné
-// TODO: 23/04/2019 readme avec adresse github / enlever todo / jar

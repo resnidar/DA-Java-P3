@@ -65,7 +65,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
             System.out.println();
             return true;
         }
-        removePossibility(list, list.get(index), 0, goodPlace, present);
+        removePossibility(list, list.get(index), goodPlace, present);
         return false;
     }
 
