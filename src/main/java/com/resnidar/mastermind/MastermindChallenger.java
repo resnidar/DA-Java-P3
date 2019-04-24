@@ -36,7 +36,7 @@ public class MastermindChallenger extends MastermindGame implements GameLogic {
      * the base of Ia for mastermind challenger
      */
     private void iaMindMastermind() {
-        char[] answer; // sera connecter au properties
+        char[] answer;
         char[] expected;
         boolean win = false;
         int goodPlace = 0;

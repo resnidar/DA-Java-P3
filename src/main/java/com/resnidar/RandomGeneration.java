@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import java.util.Random;
 
 public class RandomGeneration {
-    String wholeNumber = "";
+    private String wholeNumber = "";
     private static Logger logger = Logger.getLogger(SearchGame.class);
 
 

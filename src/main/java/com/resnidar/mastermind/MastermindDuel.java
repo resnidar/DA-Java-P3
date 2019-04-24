@@ -6,8 +6,8 @@ import com.resnidar.RandomGeneration;
 import com.resnidar.UserRestartChoice;
 
 public class MastermindDuel extends MastermindGame implements GameLogic {
-    int numberSize;
-    int numberColor;
+    private int numberSize;
+    private int numberColor;
 
     public MastermindDuel(Config config) {
         super(config);

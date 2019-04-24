@@ -2,10 +2,8 @@ package com.resnidar.mastermind;
 
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
-import com.resnidar.Games;
 import com.resnidar.UserRestartChoice;
 
-import java.util.Scanner;
 
 public class MastermindDefender extends MastermindGame implements GameLogic {
     private int numberOfColor;

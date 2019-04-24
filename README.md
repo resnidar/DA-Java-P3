@@ -9,3 +9,7 @@ it is an entertainment program, it consists of two games (Mastermind and searchG
 
 to be able to play this game : 
 
+****************//How launch\\****************
+
+to launch the project, git clone of this link >> https://github.com/resnidar/DA-Java-P3.git <<
+import the projet in intelliJ and and launch the main class (Main.java)

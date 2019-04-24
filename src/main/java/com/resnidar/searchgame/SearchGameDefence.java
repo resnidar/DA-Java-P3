@@ -3,10 +3,8 @@ package com.resnidar.searchgame;
 import com.resnidar.Config;
 import com.resnidar.GameLogic;
 import com.resnidar.UserRestartChoice;
-import org.apache.log4j.Logger;
 
 public class SearchGameDefence extends SearchGame implements GameLogic {
-    private static Logger logger = Logger.getLogger(SearchGameDefence.class);
 
     public SearchGameDefence(Config config) {
         super(config);

@@ -82,7 +82,7 @@ public abstract class Games {
      *
      * @return the byte for restart choice (1=restart/ 2=restartWithDifferentMode/3=stopTheGame)
      */
-    public UserRestartChoice fonctionRestartChoice() {
+    private UserRestartChoice fonctionRestartChoice() {
         int choice;
         UserRestartChoice res = UserRestartChoice.UNKNOWN;
         this.life = lifeStatic;
@@ -152,7 +152,7 @@ public abstract class Games {
         boolean error = false;
         UserRestartChoice restartByte;
         do{
-            if (error == true) // pourquoi variable peut être crée
+            if (error == true)
                 System.err.println("tu n'as pas entré un nombre entre 1 et 3, recommence");
             error = false;
             restartByte = fonctionRestartChoice();
@@ -178,9 +178,9 @@ public abstract class Games {
      * method that allows the user to enter a number and checks the validity
      * @param min the minimum number authorised
      * @param max the maximum number authorised
-     * @return
+     * @return the number verified
      */
-    public int controlUserNumberScanner(int min, int max) {
+    public static int controlUserNumberScanner(int min, int max) {
         int result;
         do {
             result = 999;
@@ -212,15 +212,16 @@ public abstract class Games {
             if (userNumber.length() != numberSize)
                 System.err.println("Attention ! Le nombre que tu a entrée doit faire " + numberSize + " caractères, recommence");
             else
-            for (int i = 0; i < numberSize && error == false; i++){
+            for (int i = 0; i < numberSize && !error; i++){
                 if (userNumberChar[i] < 48 || userNumberChar[i] > 57){
                     error = true;
                     System.err.println("Attention, il ne faut pas rentrer de caractères spéciaux ni de lettres alphabétiques");
                 }
             }
-        }while (userNumber.length() != numberSize || error == true);
+        }while (userNumber.length() != numberSize || error);
         return userNumberChar;
     }
 }
 // TODO: 06/04/2019 nom des variables soigné
 // TODO: 06/04/2019 nom des methodes soigné
+// TODO: 23/04/2019 readme avec adresse github / enlever todo / jar

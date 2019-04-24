@@ -65,7 +65,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
         int a = 0;
         int size = sizeBreak(color, realSize); // permet de crée une boucle basé sur une base numerique differente que la base 10
         for (int i = 0; i < 25; i++)
-            System.out.println("");
+            System.out.println();
         System.out.println("AiA : Je rempli la liste qui m'aidera a trouver le bon numéro\n" +
                 "sa pourrais prendre un peu de temps si tu as choisi un trop gros nombre ou trop de couleur\n" +
                 "par apport aux capacités de ta machine");
@@ -116,7 +116,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
     int proposition() {
         int indexList;
         indexList = defineProposition();
-        System.out.println("");
+        System.out.println();
         System.out.println("AiA : Combiens y en a-t-il à la bonne place ?");
         return indexList;
     }
@@ -130,6 +130,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @return the List
      */
     ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response, int turn, int goodPlace, int present) {
+        // TODO: 23/04/2019 a arranger turn 
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
             boolean delete;
@@ -165,10 +166,7 @@ public abstract class MastermindGame extends Games implements GameLogic {
         int presentReference;
         presentReference = present(choiceOfUser.toCharArray(), choiceOfList.toCharArray());
         goodPlaceReference = goodPlace(choiceOfUser.toCharArray(), choiceOfList.toCharArray());
-        if ((present == presentReference) && (goodPlace == goodPlaceReference)) {
-            return false;
-        }
-        return true;
+        return (present != presentReference) || (goodPlace != goodPlaceReference);
     }
 
 }
