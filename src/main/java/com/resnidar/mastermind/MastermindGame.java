@@ -129,7 +129,6 @@ public abstract class MastermindGame extends Games implements GameLogic {
      * @return the List
      */
     ArrayList<String> removePossibility(ArrayList<String> currentChoices, String response, int goodPlace, int present) {
-        // TODO: 23/04/2019 a arranger turn 
         for (int i = 0; i < currentChoices.size(); i++) {
             String choice = currentChoices.get(i);
             boolean delete;
