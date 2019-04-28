@@ -24,10 +24,8 @@ public abstract class SearchGame extends Games {
      * @return if the gameMode restart (1) / game restart with other gameMode (2) / close (3)
      */
     void iaLogic() {
-        String userIndic;
         char[] userIndicTab;
         boolean loose;
-        boolean error; // for protect all user entry
         this.win = 0;
         char[] userNumberChar = userRequest();
         char[] iaTab = new char[userNumberChar.length];
@@ -62,14 +60,14 @@ public abstract class SearchGame extends Games {
                 System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
                         "\ntu dois rentrer " + numberSize + " caractères");
             }
-            for (int i = 0; i < userIndicTab.length && error == false; i++){
+            for (int i = 0; i < userIndicTab.length && error == false; i++) {
                 if (userIndicTab[i] != '=' && userIndicTab[i] != '+' && userIndicTab[i] != '-' && !error) {
                     System.err.println("Attention ! seuls les symboles +, - et = sont autorisés, " +
                             "\ntu dois rentrer " + numberSize + " caractères");
                     error = true;
                 }
             }
-        }while(error == true);
+        } while (error == true);
         return userIndicTab;
     }
 
@@ -133,14 +131,13 @@ public abstract class SearchGame extends Games {
      * @param randomNumberTab tableau de nombre aléatoire
      */
     void userInteract(int life, char[] randomNumberTab) {
-        String proposition;
         boolean endGame = false;
         char[] userTab;
         int totalFail = 0;
         int fail = 0;
         for (int i = 0; i < life && !endGame; i++) {
             if (i == 0)
-            System.out.println("AiA : c'est à toi, essai de trouver le nombre que je te cache");
+                System.out.println("AiA : c'est à toi, essai de trouver le nombre que je te cache");
             else
                 System.out.println("AiA : c'est à toi, rentre un nouveau nombre : ");
             SearchGameChallenger.logger.debug("attente de l'user");

@@ -33,7 +33,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         System.out.println("AiA : tu commences ! propose-moi un nombre composé de : " + numberColor + " couleurs et d'une taille de " + numberSize + " caractères ");
         while (!game) {
             if (!game)
-            game = userTurn(secretNumberOfIa);
+                game = userTurn(secretNumberOfIa);
             if (!game) {
                 System.out.println("------------------------------------");
                 System.out.println("AiA : a moi de joué !");
@@ -46,6 +46,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
 
     /**
      * the ia part of the game
+     *
      * @return true if the ia win the game, false if game continue
      */
     private boolean iaTurn(char[] secretNumberOfIa) {
@@ -71,6 +72,7 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
 
     /**
      * the user part of the game
+     *
      * @param secretNumberOfIa it's the secretnumber of ia, the number the player has to find
      * @return true if the ia lose, false if the game continue
      */
@@ -81,17 +83,17 @@ public class MastermindDuel extends MastermindGame implements GameLogic {
         do {
             error = false;
             userResponse = String.valueOf(controlUserNumberScanner());
-            for (int i = 0; i < userResponse.length() && !error; i++){
+            for (int i = 0; i < userResponse.length() && !error; i++) {
                 char numberColorChar;
-                numberColorChar = (char)numberColor;
+                numberColorChar = (char) numberColor;
                 numberColorChar += '0';
                 numberColorChar--;
-                if (userResponse.charAt(i) < '0' || userResponse.charAt(i) > numberColorChar){
+                if (userResponse.charAt(i) < '0' || userResponse.charAt(i) > numberColorChar) {
                     error = true;
                     System.err.println("Attention ! Le nombre que tu a entrée doit ètre compris entre 0 et " + (numberColor - 1) + ", recommence\n");
                 }
             }
-        } while(error);
+        } while (error);
         int present;
         int goodPlace;
         present = present(userResponse.toCharArray(), secretNumberOfIa);

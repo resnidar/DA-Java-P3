@@ -71,25 +71,25 @@ public class SearchGameDuel extends SearchGame implements GameLogic {
                         "je te répondrais avec des indices!");
                 System.out.println("fait moi une proposition : ");
                 /*proposition est en string, userTab est un array de char contenant le numero
-                *
-                * */
+                 *
+                 * */
                 do {
                     error = false;
                     proposition = sc.next();
                     userTab = proposition.toCharArray();
-                    if (userTab.length != numberSize){
+                    if (userTab.length != numberSize) {
                         error = true;
                         System.err.println("Attention ! le nombre doit avoir une taille de " + numberSize +
                                 " et n'avoir que des chiffres");
                     }
                     for (int i = 0; i < userTab.length && !error; i++) {
-                        if (userTab[i] < '0' || userTab[i] > '9'){
+                        if (userTab[i] < '0' || userTab[i] > '9') {
                             error = true;
                             System.err.println("Attention ! le nombre doit avoir une taille de " + numberSize +
                                     " et n'avoir que des chiffres");
                         }
                     }
-                } while(error);
+                } while (error);
                 fail = propositionCompar(iaNumberChar, userTab, fail); // method
                 if (fail == 0) {
                     System.out.println("\nAiA : Mince tu m'as battue !  Bien joué");

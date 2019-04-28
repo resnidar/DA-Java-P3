@@ -23,7 +23,6 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
         UserRestartChoice restartByte;
         int present;
         int goodPlace;
-        int numberOfTurns = 0;
         boolean win = false;
         boolean loose = false;
         int indexToListForDelete;
@@ -54,11 +53,9 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
                 win = true;
                 System.out.println("AiA : j'ai gagné  !");
                 logger.debug("l'utilisateur a gagné");
-            }
-            else if (list.size() == 0){
+            } else if (list.size() == 0) {
                 life = 0;
-            }
-            else {
+            } else {
                 life--;
                 System.out.print("AiA : il me reste " + life);
                 if (life == 1)
@@ -71,7 +68,6 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
                 loose = true;
                 System.out.println("AiA : Arf, j'ai perdu .... bien joué");
             }
-            numberOfTurns++;
         }
         restartByte = checkingUserRestartChoice();
         return restartByte;
