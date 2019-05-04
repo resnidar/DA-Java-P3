@@ -27,7 +27,7 @@ public abstract class SearchGame extends Games {
         char[] userIndicTab;
         boolean loose;
         this.win = 0;
-        char[] userNumberChar = userRequest();
+        char[] userNumberChar = controlUserNumberScanner();
         char[] iaTab = new char[userNumberChar.length];
         for (int i = 0; i < userNumberChar.length; i++)
             iaTab[i] = '5';

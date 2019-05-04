@@ -64,7 +64,7 @@ public class MastermindDefender extends MastermindGame implements GameLogic {
                     System.out.println(" vies");
             }
             if (life == 0) {
-                logger.debug("l'utilisateur a perdu");
+                logger.debug("l'ia a perdu");
                 loose = true;
                 System.out.println("AiA : Arf, j'ai perdu .... bien joué");
             }
