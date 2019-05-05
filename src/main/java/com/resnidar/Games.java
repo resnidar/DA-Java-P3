@@ -69,7 +69,7 @@ public abstract class Games {
                 colorNumberChar += '0';
                 colorNumberChar--;
                 if (userNumberChar[i] < '0' || userNumberChar[i] > colorNumberChar) {
-                    System.err.println("Attention ! tu doit rentré que des chiffres, allant de 0 a " + (colorNumber - 1));
+                    System.err.println("Attention ! tu dois rentrer que des chiffres, allant de 0 à " + (colorNumber - 1));
                     error = true;
                 }
             }
@@ -188,9 +188,9 @@ public abstract class Games {
                 Scanner trysc = new Scanner(System.in);
                 result = trysc.nextInt();
                 if (result < min || result > max)
-                    System.err.println("attention, tu doit entré un chiffre entre " + min + " et " + max);
+                    System.err.println("attention, tu dois entrer un chiffre entre " + min + " et " + max);
             } catch (InputMismatchException e) {
-                System.err.println("attention, tu doit entré un chiffre entre "+ min +" et " + max);
+                System.err.println("attention, tu dois entrer un chiffre entre "+ min +" et " + max);
             }
         }while (result < min || result > max);
         return result;
